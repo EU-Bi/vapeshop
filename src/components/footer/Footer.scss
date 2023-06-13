@@ -1,0 +1,209 @@
+.footer {
+  background: #393975;
+  height: 436px;
+}
+.wrapperFooter {
+  display: flex;
+  flex-direction: column;
+  width: 1290px;
+  margin: 0 auto;
+  padding: 40px 0 ;
+  justify-content: space-between;
+  height: 100%;
+  .containerTop {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .columnLogo {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: flex-start;
+      .logo {
+        background: url(../../assets/svg+img/logoFooter.svg) no-repeat;
+        width: 136px;
+        height: 50px;
+      }
+      .schedule {
+        width: 130px;
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        /* or 18px */
+
+        /* white */
+
+        color: #ffffff;
+      }
+      .socialMedia {
+        display: flex;
+        flex-direction: column;
+        p {
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 20px;
+          /* identical to box height */
+
+          /* white */
+
+          color: #ffffff;
+        }
+        .wrapSocialMedia {
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
+
+          .tg {
+            background: url(../../assets/svg+img/tg.svg) no-repeat;
+            width: 35px;
+            height: 35px;
+          }
+          .inst {
+            background: url(../../assets/svg+img/inst.svg) no-repeat;
+            width: 35px;
+            height: 35px;
+          }
+        }
+      }
+    }
+    .catalog {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+
+      a {
+        margin: 0;
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        text-decoration: none;
+        /* or 18px */
+
+        /* white */
+
+        color: #ffffff;
+      }
+      h5 {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        /* identical to box height */
+
+        /* white */
+
+        color: #ffffff;
+        margin-bottom: 20px;
+      }
+    }
+    .information {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+
+      a {
+        margin: 0;
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        /* or 18px */
+
+        /* white */
+        text-decoration: none;
+        color: #ffffff;
+      }
+      h5 {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        /* identical to box height */
+
+        /* white */
+
+        color: #ffffff;
+        margin-bottom: 20px;
+      }
+    }
+    .contacts {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+
+      p {
+        margin: 0;
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        /* or 18px */
+
+        /* white */
+
+        color: #ffffff;
+      }
+      h5 {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        /* identical to box height */
+
+        /* white */
+
+        color: #ffffff;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .line {
+    width: 100%;
+    height: 1px;
+    background: #ffffff;
+    transform: matrix(1, 0, 0, -1, 0, 0);
+  }
+  .containerBottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 25px;
+    /* identical to box height, or 179% */
+
+    text-align: center;
+
+    /* white */
+
+    color: #ffffff;
+
+    mix-blend-mode: normal;
+    opacity: 0.8;
+    .politics {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 95px;
+    }
+  }
+}

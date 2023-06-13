@@ -1,0 +1,11 @@
+.wrapDropDown {
+  border: 1px solid #cbcbcb;
+  border-radius: 10px;
+  width: 270px;
+  height: 40px;
+  padding: 0 14px 0 20px;
+  align-items: center;
+  appearance: none;
+  background: url(../../../assets/svg+img/arrowDrop.svg) no-repeat right;
+  background-position-x: calc(100% - 14px);
+}

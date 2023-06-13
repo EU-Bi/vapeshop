@@ -1,0 +1,36 @@
+.wrapperPagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  gap: 30px;
+  .active {
+    width: 30px;
+    height: 30px;
+    background: #7878f5;
+    border-radius: 7px;
+    border: 0;
+
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    /* white */
+
+    color: #ffffff;
+  }
+  .prevPagination{
+    background: url(../../assets/svg+img/prevPagination.png) no-repeat;
+    width: 30px;
+    height: 30px;
+  }
+  .nextPagination{
+    background: url(../../assets/svg+img/nextPagination.png) no-repeat;
+    width: 30px;
+    height: 30px;
+  }
+}
