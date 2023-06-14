@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import store from "../../../redux/store/store";
 import {
   actionAddFilter,
@@ -7,13 +7,14 @@ import {
 
 const CheckBox = ({ checkbox, name }) => {
   const [checked, setChecked] = useState(false);
+  useEffect(()=>{
+    
+  })
   const handleChange = (checkbox) => {
     setChecked(!checked);
     if (!checked) {
-      console.log(checkbox);
       store.dispatch(actionAddFilter(name, checkbox));
     } else {
-      console.log("delete", checkbox);
       store.dispatch(actionDeleteFilter(name, checkbox));
     }
   };

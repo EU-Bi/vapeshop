@@ -116,7 +116,7 @@ function filterReducer(state = initialStateFilter, { type, payload }) {
       };
     case DELETE_FILTER:
       return {
-        filters: state.filters.filter(({ title }) => title !== payload.title),
+        filters: state.filters.filter((filter) => filter.item.title !== payload.item.title),
       };
     default:
       return state;

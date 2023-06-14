@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./FilterCard.scss";
 import CheckBox from "./CheckBox";
 import {
@@ -7,7 +7,7 @@ import {
 } from "../../../redux/actions/ActionFilters";
 import store from "../../../redux/store/store";
 
-const FilterCard = ({ name, filter }) => {
+const FilterCard = ({ name, filter, currentFilters }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [checked, setChecked] = useState(false);
   const [checkedTwo, setCheckedTwo] = useState(false);
@@ -21,7 +21,7 @@ const FilterCard = ({ name, filter }) => {
   };
   const handleChangeTwo = () => {
     setCheckedTwo(!checkedTwo);
-    if (!checked) {
+    if (!checkedTwo) {
       store.dispatch(actionAddFilter("counts", { title: false }));
     } else {
       store.dispatch(actionDeleteFilter("counts", { title: false }));
@@ -80,7 +80,7 @@ const FilterCard = ({ name, filter }) => {
                   className="filterCheckbox"
                   id={"true"}
                   checked={checked}
-                  onChange={handleChange}
+                  onChange={() => handleChange()}
                   name={"true"}
                 />
                 <label htmlFor={"true"}>Є в навявності</label>
@@ -92,7 +92,7 @@ const FilterCard = ({ name, filter }) => {
                   id={"false"}
                   name={"false"}
                   checked={checkedTwo}
-                  onChange={handleChangeTwo}
+                  onChange={() => handleChangeTwo()}
                 />
                 <label htmlFor={"false"}>Немає в навявності</label>
               </div>

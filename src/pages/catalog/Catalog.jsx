@@ -8,25 +8,30 @@ import Telephone from "../../components/telephone/Telephone";
 import Footer from "../../components/footer/Footer";
 import Pagination from "../../components/pagination/Pagination";
 import { connect } from "react-redux";
+import { filterItem } from "../../functions/filterItem";
 
 // сделать фильтрацию по категориям
 const Catalog = ({ devices, filters, current }) => {
-  const [filterDevices, setFilterDevices] = useState(devices);
+  const [filterDevices, setFilterDevices] = useState([]);
   useEffect(() => {
-    current.map((filter) => {
-      setFilterDevices(
-        filterDevices.filter((device) => {
-          if (filter.item.type === "counts") {
-            return device.count > 0 === filter.item;
-          }
-          if (current === []) {
-            return devices;
-          } else {
-            return device[filter.type.slice(0, -1)] === filter.item;
-          }
-        })
-      );
-    });
+    setFilterDevices(devices);
+  }, [devices]);
+
+  useEffect(() => {
+    if (current.length > 0) {
+      let currentFilterDevices = [];
+      current.map((filter) => {
+        return currentFilterDevices.push(filterItem(filter, devices));
+      });
+      const result = (array) => {
+        const allValues = array.flat();
+        const uniqueValues = [...new Set(allValues)];
+        return uniqueValues;
+      };
+      setFilterDevices(result(currentFilterDevices));
+    } else {
+      setFilterDevices(devices);
+    }
   }, [current, devices]);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -65,6 +70,9 @@ const Catalog = ({ devices, filters, current }) => {
                   key={filter}
                   filter={filters[filter]}
                   name={filter}
+                  currentFilters={current.filter(
+                    (currentFilter) => currentFilter.type === filter
+                  )}
                 />
               ))}
             </div>
