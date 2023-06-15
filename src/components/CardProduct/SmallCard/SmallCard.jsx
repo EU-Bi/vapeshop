@@ -11,7 +11,7 @@ const SmallCard = (props) => {
   return (
     <div className="wrappSmallCard" style={{ ...props.style }}>
       <img src={process.env.REACT_APP_API_URL + props.device.img} alt="" />
-      <Link to={"/catalog/elfbarBC4000/description"}>
+      <Link to={`/catalog/${props.device.brand.title+props.device.model.title}/description`}>
         {props.device.type.title} {props.device.brand.title}{" "}
         {props.device.model.title} Blue Razz Ice
       </Link>

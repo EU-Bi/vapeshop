@@ -1,6 +1,53 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const ContactInfo = () => {
+  const [regions, setRegions] = useState([]);
+  const [currentRegion, setCurrentRegion] = useState("");
+  const [cites, setCites] = useState([]);
+  const [currentCity, setCurrentCity] = useState("");
+  const [posts, setPosts] = useState([]);
+  const [currentPost, setCurrentPost] = useState("");
+  useEffect(() => {
+    axios
+      .post("https://api.novaposhta.ua/v2.0/json/", {
+        apiKey: "fba38a75ee85aab40b94b4fa003f9e3e",
+        modelName: "Address",
+        calledMethod: "getAreas",
+        methodProperties: {},
+      })
+      .then((res) => setRegions(res.data.data));
+  });
+
+  useEffect(() => {
+    axios
+      .post("https://api.novaposhta.ua/v2.0/json/", {
+        apiKey: "fba38a75ee85aab40b94b4fa003f9e3e",
+        modelName: "Address",
+        calledMethod: "getCities",
+        methodProperties: {
+          FindByString: currentCity,
+          Limit: "20",
+        },
+      })
+      .then((res) => {
+        setCites(res.data.data);
+      });
+    axios
+      .post("https://api.novaposhta.ua/v2.0/json/", {
+        apiKey: "fba38a75ee85aab40b94b4fa003f9e3e",
+        modelName: "Address",
+        calledMethod: "getWarehouses",
+        methodProperties: {
+          CityName: currentCity,
+          Limit: "50",
+          Language: "UA",
+          WarehouseId: currentPost,
+        },
+      })
+      .then((res) => setPosts(res.data.data));
+  }, [currentCity, currentPost]);
+
   return (
     <div className="wrapContactInfo">
       <div className="contact">
@@ -26,21 +73,46 @@ const ContactInfo = () => {
         <form>
           <div className="wrapInputLabel">
             <label htmlFor="">Область</label>
-            <select name="select" className="location">
-              <option>Kyiv</option>
+            <select
+              name="select"
+              className="location"
+              value={currentRegion}
+              onChange={(e) => setCurrentRegion(e.target.value)}
+            >
+              {regions.map((region) => (
+                <option key={region.id}>{region.Description}</option>
+              ))}
             </select>
           </div>
           <div className="wrapInputLabel">
             <label htmlFor="">Місто</label>
-            <select name="select" className="location">
-              <option>Kyiv</option>
-            </select>
+            <input
+              type="text"
+              placeholder="Введіть своє місто"
+              list="cityname"
+              value={currentCity}
+              onChange={(e) => setCurrentCity(e.target.value)}
+            />
+            <datalist id="cityname">
+              {cites.map((city) => (
+                <option key={city.id}>{city.Description}</option>
+              ))}
+            </datalist>
           </div>
           <div className="wrapInputLabel">
             <label htmlFor="">Відділення</label>
-            <select name="select" className="sending">
-              <option>Kyiv</option>
-            </select>
+            <input
+              type="text"
+              className="sending"
+              list="postlist"
+              value={currentPost}
+              onChange={(e) => setCurrentPost(e.target.value)}
+            ></input>
+            <datalist id="postlist">
+              {posts.map((post) => (
+                <option key={post.id}>{post.Description}</option>
+              ))}
+            </datalist>
           </div>
         </form>
       </div>

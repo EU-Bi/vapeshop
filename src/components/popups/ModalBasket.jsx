@@ -8,12 +8,13 @@ import { connect } from "react-redux";
 const ModalBasket = (props) => {
   const [isTrue, setIsTrue] = useState(false);
   useEffect(() => {
-    if (props.basket.length>0) {
+    if (props.basket.length > 0) {
       setIsTrue(true);
-    }else{
-      setIsTrue(false)
+    } else {
+      setIsTrue(false);
     }
   }, [props.basket]);
+
   return (
     <Modal {...props} centered size="lg">
       {isTrue ? (
@@ -23,9 +24,9 @@ const ModalBasket = (props) => {
             <div className="closeModal" onClick={props.onHide}></div>
           </div>
           <div className="wrapItems">
-            {props.basket.map((item, index) => (
-              <ItemPopupBasket item={item} key={index} />
-            ))}
+            {props.basket.map(({item}, index) => {
+              return <ItemPopupBasket item={item} key={index} />;
+            })}
           </div>
           <div className="wrapCheckOutModal">
             <Link to={"/catalog"}>Продовжити покупки</Link>

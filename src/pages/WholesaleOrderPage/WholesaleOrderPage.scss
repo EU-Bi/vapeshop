@@ -336,8 +336,9 @@
         calc(100% - 245px) center,
       url(../../assets/svg+img/arrowDrop.svg) no-repeat calc(100% - 10px) center;
   }
-  .sending {
+  input.sending {
     width: 560px;
+    height: 50px;
     background: url(../../assets/svg+img/sending.svg) no-repeat calc(100% - 99%)
         center,
       url(../../assets/svg+img/arrowDrop.svg) no-repeat calc(100% - 10px) center;

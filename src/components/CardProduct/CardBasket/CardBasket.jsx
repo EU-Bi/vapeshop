@@ -1,16 +1,25 @@
-import React from "react";
-import './CardBasket.scss'
+import React, { useState } from "react";
+import "./CardBasket.scss";
 
-const CardBasket = () => {
+const CardBasket = ({ item }) => {
+  const [count, setCount] = useState(1);
   return (
     <div className="wrapCardBasket">
-      <img src="" alt="" />
+      <img src={process.env.REACT_APP_API_URL + item.img} alt="" />
       <div className="textCardBasket">
-        <p>Одноразова Pod система Elf Bar BC4000 LE Strawberry Mango Peach</p>
+        <p>
+          {item.type.title +
+            " " +
+            item.brand.title +
+            " " +
+            item.model.title +
+            " "}{" "}
+          Strawberry Mango Peach
+        </p>
         <div className="countPriceText">
-          <p className="price">400</p>
-          <p className="count">2</p>
-          <p className="total">800</p>
+          <p className="price">{item.model.price} грн.</p>
+          <p className="count">{count}</p>
+          <p className="total">{count * item.model.price} грн.</p>
         </div>
       </div>
     </div>

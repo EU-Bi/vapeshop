@@ -81,7 +81,7 @@ const Header = ({ basket }) => {
               >
                 <h4>Кошик</h4>
                 <div className="wrapCardBasketTut">
-                  {basket.map((item) => (
+                  {basket.map(({item}) => (
                     <CardBasket item={item} />
                   ))}
                 </div>
