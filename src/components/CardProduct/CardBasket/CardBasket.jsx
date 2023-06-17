@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CardBasket.scss";
 
 const CardBasket = ({ item, count }) => {
+
   return (
     <div className="wrapCardBasket">
       <img src={process.env.REACT_APP_API_URL + item.img} alt="" />

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Decription = () => {
+const Description = () => {
   return (
     <div className="wrapDescription">
       <h4>Основні характеристики Elf ​​Bar BC3000:</h4>
@@ -29,4 +29,4 @@ const Decription = () => {
   );
 };
 
-export default Decription;
+export default Description;

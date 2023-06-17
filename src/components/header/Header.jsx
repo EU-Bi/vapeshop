@@ -81,8 +81,8 @@ const Header = ({ basket, total }) => {
               >
                 <h4>Кошик</h4>
                 <div className="wrapCardBasketTut">
-                  {basket.map(({ device, countDevice }) => (
-                    <CardBasket item={device} count={countDevice} />
+                  {basket.map(({ device, countDevice }, key) => (
+                    <CardBasket item={device} count={countDevice} key={key} />
                   ))}
                 </div>
                 <div className="footerBasket">

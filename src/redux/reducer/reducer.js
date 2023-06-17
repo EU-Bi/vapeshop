@@ -38,7 +38,13 @@ function basketReducer(state = initialState, { type, payload }) {
       if (existingItemIndex !== -1) {
         const updatedItems = state.basket.map((item, index) => {
           if (index === existingItemIndex) {
-            return { ...item, countDevice: item.countDevice + 1 };
+            return {
+              ...item,
+              countDevice:
+                item.countDevice < item.device.count
+                  ? item.countDevice + 1
+                  : item.countDevice,
+            };
           }
           return item;
         });

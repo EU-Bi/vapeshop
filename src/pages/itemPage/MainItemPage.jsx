@@ -5,13 +5,11 @@ import ModalBuyOneClick from "../../components/popups/ModalBuyOneClick";
 import store from "../../redux/store/store";
 import { actionAddItemInBasket } from "../../redux/actions/ActionsBasket";
 
-const MainItemPage = () => {
-  const item = {};
+const MainItemPage = ({device}) => {
   const [value, setValue] = useState(1);
   const [modalShow, setModalShow] = useState(false);
 
   const handleClick = (item) => {
-    console.log(item)
     store.dispatch(actionAddItemInBasket({ item }));
   };
   const handleClickIncrease = (value) => {
@@ -61,14 +59,14 @@ const MainItemPage = () => {
           </label>
         </div>
         <div className="buttonsWrap">
-          <div className="addInBasket" onClick={()=>handleClick(item)}>додати в кошик</div>
+          <div className="addInBasket" onClick={()=>handleClick(device)}>додати в кошик</div>
           <div className="buyInOneClick" onClick={() => setModalShow(true)}>
             купити в 1 клік
           </div>
           <ModalBuyOneClick
             show={modalShow}
             onHide={() => setModalShow(false)}
-            item={item}
+            item={device}
             count={value}
           />
         </div>

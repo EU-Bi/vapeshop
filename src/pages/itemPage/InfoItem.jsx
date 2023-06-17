@@ -7,13 +7,13 @@ const InfoItem = () => {
       <div className="wrapLinks">
         <Link
           className="linksInfo active"
-          to={"/catalog/elfbarBC4000/description"}
+          to={"/device/elfbarBC4000/description"}
         >
           Опис
         </Link>
         <Link
           className="linksInfo active"
-          to={"/catalog/elfbarBC4000/characteristics"}
+          to={"/device/elfbarBC4000/characteristics"}
         >
           Характеристики
         </Link>
