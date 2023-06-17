@@ -15,9 +15,6 @@ const DropdownCatalog = () => {
   return (
     <label className="rightWrap" >
       <select className="wrapDropDown" onChange={handleChange} value={value}>
-        <option value="" selected disabled hidden>
-          Сортувати за
-        </option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>{option.label}</option>
         ))}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.scss";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Subcategories } from "./Subcategories";
@@ -7,7 +7,7 @@ import CardBasket from "../CardProduct/CardBasket/CardBasket";
 import ModalBasket from "../popups/ModalBasket";
 import { connect } from "react-redux";
 
-const Header = ({ basket }) => {
+const Header = ({ basket, total }) => {
   const [showBlock, setShowBlock] = useState(false);
   const [showBasket, setShowBasket] = useState(false);
   const [isOpenSubcategories, setOpenSubcategories] = useState(false);
@@ -72,7 +72,7 @@ const Header = ({ basket }) => {
               onClick={() => setModalShow(true)}
             ></div>
             <span>{basket.length}</span>
-            {showBasket && basket.length>0 && (
+            {showBasket && basket.length > 0 && (
               <div
                 className="basketHoverWrap"
                 onMouseLeave={() => {
@@ -81,14 +81,14 @@ const Header = ({ basket }) => {
               >
                 <h4>Кошик</h4>
                 <div className="wrapCardBasketTut">
-                  {basket.map(({item}) => (
-                    <CardBasket item={item} />
+                  {basket.map(({ device, countDevice }) => (
+                    <CardBasket item={device} count={countDevice} />
                   ))}
                 </div>
                 <div className="footerBasket">
-                  <p>В кошик</p>
+                  <Link to={"/basket"}>В кошик</Link>
                   <div className="wrapTotalBtn">
-                    <h5>500</h5>
+                    <h5>{total} грн.</h5>
                     <Link to={"/basket"}>Оформити</Link>
                   </div>
                 </div>
@@ -143,4 +143,7 @@ const Header = ({ basket }) => {
   );
 };
 
-export default connect((state) => ({ basket: state.basket.basket }))(Header);
+export default connect((state) => ({
+  basket: state.basket.basket,
+  total: state.basket.total,
+}))(Header);

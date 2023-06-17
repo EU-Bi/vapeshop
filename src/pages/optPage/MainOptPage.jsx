@@ -16,7 +16,6 @@ const MainOptPage = () => {
     setName("");
     setPhone("");
   };
-
   return (
     <div className="wrapMainOpt">
       <h2>Оптові замовлення</h2>
@@ -40,7 +39,7 @@ const MainOptPage = () => {
             </p>
           </div>
         </div>
-        <div className="rightSide">
+        <form className="rightSide">
           <h4>Бажаєте, зробити оптове замовлення?</h4>
           <p>Заповніть форму і ми вам зателефонуємо</p>
           <label htmlFor="">Ваше ім’я</label>
@@ -70,18 +69,23 @@ const MainOptPage = () => {
             type="text"
             value={label}
             required
-            onChange={(e) =>{ 
-              setLabel(e.target.value)
-              console.log(label)
+            onChange={(e) => {
+              setLabel(e.target.value);
+              console.log(label);
             }}
           />
           <button
             className="btnSendApplication"
+            disabled={
+             Boolean(name.length>0& phone.length>0 & label.length>0 & count.length>0)
+                ? false
+                : true
+            }
             onClick={() => handleSendMessage(name, phone, count, label)}
           >
             Надіслати заявку
           </button>
-        </div>
+        </form>
       </div>
       <span>
         У нашому магазині доступні оптові замовлення. Ви можете замовити

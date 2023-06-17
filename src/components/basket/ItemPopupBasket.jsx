@@ -1,20 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import store from "../../redux/store/store";
-import { actionDeleteItemInBasket } from "../../redux/actions/ActionsBasket";
+import {
+  actionDeleteItemInBasket,
+  actionUpdateCountDevice,
+} from "../../redux/actions/ActionsBasket";
 
-const ItemPopupBasket = ({ item }) => {
+const ItemPopupBasket = ({ item, count }) => {
   const handleClick = (item) => {
     store.dispatch(actionDeleteItemInBasket({ item }));
   };
-  const [count, setCount] = useState(1);
+  const [currentCount, setCount] = useState(count);
+  useEffect(() => {
+    store.dispatch(actionUpdateCountDevice({ item, count: currentCount }));
+  }, [currentCount, item]);
   const handleIncrease = () => {
-    if (count < item.count) {
-      setCount(count + 1);
+    if (currentCount < item.count) {
+      setCount((prev) => prev + 1);
     }
   };
   const handleDecrease = () => {
-    if (count > 0) {
-      setCount(count - 1);
+    if (currentCount > 0) {
+      setCount((prev) => prev - 1);
     }
   };
   return (
@@ -36,21 +42,15 @@ const ItemPopupBasket = ({ item }) => {
         <div className="footerItemPopup">
           <h5>{item.model.price} грн.</h5>
           <div className="counter">
-            <div
-              className="minus"
-              onClick={() => handleDecrease()}
-            >
+            <div className="minus" onClick={() => handleDecrease()}>
               <div className="minusCont"></div>
             </div>
-            <div className="count">{count}</div>
-            <div
-              className="plus"
-              onClick={() => handleIncrease()}
-            >
+            <div className="count">{currentCount}</div>
+            <div className="plus" onClick={() => handleIncrease()}>
               <div className="plusCont"></div>
             </div>
           </div>
-          <h5>{count * item.model.price} грн</h5>
+          <h5>{currentCount * item.model.price} грн</h5>
         </div>
       </div>
     </div>

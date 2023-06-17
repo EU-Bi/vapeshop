@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 
 const MainWholesale = ({ basket }) => {
   const [isActive, setIsActive] = useState(false);
+  console.log(basket)
+  basket.map((item)=>console.log(item))
   return (
     <div className="wrapperMainWholesale">
       <h2>Оформлення замовлення</h2>
@@ -20,7 +22,7 @@ const MainWholesale = ({ basket }) => {
           </div>
           <div className="wrapItems">
             {basket.length > 0 ? (
-              basket.map((item) => <CardBasket key={item} />)
+              basket.map(({item}) => <CardBasket key={item} item={item}/>)
             ) : (
               <div className="noItems">
                 Товар не додано до кошику

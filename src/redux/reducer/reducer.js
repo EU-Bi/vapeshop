@@ -10,10 +10,12 @@ import {
   GET_ALL_TASTES,
   GET_ALL_TYPES,
   REFRESH_BASKET,
+  UPDATE_COUNT,
 } from "../typesActions/types";
 
 const initialState = {
   basket: [],
+  total: 0,
 };
 const initialStateItems = {
   brands: [],
@@ -29,19 +31,63 @@ const initialStateFilter = {
 function basketReducer(state = initialState, { type, payload }) {
   switch (type) {
     case ADD_ITEM:
+      const newItem = payload;
+      const existingItemIndex = state.basket.findIndex(
+        (item) => item.device.id === newItem.device.id
+      );
+      if (existingItemIndex !== -1) {
+        const updatedItems = state.basket.map((item, index) => {
+          if (index === existingItemIndex) {
+            return { ...item, countDevice: item.countDevice + 1 };
+          }
+          return item;
+        });
+
+        return {
+          ...state,
+          basket: updatedItems,
+          total: state.total + payload.device.model.price * payload.countDevice,
+        };
+      } else {
+        return {
+          ...state,
+          basket: [...state.basket, newItem],
+          total: state.total + payload.device.model.price * payload.countDevice,
+        };
+      }
+    case DELETE_ITEM:
+      let countDeleteItem;
+      const updatedDevices = state.basket.filter((item) => {
+        if (item.device.id === payload.item.id) {
+          countDeleteItem = item.countDevice;
+        }
+        return item.device.id !== payload.item.id;
+      });
+
       return {
         ...state,
-        basket: [...state.basket, payload],
+        basket: updatedDevices,
+        total: state.total - payload.item.model.price * countDeleteItem,
       };
-    case DELETE_ITEM:
+    case UPDATE_COUNT:
+      const updateCountDevice = state.basket.map((item) => {
+        if (item.device.id === payload.device.id) {
+          return payload;
+        }
+        return item;
+      });
+      const newTotal = updateCountDevice.reduce(
+        (acc, item) => acc + item.device.model.price * item.countDevice,
+        0
+      );
       return {
-        basket: state.basket.filter(
-          ({ id, count }) => id !== payload && count >= 1
-        ),
+        basket: updateCountDevice,
+        total: newTotal,
       };
     case REFRESH_BASKET:
       return {
         basket: [],
+        total: 0,
       };
     default:
       return state;
@@ -116,7 +162,9 @@ function filterReducer(state = initialStateFilter, { type, payload }) {
       };
     case DELETE_FILTER:
       return {
-        filters: state.filters.filter((filter) => filter.item.title !== payload.item.title),
+        filters: state.filters.filter(
+          (filter) => filter.item.title !== payload.item.title
+        ),
       };
     default:
       return state;

@@ -24,8 +24,14 @@ const ModalBasket = (props) => {
             <div className="closeModal" onClick={props.onHide}></div>
           </div>
           <div className="wrapItems">
-            {props.basket.map(({item}, index) => {
-              return <ItemPopupBasket item={item} key={index} />;
+            {props.basket.map(({ device, countDevice }, index) => {
+              return (
+                <ItemPopupBasket
+                  item={device}
+                  key={index}
+                  count={countDevice}
+                />
+              );
             })}
           </div>
           <div className="wrapCheckOutModal">
@@ -33,7 +39,7 @@ const ModalBasket = (props) => {
             <div className="wrapButtonModalCheckOut">
               <div className="textCheckOut">
                 <h3>Разом:</h3>
-                <h3>1470 грн</h3>
+                <h3>{props.total} грн</h3>
               </div>
               <Link to={"/basket"}>Оформити замовлення</Link>
             </div>
@@ -62,6 +68,6 @@ const ModalBasket = (props) => {
   );
 };
 
-export default connect((state) => ({ basket: state.basket.basket }))(
+export default connect((state) => ({ basket: state.basket.basket, total:state.basket.total }))(
   ModalBasket
 );

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./CardBasket.scss";
 
-const CardBasket = ({ item }) => {
-  const [count, setCount] = useState(1);
+const CardBasket = ({ item, count }) => {
   return (
     <div className="wrapCardBasket">
       <img src={process.env.REACT_APP_API_URL + item.img} alt="" />
@@ -18,7 +17,7 @@ const CardBasket = ({ item }) => {
         </p>
         <div className="countPriceText">
           <p className="price">{item.model.price} грн.</p>
-          <p className="count">{count}</p>
+          <p className="count">{count} шт.</p>
           <p className="total">{count * item.model.price} грн.</p>
         </div>
       </div>

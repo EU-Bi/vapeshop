@@ -143,6 +143,9 @@
 
         color: #ffffff;
       }
+      .btnSendApplication:disabled {
+        background: #cbcbcb;
+      }
     }
   }
   span {
