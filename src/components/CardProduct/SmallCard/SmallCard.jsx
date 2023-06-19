@@ -6,7 +6,7 @@ import store from "../../../redux/store/store";
 
 const SmallCard = (props) => {
   const handleClick = (item) => {
-    store.dispatch(actionAddItemInBasket({ item }));
+    store.dispatch(actionAddItemInBasket({ item, count: 1 }));
   };
   return (
     <div className="wrappSmallCard" style={{ ...props.style }}>

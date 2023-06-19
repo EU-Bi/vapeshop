@@ -5,11 +5,15 @@ import {
   actionDeleteFilter,
 } from "../../../redux/actions/ActionFilters";
 
-const CheckBox = ({ checkbox, name }) => {
+const CheckBox = ({ checkbox, name, isChecked }) => {
   const [checked, setChecked] = useState(false);
-  useEffect(()=>{
-    
-  })
+  console.log(isChecked.filter((filter) => {
+    if (filter.item === checkbox) {
+      return checkbox
+    } else {
+      return 'tutut';
+    }
+  }));
   const handleChange = (checkbox) => {
     setChecked(!checked);
     if (!checked) {

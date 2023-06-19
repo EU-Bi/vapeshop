@@ -16,7 +16,6 @@ const Catalog = ({ devices, filters, current }) => {
   useEffect(() => {
     setFilterDevices(devices);
   }, [devices]);
-
   useEffect(() => {
     if (current.length > 0) {
       let currentFilterDevices = [];
@@ -70,9 +69,7 @@ const Catalog = ({ devices, filters, current }) => {
                   key={filter}
                   filter={filters[filter]}
                   name={filter}
-                  currentFilters={current.filter(
-                    (currentFilter) => currentFilter.type === filter
-                  )}
+                  currentFilters={current}
                 />
               ))}
             </div>

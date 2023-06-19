@@ -1,9 +1,9 @@
 import { ADD_ITEM, DELETE_ITEM, UPDATE_COUNT } from "../typesActions/types";
 
 export const actionAddItemInBasket =
-  ({ item }) =>
+  ({ item , count }) =>
   (dispatch) => {
-    dispatch(addItemInBasket(item));
+    dispatch(addItemInBasket(item, count));
   };
 
 export const actionDeleteItemInBasket =
@@ -21,11 +21,11 @@ const deleteItemInBasket = (item) => ({
   type: DELETE_ITEM,
   payload: { item },
 });
-const addItemInBasket = (item) => ({
+const addItemInBasket = (item, count) => ({
   type: ADD_ITEM,
   payload: {
     device: item,
-    countDevice: 1,
+    countDevice: count ? count : 1,
   },
 });
 

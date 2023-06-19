@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./FilterCard.scss";
 import CheckBox from "./CheckBox";
 import {
@@ -11,6 +11,8 @@ const FilterCard = ({ name, filter, currentFilters }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [checked, setChecked] = useState(false);
   const [checkedTwo, setCheckedTwo] = useState(false);
+
+
   const handleChange = () => {
     setChecked(!checked);
     if (!checked) {
@@ -27,7 +29,6 @@ const FilterCard = ({ name, filter, currentFilters }) => {
       store.dispatch(actionDeleteFilter("counts", { title: false }));
     }
   };
-
   let filterName;
   function filteringName(name) {
     if (name === "brands") {
@@ -70,7 +71,7 @@ const FilterCard = ({ name, filter, currentFilters }) => {
         <div className="filterOpen">
           {Array.isArray(filter) ? (
             filter.map((filt) => (
-              <CheckBox name={name} key={filt.id} checkbox={filt} />
+              <CheckBox name={name} key={filt.id} checkbox={filt} isChecked={currentFilters} />
             ))
           ) : (
             <>

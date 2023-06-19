@@ -42,7 +42,9 @@ function basketReducer(state = initialState, { type, payload }) {
               ...item,
               countDevice:
                 item.countDevice < item.device.count
-                  ? item.countDevice + 1
+                  ? newItem.countDevice !== 1
+                    ? item.countDevice + 1
+                    : item.countDevice + newItem.countDevice
                   : item.countDevice,
             };
           }
