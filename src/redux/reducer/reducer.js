@@ -9,7 +9,9 @@ import {
   GET_ALL_MODELS,
   GET_ALL_TASTES,
   GET_ALL_TYPES,
+  GET_FIRST_ITEMS,
   REFRESH_BASKET,
+  RESET_FILTERS,
   UPDATE_COUNT,
 } from "../typesActions/types";
 
@@ -22,6 +24,7 @@ const initialStateItems = {
   models: [],
   types: [],
   devices: [],
+  firstDevices: [],
   tastes: [],
 };
 const initialStateFilter = {
@@ -124,6 +127,39 @@ function itemsReducer(state = initialStateItems, { type, payload }) {
         ...state,
         types: payload,
       };
+    case GET_FIRST_ITEMS:
+      return {
+        ...state,
+        firstDevices: {
+          count: payload.count,
+          rows: payload.rows.map((device) => ({
+            id: device.id,
+            model: state.models.filter((model) => {
+              let currentModel;
+              if (model.id === device.modelId) {
+                currentModel = model;
+              }
+              return currentModel;
+            })[0],
+            brand: state.brands.filter((brand) => {
+              let currentBrand;
+              if (brand.id === device.brandId) {
+                currentBrand = brand;
+              }
+              return currentBrand;
+            })[0],
+            type: state.types.filter((type) => {
+              let currentType;
+              if (type.id === device.typeId) {
+                currentType = type;
+              }
+              return currentType;
+            })[0],
+            img: device.img,
+            count: device.count,
+          })),
+        },
+      };
     case GET_ALL_ITEMS:
       return {
         ...state,
@@ -157,6 +193,7 @@ function itemsReducer(state = initialStateItems, { type, payload }) {
           })),
         },
       };
+
     default:
       return state;
   }
@@ -173,6 +210,11 @@ function filterReducer(state = initialStateFilter, { type, payload }) {
         filters: state.filters.filter(
           (filter) => filter.item.title !== payload.item.title
         ),
+      };
+    case RESET_FILTERS:
+      return {
+        ...state,
+        filters: payload,
       };
     default:
       return state;

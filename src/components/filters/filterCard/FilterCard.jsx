@@ -12,7 +12,6 @@ const FilterCard = ({ name, filter, currentFilters }) => {
   const [checked, setChecked] = useState(false);
   const [checkedTwo, setCheckedTwo] = useState(false);
 
-
   const handleChange = () => {
     setChecked(!checked);
     if (!checked) {
@@ -51,27 +50,41 @@ const FilterCard = ({ name, filter, currentFilters }) => {
   const handleClickOpen = (e) => {
     setIsOpen(!isOpen);
     if (!isOpen) {
-      e.target.className = "rotate";
+      if (e.target.lastChild) {
+        e.target.lastChild.className = "rotate";
+      } else {
+        e.target.className = "rotate";
+      }
     } else {
-      e.target.className = "rotateprev";
+      if (e.target.lastChild) {
+        e.target.lastChild.className = "rotateprev";
+      } else {
+        e.target.className = "rotateprev";
+      }
     }
   };
   return (
     <div className="filterOne">
-      <div className="wrapFilterOne">
+      <div
+        className="wrapFilterOne"
+        onClick={(e) => {
+          handleClickOpen(e);
+        }}
+      >
         <p>{filterName}</p>
-        <div
-          onClick={(e) => {
-            handleClickOpen(e);
-          }}
-        />
+        <div />
       </div>
 
       {isOpen && (
         <div className="filterOpen">
           {Array.isArray(filter) ? (
             filter.map((filt) => (
-              <CheckBox name={name} key={filt.id} checkbox={filt} isChecked={currentFilters} />
+              <CheckBox
+                name={name}
+                key={filt.id}
+                checkbox={filt}
+                isChecked={currentFilters}
+              />
             ))
           ) : (
             <>

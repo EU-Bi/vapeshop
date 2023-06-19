@@ -11,8 +11,10 @@ import { connect } from "react-redux";
 import { filterItem } from "../../functions/filterItem";
 
 // сделать фильтрацию по категориям
-const Catalog = ({ devices, filters, current }) => {
+const Catalog = ({ devices, filters, current}) => {
   const [filterDevices, setFilterDevices] = useState([]);
+
+
   useEffect(() => {
     setFilterDevices(devices);
   }, [devices]);
@@ -64,23 +66,35 @@ const Catalog = ({ devices, filters, current }) => {
                 <div />
                 <p>Фільтр товарів</p>
               </div>
-              {Object.keys(filters).map((filter) => (
-                <FilterCard
-                  key={filter}
-                  filter={filters[filter]}
-                  name={filter}
-                  currentFilters={current}
-                />
-              ))}
+              {Object.keys(filters).map((filter, index) => {
+                if (filter === "firstDevices") {
+                  return null;
+                } else {
+                  return (
+                    <FilterCard
+                      key={index}
+                      filter={filters[filter]}
+                      name={filter}
+                      currentFilters={current}
+                    />
+                  );
+                }
+              })}
             </div>
             <div className="containerItems">
               <div className="wrapItems">
-                {filterDevices.map((device) => (
-                  <SmallCard key={device.id} device={device} />
-                ))}
+                {filterDevices.length > 0 ? (
+                  filterDevices.map((device) => (
+                    <SmallCard key={device.id} device={device} />
+                  ))
+                ) : (
+                  <div className="wrapNoItems">
+                    <p>Товару за вибраними філтрами не має в наявності</p>
+                  </div>
+                )}
               </div>
               <div className="paginationWrap">
-                <div className="btnShowMore">Показати ще</div>
+                {/* <div className="btnShowMore">Показати ще</div> */}
                 <Pagination />
               </div>
             </div>

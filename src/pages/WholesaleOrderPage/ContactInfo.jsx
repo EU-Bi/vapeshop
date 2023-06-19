@@ -55,15 +55,15 @@ const ContactInfo = () => {
         <form>
           <div className="wrapInputLabel">
             <label htmlFor="">Ім’я</label>
-            <input type="text" />
+            <input type="text" required />
           </div>
           <div className="wrapInputLabel">
             <label htmlFor="">Прізвище</label>
-            <input type="text" />
+            <input type="text" required />
           </div>
           <div className="wrapInputLabel">
             <label htmlFor="">Номер телефону</label>
-            <input type="text" />
+            <input type="text" required />
           </div>
         </form>
       </div>
@@ -89,6 +89,7 @@ const ContactInfo = () => {
             <input
               type="text"
               placeholder="Введіть своє місто"
+              required
               list="cityname"
               value={currentCity}
               onChange={(e) => setCurrentCity(e.target.value)}
@@ -104,6 +105,7 @@ const ContactInfo = () => {
             <input
               type="text"
               className="sending"
+              required
               list="postlist"
               value={currentPost}
               onChange={(e) => setCurrentPost(e.target.value)}

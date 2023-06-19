@@ -24,7 +24,7 @@ const SliderCustom = ({ devicesSlider }) => {
 };
 
 export default connect((state) => ({
-  devicesSlider: !state.items.devices.rows
+  devicesSlider: !state.items.firstDevices.rows
     ? []
-    : state.items.devices.rows.slice(0, 8),
+    : state.items.firstDevices.rows,
 }))(SliderCustom);

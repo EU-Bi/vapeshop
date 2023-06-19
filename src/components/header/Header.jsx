@@ -6,8 +6,13 @@ import { Link } from "react-router-dom";
 import CardBasket from "../CardProduct/CardBasket/CardBasket";
 import ModalBasket from "../popups/ModalBasket";
 import { connect } from "react-redux";
+import store from "../../redux/store/store";
+import {
+  actionAddFilter,
+  actionResetFilters,
+} from "../../redux/actions/ActionFilters";
 
-const Header = ({ basket, total }) => {
+const Header = ({ basket, total, brands }) => {
   const [showBlock, setShowBlock] = useState(false);
   const [showBasket, setShowBasket] = useState(false);
   const [isOpenSubcategories, setOpenSubcategories] = useState(false);
@@ -24,6 +29,7 @@ const Header = ({ basket, total }) => {
         <Link to={"/"} className="logo" />
         <Link
           to={"/catalog"}
+          onClick={() => store.dispatch(actionResetFilters())}
           className="btnCatalog"
           onMouseEnter={() => setShowBlock(true)}
 
@@ -39,10 +45,54 @@ const Header = ({ basket, total }) => {
           <div className="dots"></div>
         </Link>
         <ul className="menu-header">
-          <li>Elf Bar</li>
-          <li>VAAL</li>
-          <li>Airis-Pod System</li>
-          <li>Elux 2%</li>
+          <li>
+            <Link
+              to={"/catalog"}
+              onClick={() => {
+                store.dispatch(actionResetFilters());
+                store.dispatch(actionAddFilter("brands", brands[0]));
+              }}
+              className="linkCurrentCatalog"
+            >
+              Elf Bar
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={"/catalog"}
+              onClick={() => {
+                store.dispatch(actionResetFilters());
+                store.dispatch(actionAddFilter("brands", brands[2]));
+              }}
+              className="linkCurrentCatalog"
+            >
+              VAAL
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={"/catalog"}
+              onClick={() => {
+                store.dispatch(actionResetFilters());
+                store.dispatch(actionAddFilter("brands", brands[1]));
+              }}
+              className="linkCurrentCatalog"
+            >
+              Airis-Pod System
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={"/catalog"}
+              onClick={() => {
+                store.dispatch(actionResetFilters());
+                store.dispatch(actionAddFilter("brands", brands[3]));
+              }}
+              className="linkCurrentCatalog"
+            >
+              Elux 2%
+            </Link>
+          </li>
         </ul>
         <Dropdown className="containerPhones">
           <Dropdown.Toggle id="dropdown-autoclose-true" className=" phones">
@@ -146,4 +196,5 @@ const Header = ({ basket, total }) => {
 export default connect((state) => ({
   basket: state.basket.basket,
   total: state.basket.total,
+  brands: state.items.brands,
 }))(Header);

@@ -4,10 +4,15 @@ import {
   GET_ALL_MODELS,
   GET_ALL_TASTES,
   GET_ALL_TYPES,
+  GET_FIRST_ITEMS,
 } from "../typesActions/types";
 
 export const actionGetAllItems = (items) => (dispatch) => {
   dispatch(getAllItems(items));
+};
+
+export const actionGetFirstItems = (items) => (dispatch) => {
+  dispatch(getFirstItems(items));
 };
 
 export const actionGetAllBrands = (brands) => (dispatch) => {
@@ -26,6 +31,11 @@ export const actionGetAllTypes = (types) => (dispatch) => {
 };
 const getAllItems = (items) => ({
   type: GET_ALL_ITEMS,
+  payload: items,
+});
+
+const getFirstItems = (items) => ({
+  type: GET_FIRST_ITEMS,
   payload: items,
 });
 

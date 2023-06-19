@@ -41,6 +41,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    .linkCurrentCatalog {
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+      /* identical to box height */
+
+      color: #000000;
+      text-decoration: none;
+    }
   }
   li:hover {
     border-bottom: 2px #7878f5 solid;

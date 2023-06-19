@@ -1,23 +1,16 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import "./Main.scss";
 import Telephone from "../../components/telephone/Telephone";
 import { Link } from "react-router-dom";
-import { fetchDataFromServer } from "../../functions/http/fetchData";
 import SliderCustom from "./SliderCustom";
 
 const Main = () => {
-
-  useEffect(() => {
-    fetchDataFromServer();
-  });
-
   useEffect(() => {
     window.scrollTo(0, 0);
   });
 
-  
   return (
     <div className="backgroundCatalog">
       <Header />
@@ -39,7 +32,7 @@ const Main = () => {
             <h2>Хіти продажів</h2>
             <Link to={"/catalog"}>ПЕРЕЙТИ В КАТАЛОГ</Link>
           </div>
-         <SliderCustom/>
+          <SliderCustom />
         </div>
         <div className="popularCategories">
           <h2>Популярні категорії</h2>

@@ -6,8 +6,7 @@ import { connect } from "react-redux";
 
 const MainWholesale = ({ basket, total }) => {
   const [isActive, setIsActive] = useState(false);
-  console.log(basket)
-  basket.map((item)=>console.log(item.device))
+  basket.map((item) => console.log(item.device));
   return (
     <div className="wrapperMainWholesale">
       <h2>Оформлення замовлення</h2>
@@ -22,7 +21,13 @@ const MainWholesale = ({ basket, total }) => {
           </div>
           <div className="wrapItems">
             {basket.length > 0 ? (
-              basket.map((item, key) => <CardBasket key={key} item={item.device} count={item.countDevice}/>)
+              basket.map((item, key) => (
+                <CardBasket
+                  key={key}
+                  item={item.device}
+                  count={item.countDevice}
+                />
+              ))
             ) : (
               <div className="noItems">
                 Товар не додано до кошику
@@ -45,7 +50,6 @@ const MainWholesale = ({ basket, total }) => {
             {isActive && (
               <div className="promocodeFied">
                 <input type="text" />
-                
               </div>
             )}
           </div>
@@ -60,6 +64,7 @@ const MainWholesale = ({ basket, total }) => {
             disabled={basket.length > 0 ? false : true}
             to={"/greeting"}
             className="checkOutOrder"
+            onClick={() => console.log(basket)}
           >
             ОФОРМИТИ ЗАМОВЛЕННЯ
           </button>
@@ -69,6 +74,7 @@ const MainWholesale = ({ basket, total }) => {
   );
 };
 
-export default connect((state) => ({ basket: state.basket.basket, total:state.basket.total }))(
-  MainWholesale
-);
+export default connect((state) => ({
+  basket: state.basket.basket,
+  total: state.basket.total,
+}))(MainWholesale);

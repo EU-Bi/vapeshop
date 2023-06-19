@@ -11,7 +11,9 @@
     background: #7878f5;
     border-radius: 7px;
     border: 0;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: "Montserrat";
     font-style: normal;
     font-weight: 500;
@@ -23,12 +25,12 @@
 
     color: #ffffff;
   }
-  .prevPagination{
+  .prevPagination {
     background: url(../../assets/svg+img/prevPagination.png) no-repeat;
     width: 30px;
     height: 30px;
   }
-  .nextPagination{
+  .nextPagination {
     background: url(../../assets/svg+img/nextPagination.png) no-repeat;
     width: 30px;
     height: 30px;
