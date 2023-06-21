@@ -14,6 +14,7 @@ const CheckBox = ({ checkbox, name, isChecked }) => {
   const handleChange = (checkbox) => {
     setChecked(!checked);
     if (!checked) {
+      console.log(name, checkbox)
       store.dispatch(actionAddFilter(name, checkbox));
     } else {
       store.dispatch(actionDeleteFilter(name, checkbox));

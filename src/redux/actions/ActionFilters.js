@@ -28,3 +28,7 @@ const resetFilters = () => ({
   type: RESET_FILTERS,
   payload: [],
 });
+
+export const actionSort = (type) => ({
+  type: type,
+});

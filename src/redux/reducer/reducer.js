@@ -12,12 +12,24 @@ import {
   GET_FIRST_ITEMS,
   REFRESH_BASKET,
   RESET_FILTERS,
+  SET_INDEXES,
+  SORT_FROM_HIGHT_PRICE,
+  SORT_FROM_LOW_PRICE,
+  SORT_NEW_DEVICES,
+  SORT_RATING,
   UPDATE_COUNT,
 } from "../typesActions/types";
 
 const initialState = {
   basket: [],
   total: 0,
+};
+const initialStateSort = {
+  sort: null,
+};
+const initialStateDevicesPerPage = {
+  indexOfLastItem: 12,
+  indexOfFirstItem: 0,
 };
 const initialStateItems = {
   brands: [],
@@ -220,11 +232,55 @@ function filterReducer(state = initialStateFilter, { type, payload }) {
       return state;
   }
 }
+function devicesPageReducer(
+  state = initialStateDevicesPerPage,
+  { type, payload }
+) {
+  switch (type) {
+    case SET_INDEXES:
+      return {
+        ...state,
+        indexOfLastItem: payload.indexOfLastItem,
+        indexOfFirstItem: payload.indexOfFirstItem,
+      };
+    default:
+      return state;
+  }
+}
+
+function sortReducer(state = initialStateSort, { type, payload }) {
+  switch (type) {
+    case SORT_RATING:
+      return {
+        ...state,
+        sort: SORT_RATING,
+      };
+    case SORT_NEW_DEVICES:
+      return {
+        ...state,
+        sort: SORT_NEW_DEVICES,
+      };
+    case SORT_FROM_HIGHT_PRICE:
+      return {
+        ...state,
+        sort: SORT_FROM_HIGHT_PRICE,
+      };
+    case SORT_FROM_LOW_PRICE:
+      return {
+        ...state,
+        sort: SORT_FROM_LOW_PRICE,
+      };
+    default:
+      return state;
+  }
+}
 
 const rootReducer = combineReducers({
   basket: basketReducer,
   items: itemsReducer,
   filter: filterReducer,
+  page: devicesPageReducer,
+  sort: sortReducer,
 });
 
 export default rootReducer;

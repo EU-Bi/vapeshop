@@ -9,12 +9,21 @@ import Footer from "../../components/footer/Footer";
 import Pagination from "../../components/pagination/Pagination";
 import { connect } from "react-redux";
 import { filterItem } from "../../functions/filterItem";
+import {
+  SORT_FROM_HIGHT_PRICE,
+  SORT_FROM_LOW_PRICE,
+  SORT_NEW_DEVICES,
+  SORT_RATING,
+} from "../../redux/typesActions/types";
+import store from "../../redux/store/store";
+import {
+  actionAddFilter,
+  actionResetFilters,
+} from "../../redux/actions/ActionFilters";
 
 // сделать фильтрацию по категориям
-const Catalog = ({ devices, filters, current}) => {
+const Catalog = ({ devices, filters, current, page, sort, types }) => {
   const [filterDevices, setFilterDevices] = useState([]);
-
-
   useEffect(() => {
     setFilterDevices(devices);
   }, [devices]);
@@ -34,6 +43,43 @@ const Catalog = ({ devices, filters, current}) => {
       setFilterDevices(devices);
     }
   }, [current, devices]);
+  function ReverseArray(arr) {
+    var newArray = new Array();
+    var len = arr.length;
+    for (let i = len - 1; i >= 0; i--) {
+      newArray.push(arr[i]);
+    }
+    return newArray;
+  }
+  useEffect(() => {
+    if (sort === SORT_RATING) {
+      setFilterDevices(devices);
+      store.dispatch(actionResetFilters());
+    }
+    if (sort === SORT_NEW_DEVICES) {
+      setFilterDevices(ReverseArray(devices));
+      store.dispatch(actionResetFilters());
+    }
+    if (sort === SORT_FROM_LOW_PRICE) {
+      function compareByPrice(a, b) {
+        return a.model.price - b.model.price;
+      }
+      let newDev = devices.sort(compareByPrice);
+      setFilterDevices(newDev);
+      store.dispatch(actionResetFilters());
+    }
+    if (sort === SORT_FROM_HIGHT_PRICE) {
+      function compareByPriceDescending(a, b) {
+        return b.model.price - a.model.price;
+      }
+      let newDev = devices.sort(compareByPriceDescending);
+      setFilterDevices(newDev);
+      store.dispatch(actionResetFilters());
+    }
+
+    console.log(sort);
+  }, [sort, devices]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -43,15 +89,33 @@ const Catalog = ({ devices, filters, current}) => {
       <div className="containerWrap">
         <div className="wrapWidth">
           <div className="upCatalog">
-            <div className="blockOneShot">
+            <div
+              className="blockOneShot"
+              onClick={() => {
+                store.dispatch(actionResetFilters());
+                store.dispatch(actionAddFilter("types", types[1]));
+              }}
+            >
               <h3>Одноразові сигарети</h3>
               <div></div>
             </div>
-            <div className="blockPod">
+            <div
+              className="blockPod"
+              onClick={() => {
+                store.dispatch(actionResetFilters());
+                store.dispatch(actionAddFilter("types", types[0]));
+              }}
+            >
               <h3>POD-системи</h3>
               <div></div>
             </div>
-            <div className="blockCartridges">
+            <div
+              className="blockCartridges"
+              onClick={() => {
+                store.dispatch(actionResetFilters());
+                store.dispatch(actionAddFilter("types", types[2]));
+              }}
+            >
               <h3>Картриджі</h3>
               <div></div>
             </div>
@@ -84,9 +148,11 @@ const Catalog = ({ devices, filters, current}) => {
             <div className="containerItems">
               <div className="wrapItems">
                 {filterDevices.length > 0 ? (
-                  filterDevices.map((device) => (
-                    <SmallCard key={device.id} device={device} />
-                  ))
+                  filterDevices
+                    .slice(page.indexOfFirstItem, page.indexOfLastItem)
+                    .map((device) => (
+                      <SmallCard key={device.id} device={device} />
+                    ))
                 ) : (
                   <div className="wrapNoItems">
                     <p>Товару за вибраними філтрами не має в наявності</p>
@@ -95,7 +161,7 @@ const Catalog = ({ devices, filters, current}) => {
               </div>
               <div className="paginationWrap">
                 {/* <div className="btnShowMore">Показати ще</div> */}
-                <Pagination />
+                <Pagination data={filterDevices} />
               </div>
             </div>
           </div>
@@ -111,4 +177,7 @@ export default connect((state) => ({
   devices: state.items.devices.rows,
   filters: state.items,
   current: state.filter.filters,
+  types: state.items.types,
+  page: state.page,
+  sort: state.sort.sort,
 }))(Catalog);

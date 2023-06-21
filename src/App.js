@@ -15,18 +15,19 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Main />} errorElement={<ErrorPage />} />
-      <Route path="/catalog" element={<Catalog />} />
-      <Route path="/device/:deviceId" element={<ItemPage />}>
-        <Route path="/device/:deviceId/description" element={<Description />} />
+      <Route path="/catalog" element={<Catalog />} errorElement={<ErrorPage />}/>
+      <Route path="/device/:deviceId" element={<ItemPage />} errorElement={<ErrorPage />}>
+        <Route path="/device/:deviceId/description" element={<Description />} errorElement={<ErrorPage />} />
         <Route
           path="/device/:deviceId/characteristics"
           element={<Characteristics />}
+          errorElement={<ErrorPage />}
         />
       </Route>
-      <Route path="/basket" element={<WholesaleOrderPage />} />
-      <Route path="/greeting" element={<ConfirmationPage />} />
-      <Route path="/wholesale" element={<OptPage />} />
-      <Route path="/clientinformation" element={<AskQuestions />} />
+      <Route path="/basket" element={<WholesaleOrderPage />} errorElement={<ErrorPage />}/>
+      <Route path="/greeting" element={<ConfirmationPage />}errorElement={<ErrorPage />} />
+      <Route path="/wholesale" element={<OptPage />} errorElement={<ErrorPage />}/>
+      <Route path="/clientinformation" element={<AskQuestions />} errorElement={<ErrorPage />}/>
     </Routes>
   );
 }

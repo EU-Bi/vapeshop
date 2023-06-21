@@ -5,6 +5,7 @@ import {
   GET_ALL_TASTES,
   GET_ALL_TYPES,
   GET_FIRST_ITEMS,
+  SET_INDEXES,
 } from "../typesActions/types";
 
 export const actionGetAllItems = (items) => (dispatch) => {
@@ -29,6 +30,11 @@ export const actionGetAllTastes = (tastes) => (dispatch) => {
 export const actionGetAllTypes = (types) => (dispatch) => {
   dispatch(getAllTypes(types));
 };
+
+export const actionSetIndexes =
+  (indexOfFirstItem, indexOfLastItem) => (dispatch) => {
+    dispatch(setPages(indexOfFirstItem, indexOfLastItem));
+  };
 const getAllItems = (items) => ({
   type: GET_ALL_ITEMS,
   payload: items,
@@ -54,4 +60,12 @@ const getAllTypes = (types) => ({
 const getAllTastes = (tastes) => ({
   type: GET_ALL_TASTES,
   payload: tastes,
+});
+
+const setPages = (indexOfFirstItem, indexOfLastItem) => ({
+  type: SET_INDEXES,
+  payload: {
+    indexOfFirstItem: indexOfFirstItem,
+    indexOfLastItem: indexOfLastItem,
+  },
 });

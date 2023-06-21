@@ -1,5 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./DropDown.scss";
+import store from "../../../redux/store/store";
+import { actionSort } from "../../../redux/actions/ActionFilters";
+import {
+  SORT_FROM_HIGHT_PRICE,
+  SORT_FROM_LOW_PRICE,
+  SORT_NEW_DEVICES,
+  SORT_RATING,
+} from "../../../redux/typesActions/types";
 
 const DropdownCatalog = () => {
   const options = [
@@ -12,11 +20,27 @@ const DropdownCatalog = () => {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+  useEffect(() => {
+    if (value === "За рейтингом") {
+      store.dispatch(actionSort(SORT_RATING));
+    }
+    if (value === "Новинки") {
+      store.dispatch(actionSort(SORT_NEW_DEVICES));
+    }
+    if (value === "Від дешевих до дорогих") {
+      store.dispatch(actionSort(SORT_FROM_LOW_PRICE));
+    }
+    if (value === "Від дорогих до  дешевих") {
+      store.dispatch(actionSort(SORT_FROM_HIGHT_PRICE));
+    }
+  }, [value]);
   return (
-    <label className="rightWrap" >
+    <label className="rightWrap">
       <select className="wrapDropDown" onChange={handleChange} value={value}>
         {options.map((option) => (
-          <option key={option.value} value={option.value}>{option.label}</option>
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
         ))}
       </select>
     </label>
