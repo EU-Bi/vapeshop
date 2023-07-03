@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Header.scss";
 import Dropdown from "react-bootstrap/Dropdown";
-import { Subcategories } from "./Subcategories";
+import Subcategories from "./Subcategories";
 import { Link } from "react-router-dom";
 import CardBasket from "../CardProduct/CardBasket/CardBasket";
 import ModalBasket from "../popups/ModalBasket";
@@ -12,17 +12,23 @@ import {
   actionResetFilters,
 } from "../../redux/actions/ActionFilters";
 
-const Header = ({ basket, total, brands }) => {
+const Header = ({ basket, total, brands, types }) => {
   const [showBlock, setShowBlock] = useState(false);
   const [showBasket, setShowBasket] = useState(false);
   const [isOpenSubcategories, setOpenSubcategories] = useState(false);
   const [modalShow, setModalShow] = useState(false);
-  const handleOpenSubcategories = (id) => {
+  const [currentBrand, setCurrentBrands] = useState([]);
+  const handleOpenSubcategories = (brands) => {
     setOpenSubcategories(!isOpenSubcategories);
     if (!isOpenSubcategories) {
-      console.log(id);
+      setCurrentBrands(brands);
     }
   };
+  const Airis = brands.filter((brand) => brand.title === "Airis");
+  const ElfBar = brands.filter((brand) => brand.title === "ElfBar");
+  const VAAL = brands.filter((brand) => brand.title === "VAAL");
+  const Elux = brands.filter((brand) => brand.title === "Elux 2%");
+  //const STRAW = brands.filter(brand=>brand.title==="STRAW")
   return (
     <div className="backgroundHeader">
       <div className="header">
@@ -50,7 +56,7 @@ const Header = ({ basket, total, brands }) => {
               to={"/catalog"}
               onClick={() => {
                 store.dispatch(actionResetFilters());
-                store.dispatch(actionAddFilter("brands", brands[0]));
+                store.dispatch(actionAddFilter("brands", ElfBar[0]));
               }}
               className="linkCurrentCatalog"
             >
@@ -62,7 +68,7 @@ const Header = ({ basket, total, brands }) => {
               to={"/catalog"}
               onClick={() => {
                 store.dispatch(actionResetFilters());
-                store.dispatch(actionAddFilter("brands", brands[2]));
+                store.dispatch(actionAddFilter("brands", VAAL[0]));
               }}
               className="linkCurrentCatalog"
             >
@@ -74,7 +80,7 @@ const Header = ({ basket, total, brands }) => {
               to={"/catalog"}
               onClick={() => {
                 store.dispatch(actionResetFilters());
-                store.dispatch(actionAddFilter("brands", brands[1]));
+                store.dispatch(actionAddFilter("brands", Airis[0]));
               }}
               className="linkCurrentCatalog"
             >
@@ -86,7 +92,7 @@ const Header = ({ basket, total, brands }) => {
               to={"/catalog"}
               onClick={() => {
                 store.dispatch(actionResetFilters());
-                store.dispatch(actionAddFilter("brands", brands[3]));
+                store.dispatch(actionAddFilter("brands", Elux[0]));
               }}
               className="linkCurrentCatalog"
             >
@@ -156,35 +162,20 @@ const Header = ({ basket, total, brands }) => {
             }}
           >
             <ul>
-              <li
-                className="categoryItem"
-                onClick={(e) => {
-                  handleOpenSubcategories(e.target.id);
-                }}
-              >
-                <span id="Odnorazki">Одноразові сигарети</span>
-                <div className="arrow"></div>
-              </li>
-              <li
-                className="categoryItem"
-                onClick={(e) => {
-                  handleOpenSubcategories(e.target.id);
-                }}
-              >
-                <span>POD-системи</span>
-                <div className="arrow"></div>
-              </li>
-              <li
-                className="categoryItem"
-                onClick={(e) => {
-                  handleOpenSubcategories(e.target.id);
-                }}
-              >
-                <span>Картриджі</span>
-                <div className="arrow"></div>
-              </li>
+              {types.map((type, index) => (
+                <li
+                  key={index}
+                  className="categoryItem"
+                  onClick={() => {
+                    handleOpenSubcategories(type.brands);
+                  }}
+                >
+                  <span>{type.title}</span>
+                  <div className="arrow"></div>
+                </li>
+              ))}
             </ul>
-            {isOpenSubcategories && <Subcategories />}
+            {isOpenSubcategories && <Subcategories brands={currentBrand} />}
           </div>
         )}
       </div>
@@ -197,4 +188,5 @@ export default connect((state) => ({
   basket: state.basket.basket,
   total: state.basket.total,
   brands: state.items.brands,
+  types: state.items.types,
 }))(Header);

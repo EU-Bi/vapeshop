@@ -1,18 +1,14 @@
 import React from "react";
 import "./Footer.scss";
 import { Link } from "react-router-dom";
+import store from "../../redux/store/store";
+import { connect } from "react-redux";
+import {
+  actionAddFilter,
+  actionResetFilters,
+} from "../../redux/actions/ActionFilters";
 
-const Footer = () => {
-  const arr = [
-    "Elf Bar",
-    "VAAL",
-    "Elux 2%",
-    "Straw",
-    "Oxbar",
-    "POD-система Airis",
-    "POD-система Elf Bar",
-    "Картриджі",
-  ];
+const Footer = ({ brands }) => {
   return (
     <div className="footer">
       <div className="wrapperFooter">
@@ -30,17 +26,26 @@ const Footer = () => {
           </div>
           <div className="catalog">
             <h5>КАТАЛОГ</h5>
-            {arr.map((item, index) => (
-              <Link key={index}>{item}</Link>
+            {brands.map((item, index) => (
+              <Link
+                to={"/catalog"}
+                key={index}
+                onClick={() => {
+                  store.dispatch(actionResetFilters());
+                  store.dispatch(actionAddFilter("brands", item));
+                }}
+              >
+                {item.title}
+              </Link>
             ))}
           </div>
           <div className="information">
             <h5>ІНФОРМАЦІЯ</h5>
-            <Link to={'/clientinformation'}>Умови доставки</Link>
-            <Link to={'/clientinformation'}>Умови оплати</Link>
-            <Link to={'/clientinformation'}>Найчастіші питання</Link>
-            <Link to={'/clientinformation'}>Обмін та повернення</Link>
-            <Link to={'/wholesale'}>Оптові замовлення</Link>
+            <Link to={"/clientinformation"}>Умови доставки</Link>
+            <Link to={"/clientinformation"}>Умови оплати</Link>
+            <Link to={"/clientinformation"}>Найчастіші питання</Link>
+            <Link to={"/clientinformation"}>Обмін та повернення</Link>
+            <Link to={"/wholesale"}>Оптові замовлення</Link>
           </div>
           <div className="contacts">
             <h5>КОНТАКТИ</h5>
@@ -62,4 +67,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default connect((state) => ({ brands: state.items.brands }))(Footer);

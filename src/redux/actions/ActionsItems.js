@@ -1,4 +1,5 @@
 import {
+  CURRENT_DEVICE,
   GET_ALL_BRANDS,
   GET_ALL_ITEMS,
   GET_ALL_MODELS,
@@ -40,10 +41,13 @@ const getAllItems = (items) => ({
   payload: items,
 });
 
-const getFirstItems = (items) => ({
-  type: GET_FIRST_ITEMS,
-  payload: items,
-});
+const getFirstItems = (items) => {
+  console.log(items);
+  return {
+    type: GET_FIRST_ITEMS,
+    payload: items,
+  };
+};
 
 const getAllBrands = (brands) => ({
   type: GET_ALL_BRANDS,

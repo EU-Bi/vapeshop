@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import CardBasket from "../../components/CardProduct/CardBasket/CardBasket";
 import ContactInfo from "./ContactInfo";
 import { connect } from "react-redux";
+import SendMessageBuy from "../../functions/SendMessageBuy";
+import store from "../../redux/store/store";
+import { actionRefreshBasket } from "../../redux/actions/ActionsBasket";
 
-const MainWholesale = ({ basket, total }) => {
+const MainWholesale = ({ basket, total, form }) => {
   const [isActive, setIsActive] = useState(false);
-  basket.map((item) => console.log(item.device));
+  console.log(basket);
   return (
     <div className="wrapperMainWholesale">
       <h2>Оформлення замовлення</h2>
@@ -60,14 +63,27 @@ const MainWholesale = ({ basket, total }) => {
             <p className="payText">До сплати</p>
             <p className="priceText">{total} грн.</p>
           </div>
-          <button
+          <Link
             disabled={basket.length > 0 ? false : true}
             to={"/greeting"}
             className="checkOutOrder"
-            onClick={() => console.log(basket)}
+            onClick={() => {
+              SendMessageBuy(
+                form.name,
+                form.surname,
+                form.type,
+                form.phone,
+                basket,
+                form.post,
+                form.region,
+                form.city,
+                total
+              );
+              store.dispatch(actionRefreshBasket());
+            }}
           >
             ОФОРМИТИ ЗАМОВЛЕННЯ
-          </button>
+          </Link>
         </div>
       </div>
     </div>
@@ -77,4 +93,5 @@ const MainWholesale = ({ basket, total }) => {
 export default connect((state) => ({
   basket: state.basket.basket,
   total: state.basket.total,
+  form: state.form,
 }))(MainWholesale);

@@ -93,7 +93,7 @@ const Catalog = ({ devices, filters, current, page, sort, types }) => {
               className="blockOneShot"
               onClick={() => {
                 store.dispatch(actionResetFilters());
-                store.dispatch(actionAddFilter("types", types[1]));
+                store.dispatch(actionAddFilter("types", types[0]));
               }}
             >
               <h3>Одноразові сигарети</h3>
@@ -103,7 +103,7 @@ const Catalog = ({ devices, filters, current, page, sort, types }) => {
               className="blockPod"
               onClick={() => {
                 store.dispatch(actionResetFilters());
-                store.dispatch(actionAddFilter("types", types[0]));
+                store.dispatch(actionAddFilter("types", types[1]));
               }}
             >
               <h3>POD-системи</h3>
@@ -174,7 +174,7 @@ const Catalog = ({ devices, filters, current, page, sort, types }) => {
 };
 
 export default connect((state) => ({
-  devices: state.items.devices.rows,
+  devices: state.items.devices,
   filters: state.items,
   current: state.filter.filters,
   types: state.items.types,

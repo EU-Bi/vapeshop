@@ -223,8 +223,10 @@
     flex-wrap: wrap;
     width: 940px;
     justify-content: space-between;
+    text-decoration: none;
     gap: 20px;
     .longBlockOne {
+      text-decoration: none;
       padding: 30px;
       width: 620px;
       height: 270px;
@@ -247,6 +249,7 @@
       background: #9fd1ff;
     }
     .shortBlockOne {
+      text-decoration: none;
       padding: 30px;
       width: 300px;
       height: 270px;
@@ -269,6 +272,7 @@
       background: #f895c7;
     }
     .shortBlockTwo {
+      text-decoration: none;
       padding: 30px;
       width: 300px;
       height: 270px;
@@ -290,6 +294,7 @@
       background: #a8a8ff;
     }
     .longBlockTwo {
+      text-decoration: none;
       padding: 30px;
       width: 620px;
       height: 270px;
@@ -312,6 +317,7 @@
     }
   }
   .rightBlock {
+    text-decoration: none;
     padding: 30px;
     width: 330px;
     height: 560px;

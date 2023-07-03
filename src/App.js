@@ -15,19 +15,48 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Main />} errorElement={<ErrorPage />} />
-      <Route path="/catalog" element={<Catalog />} errorElement={<ErrorPage />}/>
-      <Route path="/device/:deviceId" element={<ItemPage />} errorElement={<ErrorPage />}>
-        <Route path="/device/:deviceId/description" element={<Description />} errorElement={<ErrorPage />} />
+      <Route
+        path="/catalog"
+        element={<Catalog />}
+        errorElement={<ErrorPage />}
+      />
+      <Route
+        path="/device/:deviceId"
+        element={<ItemPage />}
+        errorElement={<ErrorPage />}
+      >
+        <Route
+          path="/device/:deviceId/description"
+          element={<Description />}
+          errorElement={<ErrorPage />}
+        />
         <Route
           path="/device/:deviceId/characteristics"
           element={<Characteristics />}
           errorElement={<ErrorPage />}
         />
       </Route>
-      <Route path="/basket" element={<WholesaleOrderPage />} errorElement={<ErrorPage />}/>
-      <Route path="/greeting" element={<ConfirmationPage />}errorElement={<ErrorPage />} />
-      <Route path="/wholesale" element={<OptPage />} errorElement={<ErrorPage />}/>
-      <Route path="/clientinformation" element={<AskQuestions />} errorElement={<ErrorPage />}/>
+      <Route
+        path="/basket"
+        element={<WholesaleOrderPage />}
+        errorElement={<ErrorPage />}
+      />
+      <Route
+        path="/greeting"
+        element={<ConfirmationPage />}
+        errorElement={<ErrorPage />}
+      />
+      <Route
+        path="/wholesale"
+        element={<OptPage />}
+        errorElement={<ErrorPage />}
+      />
+      <Route
+        path="/clientinformation"
+        element={<AskQuestions />}
+        errorElement={<ErrorPage />}
+      />
+      <Route path="/*" element={<ErrorPage />} />
     </Routes>
   );
 }

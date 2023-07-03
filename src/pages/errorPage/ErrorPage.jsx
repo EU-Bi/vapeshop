@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
-import { useRouteError } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import "./ErrorPage.scss";
 
@@ -16,8 +16,7 @@ const ErrorPage = () => {
     isTablet && setDevice("tablet");
     isMobile && setDevice("mobile");
   }, [isDesktopOrLaptop, isMobile, isTablet]);
-  const error = useRouteError();
-  console.error(error);
+
   return (
     <div className="containerError">
       <Header device={device} />
@@ -29,10 +28,10 @@ const ErrorPage = () => {
             Але не засмучуйтеся! Перейдіть на головну сторінку та продовжуйте
             свої покупки.
           </span>
-          <button>
+          <Link to={"/"}>
             Повернутись на головну сторінку
             <div className="arrowError"></div>
-          </button>
+          </Link>
         </div>
       </div>
       <div className="waves"></div>

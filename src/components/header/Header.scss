@@ -243,6 +243,7 @@ input:focus {
     height: 12px;
   }
   .subcategories {
+    text-decoration: none;
     width: 500px;
     display: flex;
     background: #ffffff;
@@ -261,6 +262,7 @@ input:focus {
       align-items: center;
       justify-content: center;
       font-family: "Montserrat";
+      text-decoration: none;
       font-style: normal;
       font-weight: 400;
       font-size: 14px;

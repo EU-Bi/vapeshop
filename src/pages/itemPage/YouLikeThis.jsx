@@ -16,7 +16,7 @@ const YouLikeThis = ({ devices }) => {
 };
 
 export default connect((state) => ({
-  devices: !state.items.devices.rows
+  devices: !state.items.devices
     ? []
-    : state.items.devices.rows.slice(0, 4),
+    : state.items.devices.slice(0, 4),
 }))(YouLikeThis);

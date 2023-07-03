@@ -16,8 +16,8 @@ const ItemPage = () => {
   return (
     <div className="backgroundCatalog">
       <Header />
-      <MainItemPage device={device}/>
-      <InfoItem />
+      <MainItemPage device={device} />
+      <InfoItem device={device} />
       <YouLikeThis />
       <Footer />
       <Telephone />

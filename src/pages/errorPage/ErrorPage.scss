@@ -60,7 +60,7 @@
 
     color: #000000;
   }
-  button {
+  a {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -76,6 +76,7 @@
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
+    text-decoration: none;
     /* identical to box height */
 
     text-transform: uppercase;

@@ -77,7 +77,7 @@ const FilterCard = ({ name, filter, currentFilters }) => {
 
       {isOpen && (
         <div className="filterOpen">
-          {Array.isArray(filter) ? (
+          {name !== "devices" ? (
             filter.map((filt) => (
               <CheckBox
                 name={name}

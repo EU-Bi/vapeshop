@@ -5,11 +5,22 @@ import "./Main.scss";
 import Telephone from "../../components/telephone/Telephone";
 import { Link } from "react-router-dom";
 import SliderCustom from "./SliderCustom";
+import store from "../../redux/store/store";
+import {
+  actionAddFilter,
+  actionResetFilters,
+} from "../../redux/actions/ActionFilters";
+import { connect } from "react-redux";
 
-const Main = () => {
+const Main = ({ brands }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
+  const Airis = brands.filter((brand) => brand.title === "Airis");
+  const ElfBar = brands.filter((brand) => brand.title === "ElfBar");
+  const VAAL = brands.filter((brand) => brand.title === "VAAL");
+  const Elux = brands.filter((brand) => brand.title === "Elux 2%");
+  const STRAW = brands.filter((brand) => brand.title === "STRAW");
 
   return (
     <div className="backgroundCatalog">
@@ -30,7 +41,14 @@ const Main = () => {
         <div className="bestseller">
           <div className="textBestseller">
             <h2>Хіти продажів</h2>
-            <Link to={"/catalog"}>ПЕРЕЙТИ В КАТАЛОГ</Link>
+            <Link
+              to={"/catalog"}
+              onClick={() => {
+                store.dispatch(actionResetFilters());
+              }}
+            >
+              ПЕРЕЙТИ В КАТАЛОГ
+            </Link>
           </div>
           <SliderCustom />
         </div>
@@ -38,42 +56,77 @@ const Main = () => {
           <h2>Популярні категорії</h2>
           <div className="wrapBlocks">
             <div className="wrapFourBlock">
-              <div className="longBlockOne">
+              <Link
+                to={"/catalog"}
+                onClick={() => {
+                  store.dispatch(actionResetFilters());
+                  store.dispatch(actionAddFilter("brands", Elux[0]));
+                }}
+                className="longBlockOne"
+              >
                 <div className="text">
                   <p>POD-система</p>
                   <h3>Elux 2%</h3>
                 </div>
                 <div className="photo"></div>
-              </div>
-              <div className="shortBlockOne">
+              </Link>
+              <Link
+                to={"/catalog"}
+                onClick={() => {
+                  store.dispatch(actionResetFilters());
+                  store.dispatch(actionAddFilter("brands", ElfBar[0]));
+                }}
+                className="shortBlockOne"
+              >
                 <div className="text">
                   <p>Одноразові сигарети</p>
                   <h3>ELFBAR</h3>
                 </div>
                 <div className="photo"></div>
-              </div>
-              <div className="shortBlockTwo">
+              </Link>
+              <Link
+                to={"/catalog"}
+                onClick={() => {
+                  store.dispatch(actionResetFilters());
+                  store.dispatch(actionAddFilter("brands", STRAW[0]));
+                }}
+                className="shortBlockTwo"
+              >
                 <div className="text">
                   <p>Одноразові сигарети</p>
                   <h3>STRAW</h3>
                 </div>
                 <div className="photo"></div>
-              </div>
-              <div className="longBlockTwo">
+              </Link>
+              <Link
+                to={"/catalog"}
+                onClick={() => {
+                  store.dispatch(actionResetFilters());
+                  store.dispatch(actionAddFilter("brands", VAAL[0]));
+                }}
+                className="longBlockTwo"
+              >
                 <div className="text">
                   <p>Одноразові сигарети</p>
                   <h3>VAAL</h3>
                 </div>
                 <div className="photo"></div>
-              </div>
+              </Link>
             </div>
-            <div className="rightBlock">
+            <Link
+              to={"/catalog"}
+              onClick={() => {
+                store.dispatch(actionResetFilters());
+                store.dispatch(actionAddFilter("brands", Airis[0]));
+              }}
+              className="rightBlock"
+            >
               <div className="text">
                 <p>POD-система</p>
                 <h3>Airis</h3>
               </div>
               <div className="photo"></div>
-            </div>
+            </Link>
           </div>
         </div>
         <div className="advantages">
@@ -143,4 +196,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default connect((state) => ({ brands: state.items.brands }))(Main);

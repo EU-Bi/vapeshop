@@ -13,7 +13,7 @@ const MainItemPage = ({ device }) => {
     store.dispatch(actionAddItemInBasket({ item, count }));
   };
   const handleClickIncrease = (value) => {
-    if (value < device.count) {
+    if (value < device.taste.count) {
       setValue((prev) => prev + 1);
     }
   };
@@ -24,15 +24,23 @@ const MainItemPage = ({ device }) => {
   };
   return (
     <div className="wrapMainItemPage">
-      <img src={process.env.REACT_APP_API_URL + device.img} alt="" />
+      <img src={process.env.REACT_APP_API_URL + device.taste.photo} alt="" />
       <section>
         <h1>
-          {device.type.title} {device.brand.title} {device.model.title} Mango
-          Peach
+          {device.type} {device.brand.title} {device.model.title}{" "}
+          {device.taste.title}
         </h1>
-        <p>{device.model.description}</p>
-        <h2>{device.model.price} грн</h2>
-        {device.count ? (
+        <p>{device.taste.description}</p>
+        {device.model.newPrice !== 0 ? (
+          <div className="newPrice">
+            <h2>{device.model.newPrice} грн</h2>
+            <h3>{device.model.price} грн</h3>
+          </div>
+        ) : (
+          <h2>{device.model.price} грн</h2>
+        )}
+
+        {device.taste.count ? (
           <div>
             <div className="pointIs"></div>
             <p>У наявності</p>
@@ -45,9 +53,15 @@ const MainItemPage = ({ device }) => {
         )}
         <div className="wrapClickField">
           <div className="containerCount">
-            <div onClick={() => handleClickDecrease(value)}>-</div>
+            <div
+              onClick={() => handleClickDecrease(value)}
+              className="minustutut"
+            ></div>
             <div>{value}</div>
-            <div onClick={() => handleClickIncrease(value)}>+</div>
+            <div
+              onClick={() => handleClickIncrease(value)}
+              className="plustutut"
+            ></div>
           </div>
           <label className="dropdownTastes">
             <select
@@ -56,11 +70,11 @@ const MainItemPage = ({ device }) => {
               //   value={value}
             >
               <option value="" selected disabled hidden>
-                Сортувати за
+                {device.taste.title}
               </option>
-              {/* {options.map((option) => (
-                <option value={option.value}>{option.label}</option>
-              ))} */}
+              {device.model.tastes.map((option) => (
+                <option value={option.title}>{option.title}</option>
+              ))}
             </select>
           </label>
         </div>
