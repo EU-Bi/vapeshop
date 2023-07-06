@@ -1,42 +1,133 @@
-.wrapCardBasket {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  margin-bottom: 5px;
-  img {
-    width: 55px;
-    height: 55px;
-  }
-  .textCardBasket {
+
+@media (min-width: 1280px) {
+  .wrapCardBasket {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 5px;
-    width: 335px;
-    p {
-      
-      font-family: "Montserrat";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 130%;
-      /* or 18px */
-
-      /* dark blue */
-
-      color: #311496;
-      margin: 0;
+    height: 60px;
+    margin-bottom: 5px;
+    img {
+      width: 55px;
+      height: 55px;
     }
-    .countPriceText {
-      width: 100%;
+    .textCardBasket {
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
+      gap: 5px;
+      width: 335px;
+      p {
+        
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        /* or 18px */
+  
+        /* dark blue */
+  
+        color: #311496;
+        margin: 0;
+      }
+      .countPriceText {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .wrapCardBasket {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    margin-bottom: 5px;
+    img {
+      width: 55px;
+      height: 55px;
+    }
+    .textCardBasket {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 335px;
+      p {
+        
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        /* or 18px */
+  
+        /* dark blue */
+  
+        color: #311496;
+        margin: 0;
+      }
+      .countPriceText {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .wrapCardBasket {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    margin-bottom: 5px;
+    img {
+      width: 55px;
+      height: 55px;
+    }
+    .textCardBasket {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 320px;
+      p {
+        
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        /* or 18px */
+  
+        /* dark blue */
+  
+        color: #311496;
+        margin: 0;
+      }
+      .countPriceText {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
   }
 }

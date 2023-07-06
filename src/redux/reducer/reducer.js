@@ -111,14 +111,13 @@ function basketReducer(state = initialState, { type, payload }) {
         }
         return item.device.id !== payload.item.id;
       });
-
       return {
         ...state,
         basket: updatedDevices,
         total:
-          payload.device.model.newPrice !== 0
-            ? state.total - payload.device.model.newPrice * countDeleteItem
-            : state.total - payload.device.model.price * countDeleteItem,
+          payload.item.model.newPrice !== 0
+            ? state.total - payload.item.model.newPrice * countDeleteItem
+            : state.total - payload.item.model.price * countDeleteItem,
       };
     case UPDATE_COUNT:
       const updateCountDevice = state.basket.map((item) => {

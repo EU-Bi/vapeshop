@@ -4,16 +4,40 @@ import SampleNextArrow from "./SliderArrow/Next";
 import SamplePrevArrow from "./SliderArrow/Prev";
 import { connect } from "react-redux";
 import SmallCard from "../../components/CardProduct/SmallCard/SmallCard";
+import { useMediaQuery } from "react-responsive";
 
 const SliderCustom = ({ devicesSlider }) => {
-  const settings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
-  };
+  const isDesKtop = useMediaQuery({ minWidth: "1280px" });
+  const isTablet = useMediaQuery({ minWidth: "768px", maxWidth: "1279px" });
+  const isMobile = useMediaQuery({ maxWidth: "767px" });
+  let settings;
+  if (isTablet) {
+    settings = {
+      dots: true,
+      infinite: true,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+    };
+  }
+  if (isMobile) {
+    settings = {
+      dots: false,
+      infinite: true,
+      slidesToShow: 2,
+      slidesToScroll: 1,
+    };
+  }
+  if (isDesKtop) {
+    settings = {
+      dots: false,
+      infinite: true,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />,
+    };
+  }
+
   return (
     <Slider {...settings}>
       {devicesSlider.map((item) => (
@@ -24,7 +48,5 @@ const SliderCustom = ({ devicesSlider }) => {
 };
 
 export default connect((state) => ({
-  devicesSlider: !state.items.firstDevices
-    ? []
-    : state.items.firstDevices,
+  devicesSlider: !state.items.firstDevices ? [] : state.items.firstDevices,
 }))(SliderCustom);

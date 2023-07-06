@@ -3,175 +3,599 @@
   padding-top: 110px;
   position: relative;
 }
-.wrapWidth {
-  width: 1290px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  .upCatalog {
+@media (min-width: 1280px) {
+  .wrapWidth {
+    width: 1290px;
+    margin: 0 auto;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 60px;
-    h3 {
-      font-family: "Montserrat";
-      font-style: normal;
-      font-weight: 600;
-      font-size: 24px;
-      line-height: 29px;
+    flex-direction: column;
+    .upCatalog {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 60px;
+      h3 {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
 
-      color: #ffffff;
-    }
-    .blockOneShot {
-      cursor: pointer;
-      width: 400px;
-      height: 150px;
-      background: #d5a3ff;
-      border-radius: 15px;
-      border: 0;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      div {
-        background: url(../../assets/photos/catalogOdnor.png) no-repeat;
-        height: 33px;
-        width: 173px;
-        align-self: flex-end;
+        color: #ffffff;
+      }
+      .blockOneShot {
+        cursor: pointer;
+        width: 400px;
+        height: 150px;
+        background: #d5a3ff;
+        border-radius: 15px;
+        border: 0;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        div {
+          background: url(../../assets/photos/catalogOdnor.png) no-repeat;
+          height: 33px;
+          width: 173px;
+          align-self: flex-end;
+        }
+      }
+      .blockPod {
+        cursor: pointer;
+        width: 400px;
+        height: 150px;
+        background: #9696ff;
+        border-radius: 15px;
+        border: 0;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        div {
+          background: url(../../assets/photos/catalogPod.png) no-repeat;
+          height: 33px;
+          width: 173px;
+          align-self: flex-end;
+        }
+      }
+      .blockCartridges {
+        cursor: pointer;
+        width: 400px;
+        height: 150px;
+        background: #8ac7ff;
+        border-radius: 15px;
+        border: 0;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        div {
+          background: url(../../assets/photos/catalogCartriges.png) no-repeat;
+          height: 33px;
+          width: 100px;
+          align-self: flex-end;
+        }
       }
     }
-    .blockPod {
-      cursor: pointer;
-      width: 400px;
-      height: 150px;
-      background: #9696ff;
-      border-radius: 15px;
-      border: 0;
-      padding: 30px;
+    .catalogName {
+      width: calc(100% - 370px);
       display: flex;
-      flex-direction: column;
+      align-self: flex-end;
+      flex-direction: row;
       justify-content: space-between;
-      div {
-        background: url(../../assets/photos/catalogPod.png) no-repeat;
-        height: 33px;
-        width: 173px;
-        align-self: flex-end;
-      }
+      align-items: center;
+      margin-bottom: 40px;
     }
-    .blockCartridges {
-      cursor: pointer;
-      width: 400px;
-      height: 150px;
-      background: #8ac7ff;
-      border-radius: 15px;
-      border: 0;
-      padding: 30px;
+    .midCatalog {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      div {
-        background: url(../../assets/photos/catalogCartriges.png) no-repeat;
-        height: 33px;
-        width: 100px;
-        align-self: flex-end;
+      flex-direction: row;
+      gap: 30px;
+      .filter {
+        width: 450px;
+
+        .headerFilter {
+          display: flex;
+          flex-direction: row;
+          gap: 20px;
+          align-items: center;
+          margin-bottom: 20px;
+          div {
+            background: url(../../assets/svg+img/filter.svg);
+            width: 25px;
+            height: 15px;
+          }
+          p {
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            /* identical to box height */
+
+            color: #000000;
+            padding: 0;
+            margin: 0;
+          }
+        }
+      }
+      .containerItems {
+        width: 100%;
+        .wrapItems {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          gap: 60px;
+          flex-wrap: wrap;
+          margin-bottom: 40px;
+        }
+        .paginationWrap {
+          margin: 0 auto;
+          .btnShowMore {
+            margin: 0 auto;
+            margin-bottom: 30px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 205px;
+            height: 50px;
+            background: #ffffff;
+            border-radius: 15px;
+            text-align: center;
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            /* identical to box height */
+
+            text-transform: uppercase;
+
+            /* light blue */
+
+            color: #7878f5;
+          }
+        }
+        .wrapNoItems {
+          height: 600px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          p {
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 43px;
+            /* identical to box height */
+
+            color: #000000;
+          }
+        }
       }
     }
   }
-  .catalogName {
-    width: calc(100% - 370px);
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .wrapWidth {
+    width: 100%;
+    margin: 0 auto;
     display: flex;
-    align-self: flex-end;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-  }
-  .midCatalog {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    .filter {
-      width: 450px;
+    flex-direction: column;
+    .upCatalog {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 60px;
+      h3 {
+        font-size: 16px;
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 600;
+        line-height: 130%;
+        color: #ffffff;
+      }
+      .blockOneShot {
+        cursor: pointer;
+        width: 30%;
+        height: 150px;
+        background: #d5a3ff;
+        border-radius: 15px;
+        border: 0;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        div {
+          background: url(../../assets/photos/catalogOdnor.png) no-repeat;
+          background-size: contain;
+          height: 33px;
+          width: 50%;
+          align-self: flex-end;
+        }
+      }
+      .blockPod {
+        cursor: pointer;
+        width: 30%;
+        height: 150px;
+        background: #9696ff;
+        border-radius: 15px;
+        border: 0;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        div {
+          background: url(../../assets/photos/catalogPod.png) no-repeat;
+          background-size: contain;
+          height: 33px;
+          width: 50%;
+          align-self: flex-end;
+        }
+      }
+      .blockCartridges {
+        cursor: pointer;
+        width: 30%;
+        height: 150px;
+        background: #8ac7ff;
+        border-radius: 15px;
+        border: 0;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        div {
+          background: url(../../assets/photos/catalogCartriges.png) no-repeat;
+          background-size: contain;
+          height: 33px;
+          width: 50%;
+          align-self: flex-end;
+        }
+      }
+    }
+    .catalogName {
+      width: calc(100% - 30%);
+      display: flex;
+      align-self: flex-end;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .midCatalog {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      .filter {
+        width: 35%;
 
+        .headerFilter {
+          display: flex;
+          flex-direction: row;
+          gap: 20px;
+          align-items: center;
+          margin-bottom: 20px;
+          div {
+            background: url(../../assets/svg+img/filter.svg);
+            width: 25px;
+            height: 15px;
+          }
+          p {
+            font-family: "Montserrat";
+            font-size: 16px;
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            /* identical to box height */
+
+            color: #000000;
+            padding: 0;
+            margin: 0;
+          }
+        }
+      }
+      .containerItems {
+        width: 100%;
+        .wrapItems {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          gap: 5px 1%;
+          flex-wrap: wrap;
+          margin-bottom: 40px;
+        }
+        .paginationWrap {
+          margin: 0 auto;
+          .btnShowMore {
+            margin: 0 auto;
+            margin-bottom: 30px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 205px;
+            height: 50px;
+            background: #ffffff;
+            border-radius: 15px;
+            text-align: center;
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            /* identical to box height */
+
+            text-transform: uppercase;
+
+            /* light blue */
+
+            color: #7878f5;
+          }
+        }
+        .wrapNoItems {
+          height: 600px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          p {
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 43px;
+            /* identical to box height */
+
+            color: #000000;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .wrapWidth {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    .upCatalog {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 60px;
+      .wrapUpCatalog {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h3 {
+          width: 100px;
+          margin-top: 10px;
+          color: #000;
+          text-align: center;
+          /* mob: text */
+          font-size: 12px;
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 500;
+          line-height: 130%;
+        }
+      }
+
+      .blockOneShot {
+        cursor: pointer;
+        width: 96px;
+        height: 96px;
+        background: #d5a3ff;
+        border-radius: 96px;
+        border: 0;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        div {
+          background: url(../../assets/photos/catalogOdnor.png) no-repeat;
+          background-size: contain;
+          height: 13px;
+          width: 70px;
+          align-self: center;
+        }
+      }
+      .blockPod {
+        cursor: pointer;
+        width: 96px;
+        height: 96px;
+        background: #9696ff;
+        border-radius: 96px;
+        border: 0;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        div {
+          background: url(../../assets/photos/catalogPod.png) no-repeat;
+          background-size: contain;
+          height: 13px;
+          width: 70px;
+          align-self: center;
+        }
+      }
+      .blockCartridges {
+        cursor: pointer;
+        width: 96px;
+        height: 96px;
+        background: #8ac7ff;
+        border-radius: 96px;
+        border: 0;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        div {
+          background: url(../../assets/photos/catalogCartriges.png) no-repeat;
+          background-size: contain;
+          height: 13px;
+          width: 40px;
+          align-self: center;
+        }
+      }
+    }
+    .catalogName {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
       .headerFilter {
         display: flex;
         flex-direction: row;
         gap: 20px;
         align-items: center;
         margin-bottom: 20px;
+        width: 152px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--white, #fff);
+        padding: 10px;
+        margin: 0;
         div {
           background: url(../../assets/svg+img/filter.svg);
-          width: 25px;
-          height: 15px;
+          background-size: contain;
+          width: 15px;
+          height: 9px;
         }
         p {
+          color: var(--light-blue, #7878f5);
+          /* mob: text */
+          font-size: 12px;
           font-family: "Montserrat";
           font-style: normal;
-          font-weight: 600;
-          font-size: 18px;
-          line-height: 22px;
-          /* identical to box height */
-
-          color: #000000;
+          font-weight: 500;
+          line-height: 130%;
           padding: 0;
           margin: 0;
         }
       }
     }
-    .containerItems {
-      width: 100%;
-      .wrapItems {
-        width: 100%;
+    .wrapFilterBurger {
+      padding: 15px;
+      z-index: 1000;
+      width: 276px;
+      overflow-y: auto;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: var(--white, #fff);
+      .wrapHeaderFilterBurger {
+        height: 75px;
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
-        gap: 60px;
-        flex-wrap: wrap;
-        margin-bottom: 40px;
-      }
-      .paginationWrap {
-        margin: 0 auto;
-        .btnShowMore {
-          margin: 0 auto;
-          margin-bottom: 30px;
-
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 205px;
-          height: 50px;
-          background: #ffffff;
-          border-radius: 15px;
-          text-align: center;
+        justify-content: space-between;
+        align-items: center;
+        p {
+          color: #000;
+          /* mob: H3 */
+          font-size: 16px;
           font-family: "Montserrat";
           font-style: normal;
           font-weight: 600;
-          font-size: 18px;
-          line-height: 22px;
-          /* identical to box height */
-
-          text-transform: uppercase;
-
-          /* light blue */
-
-          color: #7878f5;
+          line-height: normal;
+          margin: 0;
+          padding: 0;
+        }
+        .close {
+          background: url(../../assets/adaptiv/header/close.svg) no-repeat;
+          background-size: contain;
+          width: 15px;
+          height: 15px;
         }
       }
-      .wrapNoItems {
-        height: 600px;
+      span {
+        margin-top: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 100%;
-        p {
-          font-family: "Montserrat";
-          font-style: normal;
-          font-weight: 600;
-          font-size: 24px;
-          line-height: 43px;
-          /* identical to box height */
+        color: #747474;
+        /* text 1 */
+        font-size: 10px;
+        font-family: "Montserrat";
+        font-style: italic;
+        font-weight: 400;
+        line-height: 130%;
+      }
+    }
+    .midCatalog {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
 
-          color: #000000;
+      .containerItems {
+        width: 100%;
+        .wrapItems {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          padding: 10px;
+          gap: 10px;
+          flex-wrap: wrap;
+          margin-bottom: 40px;
+        }
+        .paginationWrap {
+          margin: 0 auto;
+          .btnShowMore {
+            margin: 0 auto;
+            margin-bottom: 30px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 205px;
+            height: 50px;
+            background: #ffffff;
+            border-radius: 15px;
+            text-align: center;
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            /* identical to box height */
+
+            text-transform: uppercase;
+
+            /* light blue */
+
+            color: #7878f5;
+          }
+        }
+        .wrapNoItems {
+          height: 600px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          p {
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 43px;
+            /* identical to box height */
+
+            color: #000000;
+          }
         }
       }
     }

@@ -9,7 +9,7 @@ const ConfirmationPage = () => {
   return (
     <div className="backgroundColor">
         <Header/>
-        <ConfirmationPageMain/>x
+        <ConfirmationPageMain/>
     </div>
   )
 }
