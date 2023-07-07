@@ -6,21 +6,21 @@ import MainItemPage from "./MainItemPage";
 import InfoItem from "./InfoItem";
 import YouLikeThis from "./YouLikeThis";
 import { useLocation } from "react-router-dom";
-import { useMediaQuery } from "react-responsive";
+import { connect } from "react-redux";
 
-const ItemPage = () => {
+const ItemPage = ({ allDevices }) => {
   const location = useLocation();
-  const isDesKtop = useMediaQuery({ minWidth: "1280px" });
-  const isTablet = useMediaQuery({ minWidth: "768px", maxWidth: "1279px" });
-  const isMobile = useMediaQuery({ maxWidth: "767px" });
   const device = location.state;
+  const similarDevices = allDevices.filter(
+    (dev) => dev.currentDevice === device.currentDevice
+  );
   useEffect(() => {
     window.scrollTo(0, 0);
   });
   return (
     <div className="backgroundCatalog">
       <Header />
-      <MainItemPage device={device} />
+      <MainItemPage device={device} similarDevices={similarDevices} />
       <InfoItem device={device} />
       <YouLikeThis />
       <Footer />
@@ -29,4 +29,6 @@ const ItemPage = () => {
   );
 };
 
-export default ItemPage;
+export default connect((state) => ({ allDevices: state.items.devices }))(
+  ItemPage
+);

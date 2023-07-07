@@ -8,6 +8,7 @@ const SendMessageBuy = (
   basket,
   post,
   region,
+  text,
   city,
   total
 ) => {
@@ -30,6 +31,7 @@ const SendMessageBuy = (
   });
   message += `<b>Тип доставки:</b>${type}\n`;
   message += `<b>Куда:</b>${post}, ${city}, ${region}\n`;
+  message += `<b>Доп текст:</b>${text}\n`;
   message += `<b>Сумма:</b>${total}\n`;
 
   axios

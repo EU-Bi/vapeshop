@@ -159,6 +159,7 @@
         width: 270px;
         height: 50px;
         /* light blue */
+        cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -180,6 +181,7 @@
         border-radius: 15px;
       }
       .buyInOneClick {
+        cursor: pointer;
         width: 270px;
         height: 50px;
         display: flex;
@@ -565,6 +567,7 @@
         }
       }
       .addInBasket {
+        cursor: pointer;
         width: 200px;
         height: 40px;
         /* light blue */
@@ -587,6 +590,7 @@
         border-radius: 15px;
       }
       .buyInOneClick {
+        cursor: pointer;
         width: 200px;
         height: 40px;
         display: flex;
@@ -976,6 +980,7 @@
         align-items: center;
         width: 100%;
         .addInBasket {
+          cursor: pointer;
           width: 50%;
           height: 45px;
           /* light blue */
@@ -999,6 +1004,7 @@
           border-radius: 15px;
         }
         .buyInOneClick {
+          cursor: pointer;
           width: 50%;
           height: 45px;
           display: flex;

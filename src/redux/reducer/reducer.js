@@ -188,11 +188,14 @@ function itemsReducer(state = initialStateItems, { type, payload }) {
             type: device.type,
             typeId: device.typeId,
             modelId: device.modelId,
+            createdAt: device.createdAt,
+            updatedAt: device.updatedAt,
             taste: taste,
           }))
         ),
       };
     case GET_ALL_ITEMS:
+      console.log(payload);
       return {
         ...state,
         devices: payload.flatMap((device) =>
@@ -205,6 +208,8 @@ function itemsReducer(state = initialStateItems, { type, payload }) {
             type: device.type,
             typeId: device.typeId,
             modelId: device.modelId,
+            createdAt: device.createdAt,
+            updatedAt: device.updatedAt,
             taste: taste,
           }))
         ),

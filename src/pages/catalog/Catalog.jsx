@@ -53,12 +53,10 @@ const Catalog = ({ devices, filters, current, page, sort, types }) => {
     }
   }, [current, devices]);
   function ReverseArray(arr) {
-    var newArray = new Array();
-    var len = arr.length;
-    for (let i = len - 1; i >= 0; i--) {
-      newArray.push(arr[i]);
-    }
-    return newArray;
+    const sortedData = arr.sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+    return sortedData;
   }
   useEffect(() => {
     if (sort === SORT_RATING) {
@@ -70,23 +68,27 @@ const Catalog = ({ devices, filters, current, page, sort, types }) => {
       store.dispatch(actionResetFilters());
     }
     if (sort === SORT_FROM_LOW_PRICE) {
-      function compareByPrice(a, b) {
-        return a.model.price - b.model.price;
-      }
-      let newDev = devices.sort(compareByPrice);
-      setFilterDevices(newDev);
+      const sortedData = devices.sort((a, b) => {
+        const priceA =
+          a.model.newPrice !== 0 ? a.model.newPrice : a.model.price;
+        const priceB =
+          b.model.newPrice !== 0 ? b.model.newPrice : b.model.price;
+        return priceA - priceB;
+      });
+      setFilterDevices(sortedData);
       store.dispatch(actionResetFilters());
     }
     if (sort === SORT_FROM_HIGHT_PRICE) {
-      function compareByPriceDescending(a, b) {
-        return b.model.price - a.model.price;
-      }
-      let newDev = devices.sort(compareByPriceDescending);
-      setFilterDevices(newDev);
+      const sortedData = devices.sort((a, b) => {
+        const priceA =
+          a.model.newPrice !== 0 ? a.model.newPrice : a.model.price;
+        const priceB =
+          b.model.newPrice !== 0 ? b.model.newPrice : b.model.price;
+        return priceB - priceA;
+      });
+      setFilterDevices(sortedData);
       store.dispatch(actionResetFilters());
     }
-
-    console.log(sort);
   }, [sort, devices]);
 
   useEffect(() => {

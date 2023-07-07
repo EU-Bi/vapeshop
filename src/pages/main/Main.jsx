@@ -46,11 +46,33 @@ const Main = ({ brands }) => {
               <span>
                 Одноразова сигарета від американського бренду Gost Straw
               </span>
-              <button>ЗАМОВИТИ</button>
+              <Link
+                to={"/catalog"}
+                onClick={() => {
+                  store.dispatch(actionResetFilters());
+                  store.dispatch(actionAddFilter("brands", STRAW[0]));
+                }}
+              >
+                ЗАМОВИТИ
+              </Link>
             </div>
             <div className="wrapTwoSlide">
-              <div className="secondSlide"></div>
-              <div className="thirdSlide"></div>
+              <Link
+                to={"/catalog"}
+                className="secondSlide"
+                onClick={() => {
+                  store.dispatch(actionResetFilters());
+                  store.dispatch(actionAddFilter("brands", ElfBar[0]));
+                }}
+              ></Link>
+              <Link
+                to={"/catalog"}
+                className="thirdSlide"
+                onClick={() => {
+                  store.dispatch(actionResetFilters());
+                  store.dispatch(actionAddFilter("brands", Airis[0]));
+                }}
+              ></Link>
             </div>
           </div>
           <div className="bestseller">
@@ -221,11 +243,33 @@ const Main = ({ brands }) => {
                 <span>
                   Одноразова сигарета від американського бренду Gost Straw
                 </span>
-                <button>ЗАМОВИТИ</button>
+                <Link
+                  to={"/catalog"}
+                  onClick={() => {
+                    store.dispatch(actionResetFilters());
+                    store.dispatch(actionAddFilter("brands", STRAW[0]));
+                  }}
+                >
+                  ЗАМОВИТИ
+                </Link>
               </div>
             </div>
-            <div className="secondSlide"></div>
-            <div className="thirdSlide"></div>
+            <Link
+              to={"/catalog"}
+              className="secondSlide"
+              onClick={() => {
+                store.dispatch(actionResetFilters());
+                store.dispatch(actionAddFilter("brands", ElfBar[0]));
+              }}
+            ></Link>
+            <Link
+              to={"/catalog"}
+              className="thirdSlide"
+              onClick={() => {
+                store.dispatch(actionResetFilters());
+                store.dispatch(actionAddFilter("brands", Airis[0]));
+              }}
+            ></Link>
           </Slider>
           {/* <div className="slider">
            
@@ -393,11 +437,33 @@ const Main = ({ brands }) => {
               <span>
                 Одноразова сигарета від американського бренду Gost Straw
               </span>
-              <button>ЗАМОВИТИ</button>
+              <Link
+                to={"/catalog"}
+                onClick={() => {
+                  store.dispatch(actionResetFilters());
+                  store.dispatch(actionAddFilter("brands", STRAW[0]));
+                }}
+              >
+                ЗАМОВИТИ
+              </Link>
             </div>
             <div className="wrapTwoSlide">
-              <div className="secondSlide"></div>
-              <div className="thirdSlide"></div>
+              <Link
+                to={"/catalog"}
+                className="secondSlide"
+                onClick={() => {
+                  store.dispatch(actionResetFilters());
+                  store.dispatch(actionAddFilter("brands", ElfBar[0]));
+                }}
+              ></Link>
+              <Link
+                to={"/catalog"}
+                className="thirdSlide"
+                onClick={() => {
+                  store.dispatch(actionResetFilters());
+                  store.dispatch(actionAddFilter("brands", Airis[0]));
+                }}
+              ></Link>
             </div>
           </div>
           <div className="bestseller">

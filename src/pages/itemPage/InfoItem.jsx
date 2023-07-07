@@ -2,7 +2,6 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 
 const InfoItem = ({ device }) => {
-  console.log(device);
   return (
     <div className="wrapInfo">
       <div className="wrapLinks">

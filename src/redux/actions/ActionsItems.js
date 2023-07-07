@@ -42,7 +42,6 @@ const getAllItems = (items) => ({
 });
 
 const getFirstItems = (items) => {
-  console.log(items);
   return {
     type: GET_FIRST_ITEMS,
     payload: items,

@@ -9,7 +9,7 @@ import { actionRefreshBasket } from "../../redux/actions/ActionsBasket";
 
 const MainWholesale = ({ basket, total, form }) => {
   const [isActive, setIsActive] = useState(false);
-  console.log(basket);
+  const [text, setText] = useState("");
   return (
     <div className="wrapperMainWholesale">
       <h2>Оформлення замовлення</h2>
@@ -20,7 +20,9 @@ const MainWholesale = ({ basket, total, form }) => {
         <div className="wrapOrder">
           <div className="headerOder">
             <p>Ваше замовлення:</p>
-            <Link>Редагувати</Link>
+            <Link onClick={() => store.dispatch(actionRefreshBasket())}>
+              Очистити корзину
+            </Link>
           </div>
           <div className="wrapItems">
             {basket.length > 0 ? (
@@ -57,7 +59,13 @@ const MainWholesale = ({ basket, total, form }) => {
             )}
           </div>
           <div className="additionMessage">
-            <textarea placeholder="Тут ви можете залишити додатковий коментар до вашого замовлення"></textarea>
+            <textarea
+              placeholder="Тут ви можете залишити додатковий коментар до вашого замовлення"
+              value={text}
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
+            ></textarea>
           </div>
           <div className="pay">
             <p className="payText">До сплати</p>
@@ -76,6 +84,7 @@ const MainWholesale = ({ basket, total, form }) => {
                 basket,
                 form.post,
                 form.region,
+                text,
                 form.city,
                 total
               );

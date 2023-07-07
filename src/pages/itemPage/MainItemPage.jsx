@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./MainItemPage.scss";
 import { Link } from "react-router-dom";
 import ModalBuyOneClick from "../../components/popups/ModalBuyOneClick";
@@ -6,13 +6,17 @@ import store from "../../redux/store/store";
 import { actionAddItemInBasket } from "../../redux/actions/ActionsBasket";
 import { useMediaQuery } from "react-responsive";
 
-const MainItemPage = ({ device }) => {
+const MainItemPage = ({ device, similarDevices }) => {
   const [value, setValue] = useState(1);
+  const [deviceRef, setDevice] = useState(device);
   const [modalShow, setModalShow] = useState(false);
-
+  const [taste, setTaste] = useState(device.taste.title);
   const isDesKtop = useMediaQuery({ minWidth: "1280px" });
   const isTablet = useMediaQuery({ minWidth: "768px", maxWidth: "1279px" });
   const isMobile = useMediaQuery({ maxWidth: "767px" });
+  useEffect(() => {
+    setDevice(similarDevices.filter((dev) => dev.taste.title === taste)[0]);
+  }, [taste, similarDevices]);
 
   const handleClick = (item, count) => {
     store.dispatch(actionAddItemInBasket({ item, count }));
@@ -27,26 +31,30 @@ const MainItemPage = ({ device }) => {
       setValue((prev) => prev - 1);
     }
   };
-  if(isMobile){
+
+  if (isMobile) {
     return (
       <div className="wrapMainItemPage">
-        <img src={process.env.REACT_APP_API_URL + device.taste.photo} alt="" />
+        <img
+          src={process.env.REACT_APP_API_URL + deviceRef.taste.photo}
+          alt=""
+        />
         <section>
           <h1>
-            {device.type} {device.brand.title} {device.model.title}{" "}
-            {device.taste.title}
+            {deviceRef.type} {deviceRef.brand.title} {deviceRef.model.title}{" "}
+            {deviceRef.taste.title}
           </h1>
-          <p>{device.taste.description}</p>
-          {device.model.newPrice !== 0 ? (
+          <p>{deviceRef.taste.description}</p>
+          {deviceRef.model.newPrice !== 0 ? (
             <div className="newPrice">
-              <h2>{device.model.newPrice} грн</h2>
-              <h3>{device.model.price} грн</h3>
+              <h2>{deviceRef.model.newPrice} грн</h2>
+              <h3>{deviceRef.model.price} грн</h3>
             </div>
           ) : (
-            <h2>{device.model.price} грн</h2>
+            <h2>{deviceRef.model.price} грн</h2>
           )}
-  
-          {device.taste.count ? (
+
+          {deviceRef.taste.count ? (
             <div>
               <div className="pointIs"></div>
               <p>У наявності</p>
@@ -72,13 +80,13 @@ const MainItemPage = ({ device }) => {
             <label className="dropdownTastes">
               <select
                 className="wrapDropDownTastes"
-                //   onChange={handleChange}
-                //   value={value}
+                onChange={(e) => setTaste(e.target.value)}
+                value={taste}
               >
-                <option value="" selected disabled hidden>
+                {/* <option value={device.taste.title} selected disabled hidden>
                   {device.taste.title}
-                </option>
-                {device.model.tastes.map((option) => (
+                </option> */}
+                {deviceRef.model.tastes.map((option) => (
                   <option value={option.title}>{option.title}</option>
                 ))}
               </select>
@@ -87,7 +95,7 @@ const MainItemPage = ({ device }) => {
           <div className="buttonsWrap">
             <div
               className="addInBasket"
-              onClick={() => handleClick(device, value)}
+              onClick={() => handleClick(deviceRef, value)}
             >
               додати в кошик
             </div>
@@ -97,7 +105,7 @@ const MainItemPage = ({ device }) => {
             <ModalBuyOneClick
               show={modalShow}
               onHide={() => setModalShow(false)}
-              item={device}
+              item={deviceRef}
               count={value}
             />
           </div>
@@ -129,26 +137,29 @@ const MainItemPage = ({ device }) => {
       </div>
     );
   }
-  if(isTablet){
+  if (isTablet) {
     return (
       <div className="wrapMainItemPage">
-        <img src={process.env.REACT_APP_API_URL + device.taste.photo} alt="" />
+        <img
+          src={process.env.REACT_APP_API_URL + deviceRef.taste.photo}
+          alt=""
+        />
         <section>
           <h1>
-            {device.type} {device.brand.title} {device.model.title}{" "}
-            {device.taste.title}
+            {deviceRef.type} {deviceRef.brand.title} {deviceRef.model.title}{" "}
+            {deviceRef.taste.title}
           </h1>
-          <p>{device.taste.description}</p>
-          {device.model.newPrice !== 0 ? (
+          <p>{deviceRef.taste.description}</p>
+          {deviceRef.model.newPrice !== 0 ? (
             <div className="newPrice">
-              <h2>{device.model.newPrice} грн</h2>
-              <h3>{device.model.price} грн</h3>
+              <h2>{deviceRef.model.newPrice} грн</h2>
+              <h3>{deviceRef.model.price} грн</h3>
             </div>
           ) : (
-            <h2>{device.model.price} грн</h2>
+            <h2>{deviceRef.model.price} грн</h2>
           )}
-  
-          {device.taste.count ? (
+
+          {deviceRef.taste.count ? (
             <div>
               <div className="pointIs"></div>
               <p>У наявності</p>
@@ -174,13 +185,13 @@ const MainItemPage = ({ device }) => {
             <label className="dropdownTastes">
               <select
                 className="wrapDropDownTastes"
-                //   onChange={handleChange}
-                //   value={value}
+                onChange={(e) => setTaste(e.target.value)}
+                value={taste}
               >
-                <option value="" selected disabled hidden>
+                {/* <option value="" selected disabled hidden>
                   {device.taste.title}
-                </option>
-                {device.model.tastes.map((option) => (
+                </option> */}
+                {deviceRef.model.tastes.map((option) => (
                   <option value={option.title}>{option.title}</option>
                 ))}
               </select>
@@ -199,7 +210,7 @@ const MainItemPage = ({ device }) => {
             <ModalBuyOneClick
               show={modalShow}
               onHide={() => setModalShow(false)}
-              item={device}
+              item={deviceRef}
               count={value}
             />
           </div>
@@ -231,26 +242,29 @@ const MainItemPage = ({ device }) => {
       </div>
     );
   }
-  if(isDesKtop){
+  if (isDesKtop) {
     return (
       <div className="wrapMainItemPage">
-        <img src={process.env.REACT_APP_API_URL + device.taste.photo} alt="" />
+        <img
+          src={process.env.REACT_APP_API_URL + deviceRef.taste.photo}
+          alt=""
+        />
         <section>
           <h1>
-            {device.type} {device.brand.title} {device.model.title}{" "}
-            {device.taste.title}
+            {deviceRef.type} {deviceRef.brand.title} {deviceRef.model.title}{" "}
+            {deviceRef.taste.title}
           </h1>
-          <p>{device.taste.description}</p>
-          {device.model.newPrice !== 0 ? (
+          <p>{deviceRef.taste.description}</p>
+          {deviceRef.model.newPrice !== 0 ? (
             <div className="newPrice">
-              <h2>{device.model.newPrice} грн</h2>
-              <h3>{device.model.price} грн</h3>
+              <h2>{deviceRef.model.newPrice} грн</h2>
+              <h3>{deviceRef.model.price} грн</h3>
             </div>
           ) : (
-            <h2>{device.model.price} грн</h2>
+            <h2>{deviceRef.model.price} грн</h2>
           )}
-  
-          {device.taste.count ? (
+
+          {deviceRef.taste.count ? (
             <div>
               <div className="pointIs"></div>
               <p>У наявності</p>
@@ -276,13 +290,13 @@ const MainItemPage = ({ device }) => {
             <label className="dropdownTastes">
               <select
                 className="wrapDropDownTastes"
-                //   onChange={handleChange}
-                //   value={value}
+                onChange={(e) => setTaste(e.target.value)}
+                value={taste}
               >
-                <option value="" selected disabled hidden>
+                {/* <option value="" selected disabled hidden>
                   {device.taste.title}
-                </option>
-                {device.model.tastes.map((option) => (
+                </option> */}
+                {deviceRef.model.tastes.map((option) => (
                   <option value={option.title}>{option.title}</option>
                 ))}
               </select>
@@ -291,7 +305,7 @@ const MainItemPage = ({ device }) => {
           <div className="buttonsWrap">
             <div
               className="addInBasket"
-              onClick={() => handleClick(device, value)}
+              onClick={() => handleClick(deviceRef, value)}
             >
               додати в кошик
             </div>
@@ -301,7 +315,7 @@ const MainItemPage = ({ device }) => {
             <ModalBuyOneClick
               show={modalShow}
               onHide={() => setModalShow(false)}
-              item={device}
+              item={deviceRef}
               count={value}
             />
           </div>
@@ -309,15 +323,18 @@ const MainItemPage = ({ device }) => {
           <div className="characteristics">
             <div className="types">
               <p>Кількість затяжок:</p>
-              <span>3000</span>
+              <span>{deviceRef.model.info.countSmoke}</span>
             </div>
             <div className="types">
               <p>Ємність акумулятора:</p>
-              <span>650 mAh</span>
+              <span>{deviceRef.model.info.power} mAh</span>
             </div>
             <div className="types">
               <p>Рівень нікотина:</p>
-              <span>5% (50 мг)</span>
+              <span>
+                {deviceRef.model.info.nicotine}% (
+                {deviceRef.model.info.nicotine * 10} мг)
+              </span>
             </div>
           </div>
           <h5>Доставка</h5>
@@ -333,7 +350,6 @@ const MainItemPage = ({ device }) => {
       </div>
     );
   }
-
 };
 
 export default MainItemPage;
