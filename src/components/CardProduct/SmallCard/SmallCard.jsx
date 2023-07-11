@@ -10,19 +10,34 @@ const SmallCard = (props) => {
   };
   return (
     <div className="wrappSmallCard" style={{ ...props.style }}>
-      <img src={process.env.REACT_APP_API_URL + props.device.img} alt="" />
+      <img
+        src={process.env.REACT_APP_API_URL + props.device.taste.photo}
+        alt=""
+      />
       <Link
         to={`/device/${
-          props.device.brand.title + props.device.model.title
+          props.device.brand + props.device.model.title
         }/description`}
         state={props.device}
       >
-        {props.device.type.title} {props.device.brand.title}{" "}
-        {props.device.model.title} Blue Razz Ice
+        {props.device.type} {props.device.brand} {props.device.model.title}{" "}
+        {props.device.taste.title}
       </Link>
       <div className="wrappBtnCard">
-        <h5>{props.device.model.price} грн.</h5>
-        <button onClick={() => handleClick(props.device)}>
+        {props.device.model.newPrice !== 0 ? (
+          <div className="newPrice">
+            <h5>{props.device.model.newPrice} грн.</h5>
+            <h4>{props.device.model.price} грн.</h4>
+          </div>
+        ) : (
+          <h5>{props.device.model.price} грн.</h5>
+        )}
+
+        <button
+          onClick={() => handleClick(props.device)}
+          disabled={props.device.count === 0 ? true : false}
+          className={props.device.count === 0 ? "disabled" : ""}
+        >
           <div />
         </button>
       </div>

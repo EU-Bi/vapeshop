@@ -2,24 +2,26 @@ import React, { useState } from "react";
 import "./CardBasket.scss";
 
 const CardBasket = ({ item, count }) => {
-
   return (
     <div className="wrapCardBasket">
-      <img src={process.env.REACT_APP_API_URL + item.img} alt="" />
+      <img src={process.env.REACT_APP_API_URL + item.taste.photo} alt="" />
       <div className="textCardBasket">
         <p>
-          {item.type.title +
-            " " +
-            item.brand.title +
-            " " +
-            item.model.title +
-            " "}{" "}
-          Strawberry Mango Peach
+          {item.type + " " + item.brand + " " + item.model.title + " "}{" "}
+          {item.taste.title}
         </p>
         <div className="countPriceText">
-          <p className="price">{item.model.price} грн.</p>
+          {item.model.newPrice !== 0 ? (
+            <p className="price">{item.model.newPrice} грн.</p>
+          ) : (
+            <p className="price">{item.model.price} грн.</p>
+          )}
           <p className="count">{count} шт.</p>
-          <p className="total">{count * item.model.price} грн.</p>
+          {item.model.newPrice !== 0 ? (
+            <p className="price">{item.model.newPrice * count} грн.</p>
+          ) : (
+            <p className="price">{item.model.price * count} грн.</p>
+          )}
         </div>
       </div>
     </div>

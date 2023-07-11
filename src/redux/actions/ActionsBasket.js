@@ -1,7 +1,12 @@
-import { ADD_ITEM, DELETE_ITEM, UPDATE_COUNT } from "../typesActions/types";
+import {
+  ADD_ITEM,
+  DELETE_ITEM,
+  REFRESH_BASKET,
+  UPDATE_COUNT,
+} from "../typesActions/types";
 
 export const actionAddItemInBasket =
-  ({ item , count }) =>
+  ({ item, count }) =>
   (dispatch) => {
     dispatch(addItemInBasket(item, count));
   };
@@ -36,5 +41,10 @@ const updateCountDevice = (item, count) => {
       device: item,
       countDevice: count,
     },
+  };
+};
+export const actionRefreshBasket = () => {
+  return {
+    type: REFRESH_BASKET,
   };
 };

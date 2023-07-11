@@ -1,24 +1,24 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 const Description = () => {
+  const location = useLocation();
+  const device = location.state;
   return (
     <div className="wrapDescription">
-      <h4>Основні характеристики Elf ​​Bar BC3000:</h4>
-      <p>Кількість тяг: 3000</p>
-      <p>Ємність акумулятора: 650 mAh</p>
-      <p>Міцність нікотину: 5%</p>
-      <p>Можливість підзарядки: можлива </p>
+      <h4>
+        Основні характеристики {device.brand} {device.model.title}:
+      </h4>
+      <p>Кількість тяг: {device.model.info.countSmoke}</p>
+      <p>Ємність акумулятора: {device.model.info.power} mAh</p>
+      <p>Міцність нікотину: {device.model.info.nicotine}%</p>
+      <p>
+        Можливість підзарядки:{" "}
+        {device.model.info.charge ? "можлива" : "не можлива"}{" "}
+      </p>
       <h5 className="peculiarities">Особливості:</h5>
       <ul>
-        <li>оригінальний продукт</li>
-        <li>можливість підзарядки</li>
-        <li>
-          акумулятор підтримує струм заряду 1А через порт USB Type-C у торці
-        </li>
-        <li>
-          подвійна вертикальна спіраль забезпечує стабільно високу якість
-          передачі смаку
-        </li>
+        <li>{device.model.info.description}</li>
       </ul>
       <h6 className="attention">УВАГА!</h6>
       <span>

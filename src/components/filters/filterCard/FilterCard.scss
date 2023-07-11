@@ -12,6 +12,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    cursor: pointer;
     width: 100%;
     p {
       font-family: "Montserrat";
@@ -26,6 +27,7 @@
       margin: 0;
     }
     div {
+      cursor: pointer;
       background: url(../../../assets/svg+img/plus.svg);
       width: 20px;
       height: 20px;
@@ -92,7 +94,7 @@
         content: url(../../../assets/svg+img/galochka.svg);
         height: 24px;
         width: 24px;
-        background: #7878F5;
+        background: #7878f5;
         display: inline-flex;
         border: 0;
         border-radius: 5px;
@@ -118,6 +120,390 @@
         /* identical to box height, or 16px */
 
         color: #000000;
+      }
+    }
+  }
+}
+@media (min-width: 1280px) {
+  .filterOne {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 0.5px solid #000000;
+    margin-top: 20px;
+
+    .wrapFilterOne {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      cursor: pointer;
+      width: 100%;
+      p {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        /* identical to box height */
+
+        color: #000000;
+        padding: 0;
+        margin: 0;
+      }
+      div {
+        cursor: pointer;
+        background: url(../../../assets/svg+img/plus.svg);
+        width: 20px;
+        height: 20px;
+      }
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(45deg);
+        }
+      }
+      @keyframes spinprev {
+        from {
+          transform: rotate(45deg);
+        }
+        to {
+          transform: rotate(0deg);
+        }
+      }
+
+      .rotate {
+        animation: spin 0.3s;
+        animation-timeline: squareTimeline;
+        transform: rotate(45deg);
+      }
+      .rotateprev {
+        animation: spinprev 0.3s;
+        animation-timeline: squareTimeline;
+        transform: rotate(0deg);
+      }
+    }
+    .filterOpen {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+      gap: 10px;
+      div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        gap: 15px;
+        input[type="checkbox"].filterCheckbox {
+          display: none;
+        }
+        input[type="checkbox"].filterCheckbox + label::before {
+          content: "";
+          display: inline-flex;
+          background: #ffffff;
+          border: 0;
+          border-radius: 5px;
+          height: 24px;
+          width: 24px;
+          margin-right: 10px;
+          text-align: center;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+        }
+        input[type="checkbox"].filterCheckbox:checked + label:before {
+          content: url(../../../assets/svg+img/galochka.svg);
+          height: 24px;
+          width: 24px;
+          background: #7878f5;
+          display: inline-flex;
+          border: 0;
+          border-radius: 5px;
+          height: 24px;
+          width: 24px;
+          margin-right: 10px;
+          text-align: center;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+        }
+        label {
+          margin: 0;
+          font-family: "Montserrat";
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 130%;
+          /* identical to box height, or 16px */
+
+          color: #000000;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .filterOne {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 0.5px solid #000000;
+    margin-top: 20px;
+
+    .wrapFilterOne {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      cursor: pointer;
+      width: 100%;
+      p {
+        font-family: "Montserrat";
+        font-size: 14px;
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 600;
+        line-height: 130%;
+
+        color: #000000;
+        padding: 0;
+        margin: 0;
+      }
+      div {
+        cursor: pointer;
+        background: url(../../../assets/svg+img/plus.svg);
+        width: 20px;
+        height: 20px;
+      }
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(45deg);
+        }
+      }
+      @keyframes spinprev {
+        from {
+          transform: rotate(45deg);
+        }
+        to {
+          transform: rotate(0deg);
+        }
+      }
+
+      .rotate {
+        animation: spin 0.3s;
+        animation-timeline: squareTimeline;
+        transform: rotate(45deg);
+      }
+      .rotateprev {
+        animation: spinprev 0.3s;
+        animation-timeline: squareTimeline;
+        transform: rotate(0deg);
+      }
+    }
+    .filterOpen {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+      gap: 10px;
+      div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        gap: 15px;
+        input[type="checkbox"].filterCheckbox {
+          display: none;
+        }
+        input[type="checkbox"].filterCheckbox + label::before {
+          content: "";
+          display: inline-flex;
+          background: #ffffff;
+          border: 0;
+          border-radius: 5px;
+          height: 24px;
+          width: 24px;
+          margin-right: 10px;
+          text-align: center;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+        }
+        input[type="checkbox"].filterCheckbox:checked + label:before {
+          content: url(../../../assets/svg+img/galochka.svg);
+          height: 24px;
+          width: 24px;
+          background: #7878f5;
+          display: inline-flex;
+          border: 0;
+          border-radius: 5px;
+          height: 24px;
+          width: 24px;
+          margin-right: 10px;
+          text-align: center;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+        }
+        label {
+          margin: 0;
+          font-family: "Montserrat";
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 130%;
+          /* identical to box height, or 16px */
+
+          color: #000000;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .filterOne {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 0.5px solid #000000;
+    margin-top: 20px;
+
+    .wrapFilterOne {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      cursor: pointer;
+      width: 100%;
+      p {
+        font-size: 14px;
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 500;
+        line-height: 130%;
+        /* identical to box height */
+
+        color: #000000;
+        padding: 0;
+        margin: 0;
+      }
+      div {
+        cursor: pointer;
+        background: url(../../../assets/svg+img/plus.svg);
+        width: 20px;
+        height: 20px;
+      }
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(45deg);
+        }
+      }
+      @keyframes spinprev {
+        from {
+          transform: rotate(45deg);
+        }
+        to {
+          transform: rotate(0deg);
+        }
+      }
+
+      .rotate {
+        animation: spin 0.3s;
+        animation-timeline: squareTimeline;
+        transform: rotate(45deg);
+      }
+      .rotateprev {
+        animation: spinprev 0.3s;
+        animation-timeline: squareTimeline;
+        transform: rotate(0deg);
+      }
+    }
+    .filterOpen {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+      gap: 10px;
+      div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        gap: 15px;
+        input[type="checkbox"].filterCheckbox {
+          display: none;
+        }
+        input[type="checkbox"].filterCheckbox + label::before {
+          content: "";
+          display: inline-flex;
+          background: #ffffff;
+          border: 1px solid rgb(166, 159, 159);
+          border-radius: 5px;
+          height: 24px;
+          width: 24px;
+          margin-right: 10px;
+          text-align: center;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+        }
+        input[type="checkbox"].filterCheckbox:checked + label:before {
+          content: url(../../../assets/svg+img/galochka.svg);
+          height: 24px;
+          width: 24px;
+          background: #7878f5;
+          display: inline-flex;
+          border: 0;
+          border-radius: 5px;
+          height: 24px;
+          width: 24px;
+          margin-right: 10px;
+          text-align: center;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+        }
+        label {
+          margin: 0;
+          font-family: "Montserrat";
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 130%;
+          /* identical to box height, or 16px */
+
+          color: #000000;
+        }
       }
     }
   }

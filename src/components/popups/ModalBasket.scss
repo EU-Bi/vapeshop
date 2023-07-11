@@ -1,114 +1,51 @@
-.wrapComponentBasket {
-  height: 514px;
-  background: #ffffff;
-  border-radius: 15px;
-  padding: 30px;
-  .closeModal {
-    cursor: pointer;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: url(../../assets/svg+img/closeModal.svg) no-repeat;
-    width: 20px;
-    height: 20px;
-  }
-  .wrapItems {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 20px;
-    gap: 40px;
-    height: 250px;
-    overflow-y:auto;
-    .ItemPopupBasket {
-      width: 100%;
+@media (min-width: 1280px) {
+  .wrapComponentBasket {
+    height: 514px;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    .closeModal {
+      cursor: pointer;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: url(../../assets/svg+img/closeModal.svg) no-repeat;
+      width: 20px;
+      height: 20px;
+    }
+    .wrapItems {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
-      gap: 20px;
-      img {
-        width: 100px;
-        height: 100px;
-      }
-      .wrapTextItemPopup {
-        width: 80%;
-        height: 100px;
+      margin-top: 20px;
+      gap: 40px;
+      height: 250px;
+      overflow-y: auto;
+      .ItemPopupBasket {
+        width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        justify-content: space-between;
-        .headItemPopup {
-          width: 100%;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
-          span {
-            font-family: "Montserrat";
-            font-style: normal;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 130%;
-            /* identical to box height, or 21px */
-
-            /* dark blue */
-
-            color: #311496;
-          }
-          p {
-            cursor: pointer;
-            margin: 0;
-            font-family: "Montserrat";
-            font-style: normal;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 130%;
-            /* or 18px */
-
-            color: #000000;
-          }
+        gap: 20px;
+        img {
+          width: 100px;
+          height: 100px;
         }
-        .footerItemPopup {
-          width: 100%;
+        .wrapTextItemPopup {
+          width: 80%;
+          height: 100px;
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
+          align-items: center;
           justify-content: space-between;
-          .counter {
+          .headItemPopup {
+            width: 100%;
             display: flex;
             flex-direction: row;
-            width: 87px;
-            height: 30px;
-            background: #f8f8f8;
-            border-radius: 3px;
-            .minus,
-            .plus {
-              width: 30px;
-              height: 30px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            }
-            .minusCont {
-              background: url(../../assets/svg+img/minus.svg) no-repeat;
-              width: 8px;
-              height: 3px;
-            }
-            .plusCont {
-              background: url(../../assets/svg+img/plusModalBasket.svg)
-                no-repeat;
-              width: 9px;
-              height: 9px;
-            }
-            .count {
-              width: 30px;
-              height: 30px;
-              background: #ececec;
-              border-radius: 3px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-
+            justify-content: space-between;
+            align-items: center;
+            span {
               font-family: "Montserrat";
               font-style: normal;
               font-weight: 400;
@@ -116,56 +53,175 @@
               line-height: 130%;
               /* identical to box height, or 21px */
 
+              /* dark blue */
+
+              color: #311496;
+            }
+            p {
+              cursor: pointer;
+              margin: 0;
+              font-family: "Montserrat";
+              font-style: normal;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 130%;
+              /* or 18px */
+
               color: #000000;
+            }
+          }
+          .footerItemPopup {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .counter {
+              display: flex;
+              flex-direction: row;
+              width: 87px;
+              height: 30px;
+              background: #f8f8f8;
+              border-radius: 3px;
+              .minus,
+              .plus {
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+              .minusCont {
+                background: url(../../assets/svg+img/minus.svg) no-repeat;
+                width: 8px;
+                height: 3px;
+              }
+              .plusCont {
+                background: url(../../assets/svg+img/plusModalBasket.svg)
+                  no-repeat;
+                width: 9px;
+                height: 9px;
+              }
+              .count {
+                width: 30px;
+                height: 30px;
+                background: #ececec;
+                border-radius: 3px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                font-family: "Montserrat";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 130%;
+                /* identical to box height, or 21px */
+
+                color: #000000;
+              }
             }
           }
         }
       }
     }
-  }
-  .wrapCheckOutModal {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    a {
-      font-family: "Montserrat";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 130%;
-      /* or 18px */
+    .wrapCheckOutModal {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      a {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        /* or 18px */
 
-      text-decoration-line: underline;
+        text-decoration-line: underline;
 
-      color: #000000;
+        color: #000000;
+      }
+      .wrapButtonModalCheckOut {
+        width: 364px;
+        height: 134px;
+        background: #f8f8f8;
+        border-radius: 15px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .textCheckOut {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+        a {
+          width: 100%;
+          height: 50px;
+          background: #7878f5;
+          border-radius: 15px;
+
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 22px;
+          /* identical to box height */
+
+          text-transform: uppercase;
+          text-decoration: none;
+
+          color: #ffffff;
+        }
+      }
     }
-    .wrapButtonModalCheckOut {
-      width: 364px;
-      height: 134px;
-      background: #f8f8f8;
-      border-radius: 15px;
-      padding: 20px;
+    .emptyBasketWrap {
+      margin-top: 30px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      .textCheckOut {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+      align-items: center;
+      gap: 30px;
+      .paket {
+        background: url(../../assets/svg+img/paket.svg) no-repeat;
+        width: 150px;
+        height: 106px;
+      }
+      h4 {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+
+        color: #000000;
+      }
+      p {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        /* or 18px */
+
+        color: #000000;
       }
       a {
-        width: 100%;
-        height: 50px;
+        width: 301px;
+        height: 52px;
         background: #7878f5;
         border-radius: 15px;
-
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        gap: 20px;
 
         font-family: "Montserrat";
         font-style: normal;
@@ -175,68 +231,510 @@
         /* identical to box height */
 
         text-transform: uppercase;
-        text-decoration: none;
 
         color: #ffffff;
+        text-decoration: none;
+        .arrowRight {
+          background: url(../../assets/svg+img/arrowright.svg) no-repeat;
+          width: 25px;
+          height: 25px;
+        }
       }
     }
   }
-  .emptyBasketWrap {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    .paket {
-      background: url(../../assets/svg+img/paket.svg) no-repeat;
-      width: 150px;
-      height: 106px;
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .wrapComponentBasket {
+    height: 100%;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    .closeModal {
+      cursor: pointer;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: url(../../assets/svg+img/closeModal.svg) no-repeat;
+      width: 20px;
+      height: 20px;
     }
-    h4 {
-      font-family: "Montserrat";
-      font-style: normal;
-      font-weight: 600;
-      font-size: 20px;
-      line-height: 24px;
+    .wrapItems {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 20px;
+      gap: 40px;
+      height: 250px;
+      overflow-y: auto;
+      .ItemPopupBasket {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        img {
+          width: 100px;
+          height: 100px;
+        }
+        .wrapTextItemPopup {
+          width: 80%;
+          height: 100px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          .headItemPopup {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            span {
+              font-family: "Montserrat";
+              font-style: normal;
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 130%;
+              /* identical to box height, or 21px */
 
-      color: #000000;
-    }
-    p {
-      font-family: "Montserrat";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 130%;
-      /* or 18px */
+              /* dark blue */
 
-      color: #000000;
+              color: #311496;
+            }
+            p {
+              cursor: pointer;
+              margin: 0;
+              font-family: "Montserrat";
+              font-style: normal;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 130%;
+              /* or 18px */
+
+              color: #000000;
+            }
+          }
+          .footerItemPopup {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .counter {
+              display: flex;
+              flex-direction: row;
+              width: 87px;
+              height: 30px;
+              background: #f8f8f8;
+              border-radius: 3px;
+              .minus,
+              .plus {
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+              .minusCont {
+                background: url(../../assets/svg+img/minus.svg) no-repeat;
+                width: 8px;
+                height: 3px;
+              }
+              .plusCont {
+                background: url(../../assets/svg+img/plusModalBasket.svg)
+                  no-repeat;
+                width: 9px;
+                height: 9px;
+              }
+              .count {
+                width: 30px;
+                height: 30px;
+                background: #ececec;
+                border-radius: 3px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                font-family: "Montserrat";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 130%;
+                /* identical to box height, or 21px */
+
+                color: #000000;
+              }
+            }
+          }
+        }
+      }
     }
-    a {
-      width: 301px;
-      height: 52px;
-      background: #7878f5;
-      border-radius: 15px;
+    .wrapCheckOutModal {
+      margin-top: 30px;
       display: flex;
       flex-direction: row;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      a {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        /* or 18px */
 
-      font-family: "Montserrat";
-      font-style: normal;
-      font-weight: 600;
-      font-size: 18px;
-      line-height: 22px;
-      /* identical to box height */
+        text-decoration-line: underline;
 
-      text-transform: uppercase;
+        color: #000000;
+      }
+      .wrapButtonModalCheckOut {
+        width: 364px;
+        height: 134px;
+        background: #f8f8f8;
+        border-radius: 15px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .textCheckOut {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+        a {
+          width: 100%;
+          height: 50px;
+          background: #7878f5;
+          border-radius: 15px;
 
-      color: #ffffff;
-      text-decoration: none;
-      .arrowRight{
-        background: url(../../assets/svg+img/arrowright.svg) no-repeat;
-        width: 25px;
-        height: 25px;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 22px;
+          /* identical to box height */
+
+          text-transform: uppercase;
+          text-decoration: none;
+
+          color: #ffffff;
+        }
+      }
+    }
+    .emptyBasketWrap {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      .paket {
+        background: url(../../assets/svg+img/paket.svg) no-repeat;
+        width: 150px;
+        height: 106px;
+      }
+      h4 {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;
+
+        color: #000000;
+      }
+      p {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        text-align: center;
+        /* or 18px */
+
+        color: #000000;
+      }
+      a {
+        width: 301px;
+        height: 52px;
+        background: #7878f5;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        /* identical to box height */
+
+        text-transform: uppercase;
+
+        color: #ffffff;
+        text-decoration: none;
+        .arrowRight {
+          background: url(../../assets/svg+img/arrowright.svg) no-repeat;
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .wrapComponentBasket {
+    height: 100%;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    .closeModal {
+      cursor: pointer;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: url(../../assets/svg+img/closeModal.svg) no-repeat;
+      width: 20px;
+      height: 20px;
+    }
+    .wrapItems {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 20px;
+      gap: 40px;
+      height: 250px;
+      overflow-y: auto;
+      .ItemPopupBasket {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        img {
+          width: 50px;
+          height: 50px;
+        }
+        .wrapTextItemPopup {
+          width: 80%;
+          height: 100px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          .headItemPopup {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            span {
+              font-family: "Montserrat";
+              color: var(--black, #000);
+              /* mob: text */
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 130%;
+            }
+            p {
+              background: url(../../assets/adaptiv/basket/basket.svg) no-repeat;
+              width: 15px;
+              height: 15px;
+              cursor: pointer;
+              margin: 0;
+              /* or 18px */
+            }
+          }
+          .footerItemPopup {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            h5 {
+              font-size: 14px;
+              font-family: "Montserrat";
+              font-style: normal;
+              font-weight: 600;
+              line-height: 130%;
+              margin: 0;
+              padding: 0;
+            }
+            .counter {
+              display: flex;
+              flex-direction: row;
+              width: 87px;
+              height: 30px;
+              background: #f8f8f8;
+              border-radius: 3px;
+              .minus,
+              .plus {
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+              .minusCont {
+                background: url(../../assets/svg+img/minus.svg) no-repeat;
+                width: 8px;
+                height: 3px;
+              }
+              .plusCont {
+                background: url(../../assets/svg+img/plusModalBasket.svg)
+                  no-repeat;
+                width: 9px;
+                height: 9px;
+              }
+              .count {
+                width: 30px;
+                height: 30px;
+                background: #ececec;
+                border-radius: 3px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                font-family: "Montserrat";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 130%;
+                /* identical to box height, or 21px */
+
+                color: #000000;
+              }
+            }
+          }
+        }
+      }
+    }
+    .wrapCheckOutModal {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      a {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 130%;
+        /* or 18px */
+
+        text-decoration-line: underline;
+
+        color: #000000;
+      }
+      .wrapButtonModalCheckOut {
+        width: 100%;
+        height: 134px;
+        background: #f8f8f8;
+        border-radius: 15px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .textCheckOut {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+        a {
+          width: 100%;
+          height: 50px;
+          background: #7878f5;
+          border-radius: 15px;
+
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 22px;
+          /* identical to box height */
+
+          text-transform: uppercase;
+          text-decoration: none;
+
+          color: #ffffff;
+        }
+      }
+    }
+    .emptyBasketWrap {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      .paket {
+        background: url(../../assets/svg+img/paket.svg) no-repeat;
+        width: 150px;
+        height: 106px;
+      }
+      h4 {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;
+
+        color: #000000;
+      }
+      p {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        text-align: center;
+        /* or 18px */
+
+        color: #000000;
+      }
+      a {
+        width: 301px;
+        height: 52px;
+        background: #7878f5;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        /* identical to box height */
+
+        text-transform: uppercase;
+
+        color: #ffffff;
+        text-decoration: none;
+        .arrowRight {
+          background: url(../../assets/svg+img/arrowright.svg) no-repeat;
+          width: 25px;
+          height: 25px;
+        }
       }
     }
   }

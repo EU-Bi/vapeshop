@@ -7,16 +7,14 @@ import {
 
 const CheckBox = ({ checkbox, name, isChecked }) => {
   const [checked, setChecked] = useState(false);
-  console.log(isChecked.filter((filter) => {
-    if (filter.item === checkbox) {
-      return checkbox
-    } else {
-      return 'tutut';
-    }
-  }));
+  useEffect(() => {
+    setChecked(isChecked.some((filter) => filter.item === checkbox));
+  }, [isChecked, checkbox]);
+
   const handleChange = (checkbox) => {
     setChecked(!checked);
     if (!checked) {
+      console.log(name, checkbox)
       store.dispatch(actionAddFilter(name, checkbox));
     } else {
       store.dispatch(actionDeleteFilter(name, checkbox));

@@ -1,13 +1,21 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 const Characteristics = () => {
+  const location = useLocation();
+  const device = location.state;
   return (
     <div className="wrapDescription">
-      <h4>Характеристики Elf ​​Bar BC3000:</h4>
-      <p>Кількість тяг: 3000</p>
-      <p>Ємність акумулятора: 650 mAh</p>
-      <p>Міцність нікотину: 5%</p>
-      <p>Можливість підзарядки: можлива </p>
+      <h4>
+        Характеристики {device.brand} {device.model.title}:
+      </h4>
+      <p>Кількість тяг: {device.model.info.countSmoke}</p>
+      <p>Ємність акумулятора: {device.model.info.power} mAh</p>
+      <p>Міцність нікотину: {device.model.info.nicotine}%</p>
+      <p>
+        Можливість підзарядки:{" "}
+        {device.model.info.charge ? "можлива" : "не можлива"}{" "}
+      </p>
     </div>
   );
 };

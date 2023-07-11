@@ -5,6 +5,7 @@ import {
   actionGetAllModels,
   actionGetAllTastes,
   actionGetAllTypes,
+  actionGetFirstItems,
 } from "../../redux/actions/ActionsItems";
 import store from "../../redux/store/store";
 
@@ -22,6 +23,19 @@ export const fetchDataFromServer = () => {
     .get(`${process.env.REACT_APP_API_URL}api/taste`)
     .then((res) => store.dispatch(actionGetAllTastes(res.data)));
   axios
-    .get(`${process.env.REACT_APP_API_URL}api/device`)
+    .get(`${process.env.REACT_APP_API_URL}api/device`, {
+      params: {
+        page: 1,
+        limit: 8,
+      },
+    })
+    .then((res) => store.dispatch(actionGetFirstItems(res.data)));
+  axios
+    .get(`${process.env.REACT_APP_API_URL}api/device`, {
+      params: {
+        page: 1,
+        limit: 99999999999999999,
+      },
+    })
     .then((res) => store.dispatch(actionGetAllItems(res.data)));
 };

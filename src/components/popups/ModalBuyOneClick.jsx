@@ -8,10 +8,10 @@ const ModalBuyOneClick = (props) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const handleClick = (name, phone) => {
-    SendMessageBuyOneClick(name, phone, props.item , props.count);
-    setName("")
-    setPhone("")
-    props.onHide()
+    SendMessageBuyOneClick(name, phone, props.item, props.count);
+    setName("");
+    setPhone("");
+    props.onHide();
   };
   return (
     <Modal {...props} centered>
@@ -31,7 +31,7 @@ const ModalBuyOneClick = (props) => {
           value={phone}
           onChange={(e) => setPhone(convertPhoneNumber(e.target.value))}
         />
-        <button onClick={() => handleClick(name, phone)}>Замовити</button>
+        <button onClick={() => handleClick(phone, name)}>Замовити</button>
       </div>
     </Modal>
   );

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import CardBasket from "../../components/CardProduct/CardBasket/CardBasket";
 import ContactInfo from "./ContactInfo";
 import { connect } from "react-redux";
+import SendMessageBuy from "../../functions/SendMessageBuy";
+import store from "../../redux/store/store";
+import { actionRefreshBasket } from "../../redux/actions/ActionsBasket";
+import ItemPopupBasket from "../../components/basket/ItemPopupBasket";
 
-const MainWholesale = ({ basket, total }) => {
+const MainWholesale = ({ basket, total, form }) => {
   const [isActive, setIsActive] = useState(false);
-  console.log(basket)
-  basket.map((item)=>console.log(item.device))
+  const [text, setText] = useState("");
   return (
     <div className="wrapperMainWholesale">
       <h2>Оформлення замовлення</h2>
@@ -18,11 +20,19 @@ const MainWholesale = ({ basket, total }) => {
         <div className="wrapOrder">
           <div className="headerOder">
             <p>Ваше замовлення:</p>
-            <Link>Редагувати</Link>
+            <Link onClick={() => store.dispatch(actionRefreshBasket())}>
+              Очистити корзину
+            </Link>
           </div>
           <div className="wrapItems">
             {basket.length > 0 ? (
-              basket.map((item, key) => <CardBasket key={key} item={item.device} count={item.countDevice}/>)
+              basket.map((item, key) => (
+                <ItemPopupBasket
+                  key={key}
+                  item={item.device}
+                  count={item.countDevice}
+                />
+              ))
             ) : (
               <div className="noItems">
                 Товар не додано до кошику
@@ -45,30 +55,52 @@ const MainWholesale = ({ basket, total }) => {
             {isActive && (
               <div className="promocodeFied">
                 <input type="text" />
-                
               </div>
             )}
           </div>
           <div className="additionMessage">
-            <textarea placeholder="Тут ви можете залишити додатковий коментар до вашого замовлення"></textarea>
+            <textarea
+              placeholder="Тут ви можете залишити додатковий коментар до вашого замовлення"
+              value={text}
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
+            ></textarea>
           </div>
           <div className="pay">
             <p className="payText">До сплати</p>
             <p className="priceText">{total} грн.</p>
           </div>
-          <button
+          <Link
             disabled={basket.length > 0 ? false : true}
             to={"/greeting"}
             className="checkOutOrder"
+            onClick={() => {
+              SendMessageBuy(
+                form.name,
+                form.surname,
+                form.type,
+                form.phone,
+                basket,
+                form.post,
+                form.region,
+                text,
+                form.city,
+                total
+              );
+              store.dispatch(actionRefreshBasket());
+            }}
           >
             ОФОРМИТИ ЗАМОВЛЕННЯ
-          </button>
+          </Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default connect((state) => ({ basket: state.basket.basket, total:state.basket.total }))(
-  MainWholesale
-);
+export default connect((state) => ({
+  basket: state.basket.basket,
+  total: state.basket.total,
+  form: state.form,
+}))(MainWholesale);

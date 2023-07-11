@@ -1,13 +1,30 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import store from "../../redux/store/store";
+import {
+  actionSetCity,
+  actionSetName,
+  actionSetPhone,
+  actionSetPost,
+  actionSetRegion,
+  actionSetSurname,
+  actionSetTypePaid,
+} from "../../redux/actions/ActionForm";
+import convertPhoneNumber from "../../functions/ConvertPhone";
 
-const ContactInfo = () => {
+const ContactInfo = ({ form }) => {
   const [regions, setRegions] = useState([]);
   const [currentRegion, setCurrentRegion] = useState("");
   const [cites, setCites] = useState([]);
   const [currentCity, setCurrentCity] = useState("");
   const [posts, setPosts] = useState([]);
   const [currentPost, setCurrentPost] = useState("");
+
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [phone, setPhone] = useState("");
+
   useEffect(() => {
     axios
       .post("https://api.novaposhta.ua/v2.0/json/", {
@@ -55,15 +72,39 @@ const ContactInfo = () => {
         <form>
           <div className="wrapInputLabel">
             <label htmlFor="">Ім’я</label>
-            <input type="text" />
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+                store.dispatch(actionSetName(e.target.value));
+              }}
+              required
+            />
           </div>
           <div className="wrapInputLabel">
             <label htmlFor="">Прізвище</label>
-            <input type="text" />
+            <input
+              type="text"
+              value={surname}
+              onChange={(e) => {
+                setSurname(e.target.value);
+                store.dispatch(actionSetSurname(e.target.value));
+              }}
+              required
+            />
           </div>
           <div className="wrapInputLabel">
             <label htmlFor="">Номер телефону</label>
-            <input type="text" />
+            <input
+              type="text"
+              value={phone}
+              onChange={(e) => {
+                setPhone(convertPhoneNumber(e.target.value));
+                store.dispatch(actionSetPhone(convertPhoneNumber(e.target.value)));
+              }}
+              required
+            />
           </div>
         </form>
       </div>
@@ -77,7 +118,10 @@ const ContactInfo = () => {
               name="select"
               className="location"
               value={currentRegion}
-              onChange={(e) => setCurrentRegion(e.target.value)}
+              onChange={(e) => {
+                setCurrentRegion(e.target.value);
+                store.dispatch(actionSetRegion(e.target.value));
+              }}
             >
               {regions.map((region) => (
                 <option key={region.id}>{region.Description}</option>
@@ -89,9 +133,13 @@ const ContactInfo = () => {
             <input
               type="text"
               placeholder="Введіть своє місто"
+              required
               list="cityname"
               value={currentCity}
-              onChange={(e) => setCurrentCity(e.target.value)}
+              onChange={(e) => {
+                setCurrentCity(e.target.value);
+                store.dispatch(actionSetCity(e.target.value));
+              }}
             />
             <datalist id="cityname">
               {cites.map((city) => (
@@ -104,9 +152,13 @@ const ContactInfo = () => {
             <input
               type="text"
               className="sending"
+              required
               list="postlist"
               value={currentPost}
-              onChange={(e) => setCurrentPost(e.target.value)}
+              onChange={(e) => {
+                setCurrentPost(e.target.value);
+                store.dispatch(actionSetPost(e.target.value));
+              }}
             ></input>
             <datalist id="postlist">
               {posts.map((post) => (
@@ -118,13 +170,23 @@ const ContactInfo = () => {
       </div>
       <div className="payInfo">
         <h4>Доставка</h4>
-        <form action="" className="radio">
+        <form className="radio">
           <div className="wrapRadio">
-            <input type="radio" name="typePaid" id="forCard" />
+            <input
+              type="radio"
+              name="typePaid"
+              id="forCard"
+              onChange={(e) => store.dispatch(actionSetTypePaid(e.target.id))}
+            />
             <label htmlFor="forCard">Переказ на картку</label>
           </div>
           <div className="wrapRadio">
-            <input type="radio" name="typePaid" id="forSending" />
+            <input
+              type="radio"
+              name="typePaid"
+              id="forSending"
+              onChange={(e) => store.dispatch(actionSetTypePaid(e.target.id))}
+            />
             <label htmlFor="forSending">Оплата при отриманні замовлення</label>
           </div>
         </form>
@@ -137,4 +199,4 @@ const ContactInfo = () => {
   );
 };
 
-export default ContactInfo;
+export default connect((state) => ({ form: state.form }))(ContactInfo);
