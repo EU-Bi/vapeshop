@@ -27,7 +27,7 @@ const SendMessageBuy = (
   fetchEnvVariables();
   const CHAT_ID = "-1001765784132";
   const URL_API = `https://api.telegram.org/bot${localStorage.token}/sendMessage`;
-  let message = `<b>Купить в один клик</b>\n`;
+  let message = `<b>Купить обычный заказ</b>\n`;
   message += `<b>ФИО:</b>${name} ${surname}\n`;
   message += `<b>Телефон:</b>${phone}\n`;
   basket.forEach((item) => {

@@ -18,7 +18,7 @@ const Header = ({ basket, total, brands, types }) => {
   const isDesKtop = useMediaQuery({ minWidth: "1280px" });
   const isTablet = useMediaQuery({ minWidth: "768px", maxWidth: "1279px" });
   const isMobile = useMediaQuery({ maxWidth: "767px" });
-  
+
   const [modalShowTel, setModalShowTel] = useState(false);
   const [showBlock, setShowBlock] = useState(false);
   const [showBasket, setShowBasket] = useState(false);
@@ -545,21 +545,23 @@ const Header = ({ basket, total, brands, types }) => {
             </li>
           </ul>
           <Dropdown className="containerPhones">
-            <Dropdown.Toggle id="dropdown-autoclose-true" className=" phones">
-              +380(93)555-55-55
+            <Dropdown.Toggle id="dropdown-autoclose-true" className=" phones" >
+              +380 (97) 224 69 61
             </Dropdown.Toggle>
 
             <Dropdown.Menu className="menuPhones">
               <Dropdown.Item>+380(95)555-55-55</Dropdown.Item>
-              <Dropdown.Item>+380(95)555-55-55</Dropdown.Item>
-              <Dropdown.Item className="telegaContainer">
+              <Dropdown.Item
+                className="telegaContainer"
+                href="https://t.me/Manager_Vape_anad_Pods"
+              >
                 <div className="telegram"></div>
                 Telegram-чат
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <div className="containerSvg">
-            <div className="containerSearch">
+            {/* <div className="containerSearch">
               <input
                 type="text"
                 name=""
@@ -567,7 +569,7 @@ const Header = ({ basket, total, brands, types }) => {
                 placeholder="Введіть ваш запит"
               />
               <div className="search"></div>
-            </div>
+            </div> */}
             <div className="containerBasket">
               <div
                 className="basket"

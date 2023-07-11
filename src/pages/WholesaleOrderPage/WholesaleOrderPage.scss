@@ -74,6 +74,107 @@
         gap: 30px;
         padding-bottom: 30px;
         border-bottom: 1px solid #c5c5c5;
+        .ItemPopupBasket {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 20px;
+          img {
+            width: 100px;
+            height: 100px;
+          }
+          .wrapTextItemPopup {
+            width: 80%;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            .headItemPopup {
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+              span {
+                font-family: "Montserrat";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 130%;
+                /* identical to box height, or 21px */
+
+                /* dark blue */
+
+                color: #311496;
+              }
+              p {
+                cursor: pointer;
+                margin: 0;
+                font-family: "Montserrat";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 130%;
+                /* or 18px */
+
+                color: #000000;
+              }
+            }
+            .footerItemPopup {
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              .counter {
+                display: flex;
+                flex-direction: row;
+                width: 87px;
+                height: 30px;
+                background: #f8f8f8;
+                border-radius: 3px;
+                .minus,
+                .plus {
+                  width: 30px;
+                  height: 30px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+                .minusCont {
+                  background: url(../../assets/svg+img/minus.svg) no-repeat;
+                  width: 8px;
+                  height: 3px;
+                }
+                .plusCont {
+                  background: url(../../assets/svg+img/plusModalBasket.svg)
+                    no-repeat;
+                  width: 9px;
+                  height: 9px;
+                }
+                .count {
+                  width: 30px;
+                  height: 30px;
+                  background: #ececec;
+                  border-radius: 3px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+
+                  font-family: "Montserrat";
+                  font-style: normal;
+                  font-weight: 400;
+                  font-size: 16px;
+                  line-height: 130%;
+                  /* identical to box height, or 21px */
+
+                  color: #000000;
+                }
+              }
+            }
+          }
+        }
         .noItems {
           display: flex;
           flex-direction: column;

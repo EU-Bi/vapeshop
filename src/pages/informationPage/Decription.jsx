@@ -18,9 +18,7 @@ const Description = () => {
       </p>
       <h5 className="peculiarities">Особливості:</h5>
       <ul>
-        {device.model.description.split(",").map((str, index) => (
-          <li key={index}>{str}</li>
-        ))}
+        <li>{device.model.info.description}</li>
       </ul>
       <h6 className="attention">УВАГА!</h6>
       <span>

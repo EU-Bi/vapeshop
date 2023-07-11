@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import CardBasket from "../../components/CardProduct/CardBasket/CardBasket";
 import ContactInfo from "./ContactInfo";
 import { connect } from "react-redux";
 import SendMessageBuy from "../../functions/SendMessageBuy";
 import store from "../../redux/store/store";
 import { actionRefreshBasket } from "../../redux/actions/ActionsBasket";
+import ItemPopupBasket from "../../components/basket/ItemPopupBasket";
 
 const MainWholesale = ({ basket, total, form }) => {
   const [isActive, setIsActive] = useState(false);
@@ -27,7 +27,7 @@ const MainWholesale = ({ basket, total, form }) => {
           <div className="wrapItems">
             {basket.length > 0 ? (
               basket.map((item, key) => (
-                <CardBasket
+                <ItemPopupBasket
                   key={key}
                   item={item.device}
                   count={item.countDevice}

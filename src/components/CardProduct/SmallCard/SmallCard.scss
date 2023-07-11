@@ -23,6 +23,9 @@
       /* or 18px */
       color: #000000;
     }
+    a:hover {
+      text-decoration: underline;
+    }
     .wrappBtnCard {
       display: flex;
       flex-direction: row;
@@ -99,6 +102,9 @@
       /* or 18px */
       color: #000000;
     }
+    a:hover {
+      text-decoration: underline;
+    }
     .wrappBtnCard {
       display: flex;
       flex-direction: row;
@@ -173,6 +179,9 @@
       font-style: normal;
       font-weight: 500;
       line-height: 130%;
+    }
+    a:hover {
+      text-decoration: underline;
     }
     .wrappBtnCard {
       display: flex;

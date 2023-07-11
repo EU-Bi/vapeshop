@@ -196,23 +196,40 @@ function itemsReducer(state = initialStateItems, { type, payload }) {
       };
     case GET_ALL_ITEMS:
       console.log(payload);
+
+      const resultMap = {};
+
+      for (const device of payload) {
+        const { id } = device;
+
+        for (const taste of device.model.tastes) {
+          const key = `${device.model.title}-${taste.title}`;
+
+          if (!resultMap[key]) {
+            resultMap[key] = {
+              currentDevice: device.id,
+              brand: device.brand,
+              brandId: device.brandId,
+              model: device.model,
+              type: device.type,
+              typeId: device.typeId,
+              modelId: device.modelId,
+              createdAt: device.createdAt,
+              updatedAt: device.updatedAt,
+              taste,
+              id: resultMap[key] ? id : id + "-" + taste.title,
+            };
+          }
+        }
+      }
+
+      const result = Object.values(resultMap);
+
+      console.log(result);
+
       return {
         ...state,
-        devices: payload.flatMap((device) =>
-          device.model.tastes.map((taste) => ({
-            id: uniqueIdCounter++,
-            currentDevice: device.id,
-            brand: device.brand,
-            brandId: device.brandId,
-            model: device.model,
-            type: device.type,
-            typeId: device.typeId,
-            modelId: device.modelId,
-            createdAt: device.createdAt,
-            updatedAt: device.updatedAt,
-            taste: taste,
-          }))
-        ),
+        devices: result,
       };
 
     default:

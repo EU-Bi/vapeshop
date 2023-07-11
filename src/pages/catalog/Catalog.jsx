@@ -138,7 +138,7 @@ const Catalog = ({ devices, filters, current, page, sort, types }) => {
                 >
                   <div></div>
                 </div>
-                <h3>Картриджі</h3>
+                <h3>Рідини</h3>
               </div>
             </div>
             <div className="catalogName">
@@ -243,7 +243,7 @@ const Catalog = ({ devices, filters, current, page, sort, types }) => {
                   store.dispatch(actionAddFilter("types", types[2]));
                 }}
               >
-                <h3>Картриджі</h3>
+                <h3>Рідини</h3>
                 <div></div>
               </div>
             </div>
@@ -333,7 +333,7 @@ const Catalog = ({ devices, filters, current, page, sort, types }) => {
                   store.dispatch(actionAddFilter("types", types[2]));
                 }}
               >
-                <h3>Картриджі</h3>
+                <h3>Рідини</h3>
                 <div></div>
               </div>
             </div>
