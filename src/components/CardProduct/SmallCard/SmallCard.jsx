@@ -3,11 +3,18 @@ import "./SmallCard.scss";
 import { Link } from "react-router-dom";
 import { actionAddItemInBasket } from "../../../redux/actions/ActionsBasket";
 import store from "../../../redux/store/store";
+import { actionAddItemInBasketTrue } from "../../../redux/actions/ActionCard";
 
 const SmallCard = (props) => {
   const handleClick = (item) => {
     store.dispatch(actionAddItemInBasket({ item, count: 1 }));
+    store.dispatch(actionAddItemInBasketTrue());
   };
+  function setTimeOutFalse() {
+    setTimeout(() => {
+      store.dispatch(actionAddItemInBasketTrue());
+    }, 600);
+  }
   return (
     <div className="wrappSmallCard" style={{ ...props.style }}>
       <img
@@ -34,7 +41,10 @@ const SmallCard = (props) => {
         )}
 
         <button
-          onClick={() => handleClick(props.device)}
+          onClick={() => {
+            handleClick(props.device);
+            setTimeOutFalse();
+          }}
           disabled={props.device.count === 0 ? true : false}
           className={props.device.count === 0 ? "disabled" : ""}
         >

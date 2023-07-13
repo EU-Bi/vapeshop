@@ -4,16 +4,16 @@ import { connect } from "react-redux";
 import store from "../../redux/store/store";
 import { actionSetIndexes } from "../../redux/actions/ActionsItems";
 
-const Pagination = ({ data , page}) => {
+const Pagination = ({ data, page }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const indexOfLastItem = currentPage * 12;
     const indexOfFirstItem = indexOfLastItem - 12;
-    console.log(indexOfFirstItem, indexOfLastItem)
     store.dispatch(actionSetIndexes(indexOfFirstItem, indexOfLastItem));
   }, [currentPage]);
-
+  console.log(data);
+  console.log(page.indexOfLastItem >= data.length);
   const pageCount = Math.ceil(data.length / 12);
   const pages = [];
   for (let i = 0; i < pageCount; i++) {
@@ -36,11 +36,19 @@ const Pagination = ({ data , page}) => {
     <nav>
       <ul className="wrapperPagination">
         <li>
-          <div
-            className="prevPagination"
-            onClick={() => prevPage()}
-            disabled={currentPage === 1}
-          ></div>
+          {currentPage === 1 ? (
+            <button
+              className="prevPagination"
+              onClick={() => prevPage()}
+              disabled={currentPage === 1}
+            ></button>
+          ) : (
+            <button
+              className="nextPagination rotated"
+              onClick={() => prevPage()}
+              disabled={currentPage === 1}
+            ></button>
+          )}
         </li>
         {pages.length > 0 ? (
           pages.map((page, index) => (
@@ -56,11 +64,19 @@ const Pagination = ({ data , page}) => {
           </li>
         )}
         <li>
-          <div
-            className="nextPagination"
-            onClick={() => nextPage()}
-            disabled={page.indexOfLastItem >= data.length}
-          ></div>
+          {page.indexOfLastItem >= data.length ? (
+            <button
+              className="prevPagination rotated"
+              onClick={() => nextPage()}
+              disabled={page.indexOfLastItem >= data.length}
+            ></button>
+          ) : (
+            <button
+              className="nextPagination"
+              onClick={() => nextPage()}
+              disabled={page.indexOfLastItem >= data.length}
+            ></button>
+          )}
         </li>
       </ul>
     </nav>

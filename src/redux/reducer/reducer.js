@@ -25,6 +25,7 @@ import {
   SORT_FROM_LOW_PRICE,
   SORT_NEW_DEVICES,
   SORT_RATING,
+  TRUE_ADD,
   UPDATE_COUNT,
 } from "../typesActions/types";
 let uniqueIdCounter = 1;
@@ -47,6 +48,7 @@ const initialStateSort = {
 const initialStateDevicesPerPage = {
   indexOfLastItem: 12,
   indexOfFirstItem: 0,
+  itemAdd: false,
 };
 const initialStateItems = {
   brands: [],
@@ -176,27 +178,38 @@ function itemsReducer(state = initialStateItems, { type, payload }) {
       };
 
     case GET_FIRST_ITEMS:
+      const resultMapIt = {};
+
+      for (const device of payload) {
+        const { id } = device;
+
+        for (const taste of device.model.tastes) {
+          const key = `${device.model.title}-${taste.title}`;
+
+          if (!resultMapIt[key]) {
+            resultMapIt[key] = {
+              currentDevice: device.id,
+              brand: device.brand,
+              brandId: device.brandId,
+              model: device.model,
+              type: device.type,
+              typeId: device.typeId,
+              modelId: device.modelId,
+              createdAt: device.createdAt,
+              updatedAt: device.updatedAt,
+              taste,
+              id: resultMapIt[key] ? id : id + "-" + taste.title,
+            };
+          }
+        }
+      }
+
+      const resultIt = Object.values(resultMapIt);
       return {
         ...state,
-        firstDevices: payload.flatMap((device) =>
-          device.model.tastes.map((taste) => ({
-            id: uniqueIdCounter++,
-            currentDevice: device.id,
-            brand: device.brand,
-            brandId: device.brandId,
-            model: device.model,
-            type: device.type,
-            typeId: device.typeId,
-            modelId: device.modelId,
-            createdAt: device.createdAt,
-            updatedAt: device.updatedAt,
-            taste: taste,
-          }))
-        ),
+        firstDevices: resultIt,
       };
     case GET_ALL_ITEMS:
-      console.log(payload);
-
       const resultMap = {};
 
       for (const device of payload) {
@@ -224,8 +237,6 @@ function itemsReducer(state = initialStateItems, { type, payload }) {
       }
 
       const result = Object.values(resultMap);
-
-      console.log(result);
 
       return {
         ...state,
@@ -268,6 +279,11 @@ function devicesPageReducer(
         ...state,
         indexOfLastItem: payload.indexOfLastItem,
         indexOfFirstItem: payload.indexOfFirstItem,
+      };
+    case TRUE_ADD:
+      return {
+        ...state,
+        itemAdd: !state.itemAdd,
       };
     default:
       return state;

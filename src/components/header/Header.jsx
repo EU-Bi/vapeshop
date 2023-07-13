@@ -14,7 +14,7 @@ import {
 import ModalTelephone from "../telephone/ModalTelephone";
 import { useMediaQuery } from "react-responsive";
 
-const Header = ({ basket, total, brands, types }) => {
+const Header = ({ basket, total, brands, types, itemAdd }) => {
   const isDesKtop = useMediaQuery({ minWidth: "1280px" });
   const isTablet = useMediaQuery({ minWidth: "768px", maxWidth: "1279px" });
   const isMobile = useMediaQuery({ maxWidth: "767px" });
@@ -26,6 +26,7 @@ const Header = ({ basket, total, brands, types }) => {
   const [modalShow, setModalShow] = useState(false);
   const [currentBrand, setCurrentBrands] = useState([]);
   const [burger, openBurger] = useState(false);
+
   const handleOpenBurger = () => {
     openBurger(!burger);
   };
@@ -39,6 +40,10 @@ const Header = ({ basket, total, brands, types }) => {
   const ElfBar = brands.filter((brand) => brand.title === "ElfBar");
   const VAAL = brands.filter((brand) => brand.title === "VAAL");
   const Elux = brands.filter((brand) => brand.title === "Elux 2%");
+
+  const Odn = types.filter((type) => type.title === "Одноразки");
+  const Pod = types.filter((type) => type.title === "POD-системи");
+  const Liquid = types.filter((type) => type.title === "Рідіни");
   //const STRAW = brands.filter(brand=>brand.title==="STRAW")
   if (isMobile) {
     return (
@@ -104,6 +109,7 @@ const Header = ({ basket, total, brands, types }) => {
               )} */}
             </div>
           </div>
+          {itemAdd && <div className="addNewItem">Товар додано до кошика</div>}
           {/* {showBlock && (
             <div
               className="dropdownCategories"
@@ -140,7 +146,10 @@ const Header = ({ basket, total, brands, types }) => {
             </div>
             <Link
               to={"/catalog"}
-              onClick={() => store.dispatch(actionResetFilters())}
+              onClick={() => {
+                handleOpenBurger();
+                store.dispatch(actionResetFilters());
+              }}
               className="btnCatalog"
               // onMouseLeave={() =>
               //   setTimeout(() => {
@@ -159,11 +168,12 @@ const Header = ({ basket, total, brands, types }) => {
                   to={"/catalog"}
                   onClick={() => {
                     store.dispatch(actionResetFilters());
-                    store.dispatch(actionAddFilter("brands", ElfBar[0]));
+                    store.dispatch(actionAddFilter("types", Odn[0]));
+                    handleOpenBurger();
                   }}
                   className="linkCurrentCatalog"
                 >
-                  Elf Bar
+                  Одноразки
                   <div className="arrowRight"></div>
                 </Link>
               </li>
@@ -172,11 +182,12 @@ const Header = ({ basket, total, brands, types }) => {
                   to={"/catalog"}
                   onClick={() => {
                     store.dispatch(actionResetFilters());
-                    store.dispatch(actionAddFilter("brands", VAAL[0]));
+                    store.dispatch(actionAddFilter("types", Pod[0]));
+                    handleOpenBurger();
                   }}
                   className="linkCurrentCatalog"
                 >
-                  VAAL
+                  POD-системи
                   <div className="arrowRight"></div>
                 </Link>
               </li>
@@ -185,24 +196,12 @@ const Header = ({ basket, total, brands, types }) => {
                   to={"/catalog"}
                   onClick={() => {
                     store.dispatch(actionResetFilters());
-                    store.dispatch(actionAddFilter("brands", Airis[0]));
+                    store.dispatch(actionAddFilter("types", Liquid[0]));
+                    handleOpenBurger();
                   }}
                   className="linkCurrentCatalog"
                 >
-                  Airis-Pod System
-                  <div className="arrowRight"></div>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={"/catalog"}
-                  onClick={() => {
-                    store.dispatch(actionResetFilters());
-                    store.dispatch(actionAddFilter("brands", Elux[0]));
-                  }}
-                  className="linkCurrentCatalog"
-                >
-                  Elux 2%
+                  Рідини
                   <div className="arrowRight"></div>
                 </Link>
               </li>
@@ -231,14 +230,24 @@ const Header = ({ basket, total, brands, types }) => {
               </Link>
             </div>
             <div className="phoneWrap">
-              <div className="phone">
+              <a className="phone" href="tel:+380972246961">
                 <div className="icon"></div>
-                <h3>+380(93)555-55-55</h3>
-              </div>
-              <div className="telegram">
+                <h3>+380 97 224 69 61</h3>
+              </a>
+              <a
+                href="https://t.me/Manager_Vape_anad_Pods"
+                className="telegram"
+              >
                 <div className="icon"></div>
                 <h3>Telegram-чат</h3>
-              </div>
+              </a>
+              <a
+                href="viber://chat?number=%2B380999187822"
+                className="viber"
+              >
+                <div className="icon"></div>
+                <h3>Viber</h3>
+              </a>
               <div
                 className="purplePhone"
                 onClick={() => setModalShowTel(true)}
@@ -296,6 +305,9 @@ const Header = ({ basket, total, brands, types }) => {
                 onClick={() => setModalShow(true)}
               ></div>
               <span>{basket.length}</span>
+              {itemAdd && (
+                <div className="addNewItem">Товар додано до кошика</div>
+              )}
               {/* {showBasket && basket.length > 0 && (
                 <div
                   className="basketHoverWrap"
@@ -370,16 +382,17 @@ const Header = ({ basket, total, brands, types }) => {
               Каталог товарів
             </Link>
             <ul className="menu-header">
-              <li>
+            <li>
                 <Link
                   to={"/catalog"}
                   onClick={() => {
                     store.dispatch(actionResetFilters());
-                    store.dispatch(actionAddFilter("brands", ElfBar[0]));
+                    store.dispatch(actionAddFilter("types", Odn[0]));
+                    handleOpenBurger();
                   }}
                   className="linkCurrentCatalog"
                 >
-                  Elf Bar
+                  Одноразки
                   <div className="arrowRight"></div>
                 </Link>
               </li>
@@ -388,11 +401,12 @@ const Header = ({ basket, total, brands, types }) => {
                   to={"/catalog"}
                   onClick={() => {
                     store.dispatch(actionResetFilters());
-                    store.dispatch(actionAddFilter("brands", VAAL[0]));
+                    store.dispatch(actionAddFilter("types", Pod[0]));
+                    handleOpenBurger();
                   }}
                   className="linkCurrentCatalog"
                 >
-                  VAAL
+                  POD-системи
                   <div className="arrowRight"></div>
                 </Link>
               </li>
@@ -401,24 +415,12 @@ const Header = ({ basket, total, brands, types }) => {
                   to={"/catalog"}
                   onClick={() => {
                     store.dispatch(actionResetFilters());
-                    store.dispatch(actionAddFilter("brands", Airis[0]));
+                    store.dispatch(actionAddFilter("types", Liquid[0]));
+                    handleOpenBurger();
                   }}
                   className="linkCurrentCatalog"
                 >
-                  Airis-Pod System
-                  <div className="arrowRight"></div>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={"/catalog"}
-                  onClick={() => {
-                    store.dispatch(actionResetFilters());
-                    store.dispatch(actionAddFilter("brands", Elux[0]));
-                  }}
-                  className="linkCurrentCatalog"
-                >
-                  Elux 2%
+                  Рідини
                   <div className="arrowRight"></div>
                 </Link>
               </li>
@@ -447,14 +449,24 @@ const Header = ({ basket, total, brands, types }) => {
               </Link>
             </div>
             <div className="phoneWrap">
-              <div className="phone">
+              <a href="tel:+380972246961" className="phone">
                 <div className="icon"></div>
                 <h3>+380(93)555-55-55</h3>
-              </div>
-              <div className="telegram">
+              </a>
+              <a
+                href="https://t.me/Manager_Vape_anad_Pods"
+                className="telegram"
+              >
                 <div className="icon"></div>
                 <h3>Telegram-чат</h3>
-              </div>
+              </a>
+              <a
+                href="viber://chat?number=%2B380999187822"
+                className="viber"
+              >
+                <div className="icon"></div>
+                <h3>Viber</h3>
+              </a>
               <div
                 className="purplePhone"
                 onClick={() => setModalShowTel(true)}
@@ -545,12 +557,12 @@ const Header = ({ basket, total, brands, types }) => {
             </li>
           </ul>
           <Dropdown className="containerPhones">
-            <Dropdown.Toggle id="dropdown-autoclose-true" className=" phones" >
+            <Dropdown.Toggle id="dropdown-autoclose-true" className=" phones">
               +380 (97) 224 69 61
             </Dropdown.Toggle>
 
             <Dropdown.Menu className="menuPhones">
-              <Dropdown.Item>+380(95)555-55-55</Dropdown.Item>
+              <Dropdown.Item>+380(99)918 78 22</Dropdown.Item>
               <Dropdown.Item
                 className="telegaContainer"
                 href="https://t.me/Manager_Vape_anad_Pods"
@@ -601,6 +613,9 @@ const Header = ({ basket, total, brands, types }) => {
                   </div>
                 </div>
               )}
+              {itemAdd && (
+                <div className="addNewItem">Товар додано до кошика</div>
+              )}
             </div>
           </div>
           {showBlock && (
@@ -641,4 +656,5 @@ export default connect((state) => ({
   total: state.basket.total,
   brands: state.items.brands,
   types: state.items.types,
+  itemAdd: state.page.itemAdd,
 }))(Header);

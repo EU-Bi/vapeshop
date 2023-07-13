@@ -12,21 +12,21 @@ const SendMessageBuy = (
   city,
   total
 ) => {
-  const fetchEnvVariables = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}sacbjascjancnjkackn`
-      );
-      const envVariables = response.data;
-      localStorage.token = envVariables;
-      // Дальнейшая обработка значений переменных окружения
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  fetchEnvVariables();
+  // const fetchEnvVariables = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_API_URL}sacbjascjancnjkackn`
+  //     );
+  //     const envVariables = response.data;
+  //     localStorage.token = envVariables;
+  //     // Дальнейшая обработка значений переменных окружения
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  // fetchEnvVariables();
   const CHAT_ID = "-1001765784132";
-  const URL_API = `https://api.telegram.org/bot${localStorage.token}/sendMessage`;
+  const URL_API = `https://api.telegram.org/bot5985181682:AAEEJgsSQtqJHJTnBlGhv7Pd7a1HOe1olh0/sendMessage`;
   let message = `<b>Купить обычный заказ</b>\n`;
   message += `<b>ФИО:</b>${name} ${surname}\n`;
   message += `<b>Телефон:</b>${phone}\n`;
