@@ -12,8 +12,6 @@ const Pagination = ({ data, page }) => {
     const indexOfFirstItem = indexOfLastItem - 12;
     store.dispatch(actionSetIndexes(indexOfFirstItem, indexOfLastItem));
   }, [currentPage]);
-  console.log(data);
-  console.log(page.indexOfLastItem >= data.length);
   const pageCount = Math.ceil(data.length / 12);
   const pages = [];
   for (let i = 0; i < pageCount; i++) {
