@@ -191,7 +191,7 @@ const Catalog = ({ devices, filters, current, page, sort, types }) => {
                       ))
                   ) : (
                     <div className="wrapNoItems">
-                      <p>Товару за вибраними філтрами не має в наявності</p>
+                      <p>Товару за вибраними фільтрами не має в наявності</p>
                     </div>
                   )}
                 </div>
@@ -282,7 +282,7 @@ const Catalog = ({ devices, filters, current, page, sort, types }) => {
                       ))
                   ) : (
                     <div className="wrapNoItems">
-                      <p>Товару за вибраними філтрами не має в наявності</p>
+                      <p>Товару за вибраними фільтрами не має в наявності</p>
                     </div>
                   )}
                 </div>
@@ -372,7 +372,7 @@ const Catalog = ({ devices, filters, current, page, sort, types }) => {
                       ))
                   ) : (
                     <div className="wrapNoItems">
-                      <p>Товару за вибраними філтрами не має в наявності</p>
+                      <p>Товару за вибраними фільтрами не має в наявності</p>
                     </div>
                   )}
                 </div>

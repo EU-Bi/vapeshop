@@ -32,7 +32,7 @@ const Main = ({ brands }) => {
     prevArrow: null,
   };
   const Airis = brands.filter((brand) => brand.title === "Airis");
-  const ElfBar = brands.filter((brand) => brand.title === "ElfBar");
+  const ElfBar = brands.filter((brand) => brand.title === "Elf Bar");
   const VAAL = brands.filter((brand) => brand.title === "VAAL");
   const Elux = brands.filter((brand) => brand.title === "Elux 2%");
   const STRAW = brands.filter((brand) => brand.title === "STRAW");

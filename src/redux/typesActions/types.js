@@ -33,3 +33,5 @@ export const SET_TYPE_PAID="SET_TYPE_PAID"
 
 
 export const CURRENT_DEVICE = "CURRENT_DEVICE"
+
+export const TRUE_ADD = "TRUE_ADD"

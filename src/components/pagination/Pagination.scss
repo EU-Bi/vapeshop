@@ -26,13 +26,18 @@
     color: #ffffff;
   }
   .prevPagination {
+    border: 0;
     background: url(../../assets/svg+img/prevPagination.png) no-repeat;
     width: 30px;
     height: 30px;
   }
   .nextPagination {
+    border: 0;
     background: url(../../assets/svg+img/nextPagination.png) no-repeat;
     width: 30px;
     height: 30px;
+  }
+  .rotated{
+    transform: rotate(180deg)
   }
 }

@@ -356,6 +356,20 @@
       }
     }
   }
+  .addNewItem {
+    position: absolute;
+    width: 300px;
+    top: 40px;
+    left: -280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    box-shadow: 5px 5px 25px rgba(120, 120, 245, 0.1);
+    border-radius: 15px;
+    border: 0;
+    padding: 30px;
+  }
 }
 @media (min-width: 768px) and (max-width: 1279px) {
   .header {
@@ -600,6 +614,7 @@
       align-items: center;
       gap: 30px;
       .phone {
+        text-decoration: none;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -622,6 +637,7 @@
         }
       }
       .telegram {
+        text-decoration: none;
         border-radius: 10px;
         background: #40b3e0;
         padding: 8px 23px;
@@ -638,6 +654,33 @@
           color: var(--white, #fff);
           /* Tab: H3 */
           font-size: 16px;
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          margin: 0;
+          padding: 0;
+        }
+      }
+      .viber{
+        text-decoration: none;
+        border-radius: 10px;
+        background: #c487f3;
+        width: 80%;
+        padding: 8px 23px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        .icon {
+          background: url(../../assets/svg+img/viber.svg) no-repeat;
+          width: 25px;
+          height: 25px;
+        }
+        h3 {
+          color: var(--white, #fff);
+          /* Tab: H3 */
+          font-size: 12px;
           font-family: "Montserrat";
           font-style: normal;
           font-weight: 600;
@@ -676,6 +719,21 @@
   }
   .activeBurger {
     display: block;
+  }
+  .addNewItem {
+    position: absolute;
+    width: 150px;
+    top: 50px;
+    right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    box-shadow: 5px 5px 25px rgba(120, 120, 245, 0.1);
+    border-radius: 15px;
+    border: 0;
+    padding: 30px;
+    font-size: 12px;
   }
 }
 @media (max-width: 767px) {
@@ -921,6 +979,7 @@
       align-items: center;
       gap: 30px;
       .phone {
+        text-decoration: none;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -943,6 +1002,7 @@
         }
       }
       .telegram {
+        text-decoration: none;
         border-radius: 10px;
         background: #40b3e0;
         padding: 8px 23px;
@@ -952,6 +1012,33 @@
         gap: 10px;
         .icon {
           background: url(../../assets/adaptiv/header/iconTg.svg) no-repeat;
+          width: 25px;
+          height: 25px;
+        }
+        h3 {
+          color: var(--white, #fff);
+          /* Tab: H3 */
+          font-size: 12px;
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          margin: 0;
+          padding: 0;
+        }
+      }
+      .viber{
+        text-decoration: none;
+        border-radius: 10px;
+        background: #c487f3;
+        width: 80%;
+        padding: 8px 23px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        .icon {
+          background: url(../../assets/svg+img/viber.svg) no-repeat;
           width: 25px;
           height: 25px;
         }
@@ -994,9 +1081,25 @@
         }
       }
     }
+    
   }
   .activeBurger {
     display: block;
+  }
+  .addNewItem {
+    position: absolute;
+    width: 150px;
+    top: 50px;
+    right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    box-shadow: 5px 5px 25px rgba(120, 120, 245, 0.1);
+    border-radius: 15px;
+    border: 0;
+    padding: 30px;
+    font-size: 12px;
   }
 }
 .activeBurgerBackground {
