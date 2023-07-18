@@ -77,7 +77,6 @@ const MainOptPage = () => {
               required
               onChange={(e) => {
                 setLabel(e.target.value);
-                console.log(label);
               }}
             />
             <button
@@ -173,7 +172,6 @@ const MainOptPage = () => {
               required
               onChange={(e) => {
                 setLabel(e.target.value);
-                console.log(label);
               }}
             />
             <button
@@ -269,7 +267,6 @@ const MainOptPage = () => {
               required
               onChange={(e) => {
                 setLabel(e.target.value);
-                console.log(label);
               }}
             />
             <button
