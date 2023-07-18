@@ -37,13 +37,13 @@ const Header = ({ basket, total, brands, types, itemAdd }) => {
     }
   };
   const Airis = brands.filter((brand) => brand.title === "Airis");
-  const ElfBar = brands.filter((brand) => brand.title === "ElfBar");
+  const ElfBar = brands.filter((brand) => brand.title === "Elf Bar");
   const VAAL = brands.filter((brand) => brand.title === "VAAL");
   const Elux = brands.filter((brand) => brand.title === "Elux 2%");
 
   const Odn = types.filter((type) => type.title === "Одноразки");
   const Pod = types.filter((type) => type.title === "POD-системи");
-  const Liquid = types.filter((type) => type.title === "Рідіни");
+  const Liquid = types.filter((type) => type.title === "Рідини");
   //const STRAW = brands.filter(brand=>brand.title==="STRAW")
   if (isMobile) {
     return (

@@ -194,8 +194,8 @@ const Footer = ({ brands }) => {
               <div className="socialMedia">
                 <p>Ми в соціальних мережах: </p>
                 <div className="wrapSocialMedia">
-                  <div className="tg"></div>
-                  <div className="inst"></div>
+                  <a href="https://t.me/VnP_ua" className="tg" />
+                  <a href="" className="inst"></a>
                 </div>
               </div>
             </div>
