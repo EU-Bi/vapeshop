@@ -18,6 +18,9 @@ const MainItemPage = ({ device, similarDevices }) => {
     setDevice(similarDevices.filter((dev) => dev.taste.title === taste)[0]);
   }, [taste, similarDevices]);
 
+  useEffect(() => {
+    setDevice(device);
+  }, [device]);
   const handleClick = (item, count) => {
     store.dispatch(actionAddItemInBasket({ item, count }));
   };

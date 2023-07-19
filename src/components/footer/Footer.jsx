@@ -195,7 +195,7 @@ const Footer = ({ brands }) => {
                 <p>Ми в соціальних мережах: </p>
                 <div className="wrapSocialMedia">
                   <a href="https://t.me/VnP_ua" className="tg" />
-                  <a href="" className="inst"></a>
+                  <a href="https://instagram.com/vape_and_pods?igshid=MmIzYWVlNDQ5Yg==" className="inst"></a>
                 </div>
               </div>
             </div>
