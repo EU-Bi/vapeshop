@@ -22,7 +22,7 @@ const ItemPage = ({ allDevices }) => {
       <Header />
       <MainItemPage device={device} similarDevices={similarDevices} />
       <InfoItem device={device} />
-      <YouLikeThis />
+      <YouLikeThis similarDevices={similarDevices}/>
       <Footer />
       <Telephone />
     </div>
