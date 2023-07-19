@@ -1,6 +1,5 @@
 import React from "react";
 import SmallCard from "../../components/CardProduct/SmallCard/SmallCard";
-import { connect } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
 const YouLikeThis = ({ similarDevices }) => {
