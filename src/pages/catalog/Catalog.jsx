@@ -8,7 +8,7 @@ import Telephone from "../../components/telephone/Telephone";
 import Footer from "../../components/footer/Footer";
 import Pagination from "../../components/pagination/Pagination";
 import { connect } from "react-redux";
-import { filterItem } from "../../functions/filterItem";
+import { filterDevicesGPT, filterItem } from "../../functions/filterItem";
 import {
   SORT_FROM_HIGHT_PRICE,
   SORT_FROM_LOW_PRICE,
@@ -38,20 +38,30 @@ const Catalog = ({ devices, filters, current, page, sort, types }) => {
   }, [devices]);
   useEffect(() => {
     if (current.length > 0) {
-      let currentFilterDevices = [];
-      current.map((filter) => {
-        return currentFilterDevices.push(filterItem(filter, devices));
-      });
-      const result = (array) => {
-        const allValues = array.flat();
-        const uniqueValues = [...new Set(allValues)];
-        return uniqueValues;
-      };
-      setFilterDevices(result(currentFilterDevices));
+      setFilterDevices(filterDevicesGPT(devices, current));
     } else {
       setFilterDevices(devices);
     }
+    // if (current.length > 0) {
+    //   let currentFilterDevices = [];
+    //   current.map((filter) => {
+    //     return currentFilterDevices.push(filterItem(filter, devices));
+    //   });
+    //   const result = (array) => {
+    //     const allValues = array.flat();
+    //     const uniqueValues = [...new Set(allValues)];
+    //     return uniqueValues;
+    //   };
+    //   setFilterDevices(result(currentFilterDevices));
+    // } else {
+    //   setFilterDevices(devices);
+    // }
   }, [current, devices]);
+  // useEffect(() => {
+  //   console.log(store.getState());
+  //   console.log("gpt", filterDevicesGPT(devices, current));
+  // }, [devices, current]);
+
   function ReverseArray(arr) {
     const sortedData = arr.sort(
       (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
@@ -177,7 +187,7 @@ const Catalog = ({ devices, filters, current, page, sort, types }) => {
                     }
                   })}
                 </div>
-                <span>Ваші філтри застосовуются автоматично</span>
+                <span>Ваші фільтри застосовуются автоматично</span>
               </div>
             )}
             <div className="midCatalog">
