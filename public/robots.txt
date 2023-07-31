@@ -1,3 +1,11 @@
 # https://www.robotstxt.org/robotstxt.html
-User-agent: *
-Disallow:
+User-agent: * 
+Disallow: /admin
+Disallow: /////////
+Disallow: /index.php
+Disallow: /home.php
+Disallow: /prN
+Disallow: /*
+Disallow: /24
+Sitemap: https://vapeandpods.com/sitemap.xml
+

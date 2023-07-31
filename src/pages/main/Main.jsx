@@ -35,7 +35,7 @@ const Main = ({ brands }) => {
   const ElfBar = brands.filter((brand) => brand.title === "Elf Bar");
   const VAAL = brands.filter((brand) => brand.title === "VAAL");
   const Elux = brands.filter((brand) => brand.title === "Elux 2%");
-  const STRAW = brands.filter((brand) => brand.title === "STRAW");
+  const STRAW = brands.filter((brand) => brand.title === "Gost");
   if (isTablet) {
     return (
       <div className="backgroundCatalog">
