@@ -205,9 +205,13 @@ function itemsReducer(state = initialStateItems, { type, payload }) {
       }
 
       const resultIt = Object.values(resultMapIt);
+      const shuffeledIt = resultIt.sort(() => {
+        const randomTrueOrFalse = Math.random() > 0.5;
+        return randomTrueOrFalse ? 1 : -1
+      });
       return {
         ...state,
-        firstDevices: resultIt,
+        firstDevices: shuffeledIt,
       };
     case GET_ALL_ITEMS:
       const resultMap = {};
@@ -237,10 +241,14 @@ function itemsReducer(state = initialStateItems, { type, payload }) {
       }
 
       const result = Object.values(resultMap);
+      const shuffeled = result.sort(() => {
+        const randomTrueOrFalse = Math.random() > 0.5;
+        return randomTrueOrFalse ? 1 : -1
+      });
 
       return {
         ...state,
-        devices: result,
+        devices: shuffeled,
       };
 
     default:
