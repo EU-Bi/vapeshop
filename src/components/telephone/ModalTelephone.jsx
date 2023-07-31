@@ -39,6 +39,7 @@ const ModalTelephone = (props) => {
           }}
         />
         <button
+        disabled={number.length<10?true:false}
           onClick={() => {
             sendMessage(number);
           }}
