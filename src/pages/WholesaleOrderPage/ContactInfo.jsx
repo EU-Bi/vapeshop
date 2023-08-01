@@ -14,7 +14,6 @@ import {
 } from "../../redux/actions/ActionForm";
 import convertPhoneNumber from "../../functions/ConvertPhone";
 import { useMediaQuery } from "react-responsive";
-import Select from "react-select";
 
 const ContactInfo = ({ form }) => {
   const [regions, setRegions] = useState([]);
@@ -27,6 +26,8 @@ const ContactInfo = ({ form }) => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [phone, setPhone] = useState("");
+  const [filteringCities, setFilteringCities] = useState([]);
+  const [filteringPost, setFilteringPost] = useState([]);
 
   const isDesKtop = useMediaQuery({ minWidth: "1280px" });
   const isTablet = useMediaQuery({ minWidth: "768px", maxWidth: "1279px" });
@@ -40,6 +41,33 @@ const ContactInfo = ({ form }) => {
     setCurrentCity(city.Description);
     store.dispatch(actionSetCity(city.Description));
   };
+
+  useEffect(() => {
+    setFilteringCities(
+      cites.filter((item) => {
+        const searchTerm = currentCity.toLowerCase();
+        const fullName = item.Description.toLowerCase();
+
+        return (
+          searchTerm &&
+          fullName.startsWith(searchTerm) &&
+          fullName !== searchTerm
+        );
+      })
+    );
+  }, [cites, currentCity]);
+  useEffect(() => {
+    setFilteringPost(
+      posts.filter((item) => {
+        const searchTerm = currentPost.toLowerCase();
+        const fullName = item.Description.toLowerCase();
+
+        return (
+          searchTerm && fullName.includes(searchTerm) && fullName !== searchTerm
+        );
+      })
+    );
+  }, [posts, currentPost]);
 
   useEffect(() => {
     axios
@@ -162,19 +190,9 @@ const ContactInfo = ({ form }) => {
                   setCurrentCity(e.target.value);
                 }}
               />
-              <ul className="cityList" id="cityname">
-                {cites
-                  .filter((item) => {
-                    const searchTerm = currentCity.toLowerCase();
-                    const fullName = item.Description.toLowerCase();
-
-                    return (
-                      searchTerm &&
-                      fullName.startsWith(searchTerm) &&
-                      fullName !== searchTerm
-                    );
-                  })
-                  .map((city) => (
+              {filteringCities.length > 0 && (
+                <ul className="cityList" id="cityname">
+                  {filteringCities.map((city) => (
                     <option
                       onClick={() => {
                         handleSetCity(city);
@@ -184,7 +202,8 @@ const ContactInfo = ({ form }) => {
                       {city.Description}
                     </option>
                   ))}
-              </ul>
+                </ul>
+              )}
             </div>
             <div className="wrapInputLabel">
               <label htmlFor="">Відділення</label>
@@ -199,24 +218,15 @@ const ContactInfo = ({ form }) => {
                 }}
               ></input>
 
-              <ul className="cityList" id="postlist">
-                {posts
-                  .filter((item) => {
-                    const searchTerm = currentPost.toLowerCase();
-                    const fullName = item.Description.toLowerCase();
-
-                    return (
-                      searchTerm &&
-                      fullName.includes(searchTerm) &&
-                      fullName !== searchTerm
-                    );
-                  })
-                  .map((post) => (
+              {filteringPost.length > 0 && (
+                <ul className="cityList" id="postlist">
+                  {filteringPost.map((post) => (
                     <option onClick={() => handleSetPost(post)} key={post.id}>
                       {post.Description}
                     </option>
                   ))}
-              </ul>
+                </ul>
+              )}
             </div>
           </form>
         </div>
