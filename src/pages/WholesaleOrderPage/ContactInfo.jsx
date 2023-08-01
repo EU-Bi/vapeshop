@@ -193,14 +193,14 @@ const ContactInfo = ({ form }) => {
               {filteringCities.length > 0 && (
                 <ul className="cityList" id="cityname">
                   {filteringCities.map((city) => (
-                    <option
+                    <li
                       onClick={() => {
                         handleSetCity(city);
                       }}
                       key={city.id}
                     >
                       {city.Description}
-                    </option>
+                    </li>
                   ))}
                 </ul>
               )}
@@ -221,9 +221,9 @@ const ContactInfo = ({ form }) => {
               {filteringPost.length > 0 && (
                 <ul className="cityList" id="postlist">
                   {filteringPost.map((post) => (
-                    <option onClick={() => handleSetPost(post)} key={post.id}>
+                    <li onClick={() => handleSetPost(post)} key={post.id}>
                       {post.Description}
-                    </option>
+                    </li>
                   ))}
                 </ul>
               )}
