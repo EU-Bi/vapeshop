@@ -368,7 +368,7 @@
 
         color: #ffffff;
       }
-      .checkOutOrder:disabled {
+      .checkOutOrder[disabled] {
         background: #cbcbcb;
       }
     }
@@ -853,7 +853,7 @@
 
         color: #ffffff;
       }
-      .checkOutOrder:disabled {
+      .checkOutOrder[disabled] {
         background: #cbcbcb;
       }
     }
@@ -1336,7 +1336,7 @@
 
         color: #ffffff;
       }
-      .checkOutOrder:disabled {
+      .checkOutOrder[disabled] {
         background: #cbcbcb;
       }
     }

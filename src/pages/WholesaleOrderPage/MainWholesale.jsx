@@ -8,6 +8,21 @@ import { actionRefreshBasket } from "../../redux/actions/ActionsBasket";
 import ItemPopupBasket from "../../components/basket/ItemPopupBasket";
 
 const MainWholesale = ({ basket, total, form }) => {
+  const isDisableg = (basket, form) => {
+    if (
+      basket.length > 0 &&
+      form.name.length > 0 &&
+      form.post.length > 0 &&
+      form.phone.length > 0 &&
+      form.surname.length > 0 &&
+      form.region.length > 0
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+  isDisableg(basket, form);
   const [isActive, setIsActive] = useState(false);
   const [text, setText] = useState("");
   return (
@@ -72,7 +87,7 @@ const MainWholesale = ({ basket, total, form }) => {
             <p className="priceText">{total} грн.</p>
           </div>
           <Link
-            disabled={basket.length > 0 ? false : true}
+            disabled={isDisableg(basket, form)}
             to={"/greeting"}
             className="checkOutOrder"
             onClick={() => {

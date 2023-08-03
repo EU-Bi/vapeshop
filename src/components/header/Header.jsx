@@ -14,7 +14,7 @@ import {
 import ModalTelephone from "../telephone/ModalTelephone";
 import { useMediaQuery } from "react-responsive";
 
-const Header = ({ basket, total, brands, types, itemAdd }) => {
+const Header = ({ basket, total, brands, types, itemAdd, all }) => {
   const isDesKtop = useMediaQuery({ minWidth: "1280px" });
   const isTablet = useMediaQuery({ minWidth: "768px", maxWidth: "1279px" });
   const isMobile = useMediaQuery({ maxWidth: "767px" });
@@ -26,7 +26,6 @@ const Header = ({ basket, total, brands, types, itemAdd }) => {
   const [modalShow, setModalShow] = useState(false);
   const [currentBrand, setCurrentBrands] = useState([]);
   const [burger, openBurger] = useState(false);
-
   const handleOpenBurger = () => {
     openBurger(!burger);
   };
@@ -241,10 +240,7 @@ const Header = ({ basket, total, brands, types, itemAdd }) => {
                 <div className="icon"></div>
                 <h3>Telegram-чат</h3>
               </a>
-              <a
-                href="viber://chat?number=%2B380999187822"
-                className="viber"
-              >
+              <a href="viber://chat?number=%2B380999187822" className="viber">
                 <div className="icon"></div>
                 <h3>Viber</h3>
               </a>
@@ -382,7 +378,7 @@ const Header = ({ basket, total, brands, types, itemAdd }) => {
               Каталог товарів
             </Link>
             <ul className="menu-header">
-            <li>
+              <li>
                 <Link
                   to={"/catalog"}
                   onClick={() => {
@@ -460,10 +456,7 @@ const Header = ({ basket, total, brands, types, itemAdd }) => {
                 <div className="icon"></div>
                 <h3>Telegram-чат</h3>
               </a>
-              <a
-                href="viber://chat?number=%2B380999187822"
-                className="viber"
-              >
+              <a href="viber://chat?number=%2B380999187822" className="viber">
                 <div className="icon"></div>
                 <h3>Viber</h3>
               </a>
@@ -657,4 +650,5 @@ export default connect((state) => ({
   brands: state.items.brands,
   types: state.items.types,
   itemAdd: state.page.itemAdd,
+  all: state.items.devices,
 }))(Header);
