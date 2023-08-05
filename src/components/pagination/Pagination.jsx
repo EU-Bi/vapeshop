@@ -3,9 +3,16 @@ import "./Pagination.scss";
 import { connect } from "react-redux";
 import store from "../../redux/store/store";
 import { actionSetIndexes } from "../../redux/actions/ActionsItems";
+import { DOTS, usePagination } from "./usePagination";
 
 const Pagination = ({ data, page }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const paginationRange = usePagination({
+    totalCount: data.length,
+    pageSize: 12,
+    currentPage: currentPage,
+    siblingCount: 1,
+  });
 
   useEffect(() => {
     const indexOfLastItem = currentPage * 12;
@@ -48,19 +55,22 @@ const Pagination = ({ data, page }) => {
             ></button>
           )}
         </li>
-        {pages.length > 0 ? (
-          pages.map((page, index) => (
-            <li key={index} className={currentPage === page ? "active" : ""}>
-              <div onClick={() => handleClickPage(page)} className="page-item">
-                {page}
+        {paginationRange.map((pageNumber, index) => {
+          if (pageNumber === DOTS) {
+            return <li>&#8230;</li>;
+          }
+
+          return (
+            <li
+              key={index}
+              className={currentPage === pageNumber ? "active" : ""}
+            >
+              <div onClick={() => handleClickPage(pageNumber)} className="page-item">
+                {pageNumber}
               </div>
             </li>
-          ))
-        ) : (
-          <li>
-            <div className="page-item active">1</div>
-          </li>
-        )}
+          );
+        })}
         <li>
           {page.indexOfLastItem >= data.length ? (
             <button
