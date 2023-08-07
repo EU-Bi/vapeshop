@@ -88,22 +88,26 @@ const MainWholesale = ({ basket, total, form }) => {
           </div>
           <Link
             disabled={isDisableg(basket, form)}
-            to={"/greeting"}
+            to={!isDisableg(basket, form)?"/greeting":'/basket'}
             className="checkOutOrder"
             onClick={() => {
-              SendMessageBuy(
-                form.name,
-                form.surname,
-                form.type,
-                form.phone,
-                basket,
-                form.post,
-                form.region,
-                text,
-                form.city,
-                total
-              );
-              store.dispatch(actionRefreshBasket());
+              if (!isDisableg(basket, form)) {
+                SendMessageBuy(
+                  form.name,
+                  form.surname,
+                  form.type,
+                  form.phone,
+                  basket,
+                  form.post,
+                  form.region,
+                  text,
+                  form.city,
+                  total
+                );
+                store.dispatch(actionRefreshBasket());
+              } else {
+                alert("Заповніть всі данні");
+              }
             }}
           >
             ОФОРМИТИ ЗАМОВЛЕННЯ
