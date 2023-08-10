@@ -16,6 +16,8 @@ import convertPhoneNumber from "../../functions/ConvertPhone";
 import { useMediaQuery } from "react-responsive";
 
 const ContactInfo = ({ form }) => {
+  const regexp = /^(\+38|8)?0[0-9]{9}$/;
+  const [validationCities, setValidationsCities] = useState(false);
   const [regions, setRegions] = useState([]);
   const [currentRegion, setCurrentRegion] = useState("");
   const [cites, setCites] = useState([]);
@@ -147,10 +149,14 @@ const ContactInfo = ({ form }) => {
                 type="text"
                 value={phone}
                 onChange={(e) => {
-                  setPhone(convertPhoneNumber(e.target.value));
-                  store.dispatch(
-                    actionSetPhone(convertPhoneNumber(e.target.value))
-                  );
+                  setPhone(e.target.value);
+                  if (regexp.test(e.target.value)) {
+                    store.dispatch(
+                      actionSetPhone(convertPhoneNumber(e.target.value))
+                    );
+                  } else {
+                    store.dispatch(actionSetPhone(""));
+                  }
                 }}
                 required
               />
@@ -188,6 +194,9 @@ const ContactInfo = ({ form }) => {
                 value={currentCity}
                 onChange={(e) => {
                   setCurrentCity(e.target.value);
+                  if(cites.some((city) => city.Description === e.target.value)){
+                    store.dispatch(actionSetCity(e.target.value));
+                  }
                 }}
               />
               {filteringCities.length > 0 && (
@@ -299,10 +308,14 @@ const ContactInfo = ({ form }) => {
                 type="text"
                 value={phone}
                 onChange={(e) => {
-                  setPhone(convertPhoneNumber(e.target.value));
-                  store.dispatch(
-                    actionSetPhone(convertPhoneNumber(e.target.value))
-                  );
+                  setPhone(e.target.value);
+                  if (regexp.test(e.target.value)) {
+                    store.dispatch(
+                      actionSetPhone(convertPhoneNumber(e.target.value))
+                    );
+                  } else {
+                    store.dispatch(actionSetPhone(""));
+                  }
                 }}
                 required
               />
@@ -339,7 +352,9 @@ const ContactInfo = ({ form }) => {
                 value={currentCity}
                 onChange={(e) => {
                   setCurrentCity(e.target.value);
-                  store.dispatch(actionSetCity(e.target.value));
+                  if(cites.some((city) => city.Description === e.target.value)){
+                    store.dispatch(actionSetCity(e.target.value));
+                  }
                 }}
               />
               <datalist id="cityname">
@@ -438,10 +453,14 @@ const ContactInfo = ({ form }) => {
                 type="text"
                 value={phone}
                 onChange={(e) => {
-                  setPhone(convertPhoneNumber(e.target.value));
-                  store.dispatch(
-                    actionSetPhone(convertPhoneNumber(e.target.value))
-                  );
+                  setPhone(e.target.value);
+                  if (regexp.test(e.target.value)) {
+                    store.dispatch(
+                      actionSetPhone(convertPhoneNumber(e.target.value))
+                    );
+                  } else {
+                    store.dispatch(actionSetPhone(""));
+                  }
                 }}
                 required
               />
@@ -478,7 +497,9 @@ const ContactInfo = ({ form }) => {
                 value={currentCity}
                 onChange={(e) => {
                   setCurrentCity(e.target.value);
-                  store.dispatch(actionSetCity(e.target.value));
+                  if(cites.some((city) => city.Description === e.target.value)){
+                    store.dispatch(actionSetCity(e.target.value));
+                  }
                 }}
               />
               <datalist id="cityname">

@@ -15,6 +15,7 @@ const MainWholesale = ({ basket, total, form }) => {
       form.post.length > 0 &&
       form.phone.length > 0 &&
       form.surname.length > 0 &&
+      form.city.length > 0 &&
       form.region.length > 0
     ) {
       return false;
