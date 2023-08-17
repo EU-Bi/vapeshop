@@ -13,8 +13,9 @@ import {
 import { connect } from "react-redux";
 import Slider from "react-slick";
 import { useMediaQuery } from "react-responsive";
+import SliderFirstSlide from "./SliderFirstSlide";
 
-const Main = ({ brands }) => {
+const Main = ({ brands, models }) => {
   const isDesKtop = useMediaQuery({ minWidth: "1280px" });
   const isTablet = useMediaQuery({ minWidth: "768px", maxWidth: "1279px" });
   const isMobile = useMediaQuery({ maxWidth: "767px" });
@@ -36,13 +37,14 @@ const Main = ({ brands }) => {
   const VAAL = brands.filter((brand) => brand.title === "VAAL");
   const Elux = brands.filter((brand) => brand.title === "Elux 2%");
   const STRAW = brands.filter((brand) => brand.title === "Gost");
+  const ELF5000Ultra = models.filter((model) => model.title === "5000Ultra");
   if (isTablet) {
     return (
       <div className="backgroundCatalog">
         <Header />
         <div className="containerWrap">
           <div className="slider">
-            <div className="firstSlide">
+            {/* <div className="firstSlide">
               <span>
                 Одноразова сигарета від американського бренду Gost Straw
               </span>
@@ -55,7 +57,8 @@ const Main = ({ brands }) => {
               >
                 ЗАМОВИТИ
               </Link>
-            </div>
+            </div> */}
+            <SliderFirstSlide airis={Airis} elf={ELF5000Ultra} ElfBar={ElfBar} />
             <div className="wrapTwoSlide">
               <Link
                 to={"/catalog"}
@@ -238,22 +241,30 @@ const Main = ({ brands }) => {
         <Header />
         <div className="containerWrap">
           <Slider {...settings}>
-            <div className="firstSlide">
-              <div className="div">
-                <span>
-                  Одноразова сигарета від американського бренду Gost Straw
-                </span>
-                <Link
-                  to={"/catalog"}
-                  onClick={() => {
-                    store.dispatch(actionResetFilters());
-                    store.dispatch(actionAddFilter("brands", STRAW[0]));
-                  }}
-                >
-                  ЗАМОВИТИ
-                </Link>
-              </div>
-            </div>
+            <Link
+              to={"/catalog"}
+              onClick={() => {
+                store.dispatch(actionResetFilters());
+                ELF5000Ultra.length===0?store.dispatch(actionAddFilter("modes", ELF5000Ultra[0])):store.dispatch(actionAddFilter("brands", ElfBar[0]))
+                
+              }}
+              className="oneSlide"
+            ></Link>
+            <Link
+              to={"/catalog"}
+              onClick={() => {
+                store.dispatch(actionResetFilters());
+                store.dispatch(actionAddFilter("brands", Airis[0]));
+              }}
+              className="twoSlide"
+            ></Link>
+            <Link
+              to={"https://t.me/VnP_ua"}
+              onClick={() => {
+                store.dispatch(actionResetFilters());
+              }}
+              className="threeSlide"
+            ></Link>
             <Link
               to={"/catalog"}
               className="secondSlide"
@@ -433,7 +444,7 @@ const Main = ({ brands }) => {
         <Header />
         <div className="containerWrap">
           <div className="slider">
-            <div className="firstSlide">
+            {/* <div className="firstSlide">
               <span>
                 Одноразова сигарета від американського бренду Gost Straw
               </span>
@@ -446,7 +457,8 @@ const Main = ({ brands }) => {
               >
                 ЗАМОВИТИ
               </Link>
-            </div>
+            </div> */}
+            <SliderFirstSlide airis={Airis} elf={ELF5000Ultra} ElfBar={ElfBar} />
             <div className="wrapTwoSlide">
               <Link
                 to={"/catalog"}
@@ -625,4 +637,7 @@ const Main = ({ brands }) => {
   }
 };
 
-export default connect((state) => ({ brands: state.items.brands }))(Main);
+export default connect((state) => ({
+  brands: state.items.brands,
+  models: state.items.models,
+}))(Main);
